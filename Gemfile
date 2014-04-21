@@ -50,3 +50,18 @@ gem 'bcrypt'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :test do
+  gem 'guard-rspec'
+  gem 'faker'
+  gem 'launchy'
+  gem 'capybara'
+  gem 'shoulda-matchers'
+end
+
+group :development, :test do
+  gem 'debugger'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+

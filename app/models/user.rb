@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
   end
 
   def password=(password)
-    #BCrypt will encrypt an empty string, probably don't want that...
+    #BCrypt will readily encrypt an empty string, probably don't want that...
     if password.present?
       @password = password
       self.password_digest = BCrypt::Password.create(password)
