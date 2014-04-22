@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :require_signed_in!, only: [:show]
+  before_action :require_signed_in!, except: [:new, :create]
+  before_action :require_signed_out!, only: [:new, :create]
 
   def new
   end
@@ -18,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # @tracks = Track.all.where(poster_id: params[:id])
   end
 
   def edit
@@ -43,6 +45,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :username)
+    params.require(:user).permit(:email, :password, :username, :fname, :lname, :city)
   end
 end

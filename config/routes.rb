@@ -3,9 +3,10 @@ Soundclown::Application.routes.draw do
   root to: "sessions#new"
 
   resource  :session, only: [:create, :new, :destroy]
-  resources :users, except: [:index]
-  resources :tracks, except: [:edit, :update]
-
+  resources :users, except: [:index] do
+    resources :tracks, only: [:index, :new, :create]
+  end
+  resources :tracks, only: [:show, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

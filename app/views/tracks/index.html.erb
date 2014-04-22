@@ -1,0 +1,20 @@
+<h1><%= current_user.username + "'s Tracks" %></h1>
+
+<% @tracks.each do |track| %>
+  <a href="<%= track_url(track.id) %>">
+    <%= track.title + " by: "%>
+    <%= track.artist %>
+  </a>
+
+  <form action="<%= track_url(track) %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete">
+  </form>
+  <br>
+  <br>
+<% end %>
+
+<a href="<%= user_url(current_user) %>">
+     Back to Profile
+</a>

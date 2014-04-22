@@ -30,4 +30,8 @@ class ApplicationController < ActionController::Base
     redirect_to new_session_url unless current_user
   end
 
+  def require_signed_out!
+    redirect_to user_url(current_user) if signed_in?
+  end
+
 end
