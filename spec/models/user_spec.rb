@@ -13,7 +13,7 @@ describe User do
   it { should ensure_length_of(:password).is_at_least(6) }
 
   #associations testing
-  #ex: it { should have_many(:tracks) }
+  it { should have_many(:tracks) }
 
   it "creates a password digest when a password is given" do
     expect(user.password_digest).to_not be_nil
