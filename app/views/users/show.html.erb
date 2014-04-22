@@ -1,7 +1,13 @@
-<h1>Sup <%= @user.username %></h1>
+<h1 class="heading">Sup <%= @user.username %></h1>
 
-<h3><%= @user.fname + " " + @user.lname %></h3>
-<h4><%= @user.city %></h4>
+<article class="user info">
+  <h3 class="name"><%= @user.fname + " " + @user.lname %></h3>
+  <h4 class="city"><%= @user.city %></h4>
+</article>
+
+<%= render "shared/reblogged_track_index", tracks: @reblogged_tracks %>
+
+<%= render "shared/uploaded_track_index", tracks: @user.tracks %>
 
 <%= render "shared/comments_show", comments: @user.comments %>
 

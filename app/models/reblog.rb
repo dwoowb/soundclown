@@ -1,2 +1,21 @@
 class Reblog < ActiveRecord::Base
+
+  belongs_to(
+    :reblogger,
+    class_name: "User",
+    foreign_key: :reblogger_id,
+    primary_key: :id,
+    inverse_of: :reblogs
+  )
+
+  belongs_to(
+    :track,
+    class_name: "Track",
+    foreign_key: :track_id,
+    primary_key: :id,
+    inverse_of: :reblogs
+  )
+
+  validates :reblogger_id, :track_id, presence: true
+
 end

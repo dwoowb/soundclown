@@ -8,6 +8,10 @@ Soundclown::Application.routes.draw do
   end
   resources :tracks, only: [:show, :destroy]
   resources :comments, only: [:create, :destroy]
+  resources :tracks, only: [:index, :show] do
+    resources :reblogs, only: [:create]
+  end
+  resources :reblogs, only: [:destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

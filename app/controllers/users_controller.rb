@@ -19,6 +19,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @reblogs = @user.reblogs.where(["reblogger_id = ?", @user.id]).pluck(:track_id)
+    @reblogged_tracks = []
+    @reblogs.each do |track_id|
+      @reblogged_tracks << Track.all.find(track_id)
+    end
+    # query optimization possible/necessary?
   end
 
   def edit

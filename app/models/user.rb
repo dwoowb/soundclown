@@ -8,6 +8,16 @@ class User < ActiveRecord::Base
     inverse_of: :poster,
     dependent: :destroy
   )
+
+  has_many(
+    :reblogs,
+    class_name: "Reblog",
+    foreign_key: :reblogger_id,
+    primary_key: :id,
+    inverse_of: :reblogger,
+    dependent: :destroy
+  )
+
   has_many :comments, as: :commentable
 
   before_validation :ensure_session_token

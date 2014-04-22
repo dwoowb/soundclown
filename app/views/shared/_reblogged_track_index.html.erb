@@ -1,0 +1,10 @@
+<h2>Reblogged Tracks</h2>
+<% @reblogged_tracks.each do |track| %>
+  <article class="track info">
+    <h3 class="title"><%= track.title %></h3>
+    <h4 class="artist"><%= track.artist %></h4>
+    <p class="poster"><%= track.poster.username %></p>
+    <%= render "shared/reblog_form", track: track %>
+  </article>
+  <br>
+<% end %>
