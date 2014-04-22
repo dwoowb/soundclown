@@ -1,5 +1,14 @@
 class User < ActiveRecord::Base
 
+  has_many(
+    :tracks,
+    class_name: "Track",
+    foreign_key: :poster_id,
+    primary_key: :id,
+    inverse_of: :poster,
+    dependent: :destroy
+  )
+
   before_validation :ensure_session_token
 
   validates :password_digest, :email, :session_token, presence: true
