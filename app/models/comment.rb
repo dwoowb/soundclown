@@ -6,8 +6,9 @@ class Comment < ActiveRecord::Base
     :commenter,
     class_name: "User",
     foreign_key: :commenter_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :authored_comments
   )
 
-  validates :body, :commenter_id, presence: true
+  validates :body, :commenter, presence: true
 end

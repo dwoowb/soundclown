@@ -16,6 +16,6 @@ class Reblog < ActiveRecord::Base
     inverse_of: :reblogs
   )
 
-  validates :reblogger_id, :track_id, presence: true
+  validates :reblogger, :track, presence: true
 
 end

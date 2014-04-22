@@ -18,6 +18,15 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
 
+  has_many(
+  :authored_comments,
+  class_name: "Comment",
+  foreign_key: :commenter_id,
+  primary_key: :id,
+  inverse_of: :commenter,
+  dependent: :destroy
+  )
+
   has_many :comments, as: :commentable
 
   before_validation :ensure_session_token
