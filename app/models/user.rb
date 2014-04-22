@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     inverse_of: :poster,
     dependent: :destroy
   )
+  has_many :comments, as: :commentable
 
   before_validation :ensure_session_token
 

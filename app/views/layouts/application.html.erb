@@ -8,24 +8,23 @@
 </head>
 <body>
 
-<nav>
+<% if signed_in? %>
+  <nav>
+      <a href="<%= user_url(current_user) %>">
+           Profile
+      </a>
+      <br>
 
-    <a href="<%= user_url(current_user) %>">
-         Profile
-    </a>
-    <br>
+      <a href="<%= user_tracks_url(current_user) %>">
+           Tracks
+      </a>
+      <br>
 
-    <a href="<%= user_tracks_url(current_user) %>">
-         Tracks
-    </a>
-    <br>
-
-    <a href="<%= new_user_track_url(current_user) %>">
-         Upload
-    </a>
-
-</nav>
-
+      <a href="<%= new_user_track_url(current_user) %>">
+           Upload
+      </a>
+  </nav>
+<% end %>
 
 <% if flash[:errors] %>
   <% flash[:errors].each do |error| %>

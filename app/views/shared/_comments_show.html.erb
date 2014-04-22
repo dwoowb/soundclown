@@ -1,0 +1,16 @@
+<h3>Comments</h3>
+
+<% comments.each do |comment| %>
+  <%= comment.body + ":" %>
+  <% commenter = User.find(comment.commenter_id) %>
+  <%= commenter.username %>
+  <% if commenter == current_user %>
+    <form action="<%= comment_url(comment) %>" method="post">
+      <%= auth_token %>
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Delete">
+    </form>
+  <% end %>
+  <br>
+  <!-- too many queries, as # of comments increase? -->
+<% end %>
