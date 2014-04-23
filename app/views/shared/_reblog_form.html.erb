@@ -1,17 +1,16 @@
-<% my_reblogs = track.reblogs.where(["reblogger_id = ?", current_user.id]) %>
-<% if my_reblogs.empty? %>
-    <form action="<%= track_reblogs_url(track.id) %>" method="post">
+<% if @reblogged_tracks.include?(track) %>
+    <form action="<%= track_reblog_url(track) %>" method="post">
       <%= auth_token %>
+      <input type="hidden" name="_method" value="delete">
       <input type="hidden" name="reblog[reblogger_id]" value="<%= current_user.id %>">
       <input type="hidden" name="reblog[track_id]" value="<%= track.id %>">
-      <input type="submit" value="Reblog">
+      <input type="submit" value="Unreblog">
     </form>
 <% else %>
-  <form action="<%= reblog_url(my_reblogs.first) %>" method="post">
+  <form action="<%= track_reblog_url(track) %>" method="post">
     <%= auth_token %>
-    <input type="hidden" name="_method" value="delete">
     <input type="hidden" name="reblog[reblogger_id]" value="<%= current_user.id %>">
     <input type="hidden" name="reblog[track_id]" value="<%= track.id %>">
-    <input type="submit" value="Unreblog">
+    <input type="submit" value="Reblog">
   </form>
 <% end %>

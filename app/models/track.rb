@@ -11,6 +11,8 @@ class Track < ActiveRecord::Base
     dependent: :destroy
   )
 
+  has_many :rebloggers, through: :reblogs, source: :tracks
+
   belongs_to(
     :poster,
     class_name: "User",

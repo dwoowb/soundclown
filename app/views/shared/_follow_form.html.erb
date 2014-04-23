@@ -1,0 +1,17 @@
+<% if @user == current_user %>
+<% elsif @user.followers.include?(current_user) %>
+    <form action="<%= user_follow_url(user) %>" method="post">
+      <%= auth_token %>
+      <input type="hidden" name="_method" value="delete">
+      <input type="hidden" name="follow[follower_id]" value="<%= current_user.id %>">
+      <input type="hidden" name="follow[followee_id]" value="<%= user.id %>">
+      <input type="submit" value="Unfollow">
+    </form>
+<% else %>
+  <form action="<%= user_follow_url(user) %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="follow[follower_id]" value="<%= current_user.id %>">
+    <input type="hidden" name="follow[followee_id]" value="<%= user.id %>">
+    <input type="submit" value="Follow">
+  </form>
+<% end %>

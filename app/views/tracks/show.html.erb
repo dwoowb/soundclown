@@ -1,7 +1,20 @@
 <article class="track info">
-  <h2 class="title"><%= @track.title %></h2>
-  <h4 class="artist"><%= @track.artist %></h4>
-  <p class="poster"><%= @poster.username %></p>
+  <h4 class="artist-track">
+    <a href="<%= track_url(@track) %>">
+      <%= @track.artist %> - <%= @track.title %>
+    </a>
+  </h4>
+  <p class="poster">
+    <a href="<%= user_url(@track.poster) %>"><%= @track.poster.username %></a>
+  </p>
+</article>
+
+<article class="track stat">
+  <p class="reblogs">reblogs: <%= @track.reblogs.length %></p>
+</article>
+
+<article class="track action">
+  <%= render "shared/reblog_form", track: @track %>
 </article>
 
 <%= render "shared/comments_show", comments: @track.comments %>

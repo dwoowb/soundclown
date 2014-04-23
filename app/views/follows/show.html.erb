@@ -1,0 +1,11 @@
+<h1><%= @user.username %>'s Followers</h1>
+
+<% @user.followers.each do |follower| %>
+  <article class="user info">
+    <h3 class="name"><%= follower.fname + " " + follower.lname %></h3>
+    <h4 class="city"><%= follower.city %></h4>
+    <a href="<%= user_follow_url(follower) %>">
+      <%= follower.followers.length %> followers
+    </a>
+  </article>
+<% end %>

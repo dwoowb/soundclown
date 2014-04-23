@@ -22,6 +22,7 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
+    @reblogged_tracks = current_user.reblogged_tracks
     @poster = User.find(@track.poster_id)
   end
 

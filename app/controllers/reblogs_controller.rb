@@ -4,8 +4,7 @@ class ReblogsController < ApplicationController
     @reblog = Reblog.new(reblog_params)
 
     if @reblog.save
-      #should add this track to profile
-      #should increment number of reblogs to track
+      # user feedback about reblogging track
       redirect_to :back
     else
       flash.now[:errors] = @reblog.errors.full_messages
@@ -14,7 +13,7 @@ class ReblogsController < ApplicationController
   end
 
   def destroy
-    @reblog = Reblog.find(params[:id])
+    @reblog = Reblog.find_by(track_id: reblog_params[:track_id])
     @reblog.destroy!
     redirect_to :back
   end
