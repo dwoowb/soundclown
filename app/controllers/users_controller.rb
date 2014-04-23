@@ -20,8 +20,7 @@ class UsersController < ApplicationController
   def show
     @user = User.includes(:reblogged_tracks).find(params[:id])
     @reblogged_tracks = @user.reblogged_tracks
-    @followers = @user.followers
-
+    @my_reblogged_tracks = current_user.reblogged_tracks
   end
 
   def edit

@@ -39,6 +39,10 @@ end
 
 gem 'pry-rails'
 
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro'
+
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
 

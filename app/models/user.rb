@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :reblogged_tracks, through: :reblogs, source: :track
 
+  has_many :notifications, as: :notifiable
+
   has_many(
     :in_follows,
     class_name: "Follow",
