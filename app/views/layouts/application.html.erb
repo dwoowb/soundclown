@@ -11,7 +11,7 @@
 <% if signed_in? %>
   <nav>
       <a href="<%= user_url(current_user) %>">
-           Profile
+           <%= current_user.username %>
       </a>
       <br>
 

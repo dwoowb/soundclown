@@ -1,5 +1,6 @@
-<%# fail %>
-<% if @my_reblogged_tracks.include?(track) %>
+<% if current_user == track.poster %>
+  <!-- a user should not be able to reblog their own posting -->
+<% elsif @my_reblogged_tracks.include?(track) %>
     <form action="<%= track_reblog_url(track) %>" method="post">
       <%= auth_token %>
       <input type="hidden" name="_method" value="delete">
