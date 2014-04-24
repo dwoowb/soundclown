@@ -11,7 +11,12 @@ class User < ActiveRecord::Base
 
   has_many :reblogged_tracks, through: :reblogs, source: :track
 
-  has_many :notifications, as: :notifiable
+  has_many(
+    :notifications,
+    class_name: "Notification",
+    foreign_key: :user_id,
+    primary_key: :id
+  )
 
   has_many(
     :in_follows,
@@ -50,7 +55,7 @@ class User < ActiveRecord::Base
   dependent: :destroy
   )
 
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   before_validation :ensure_session_token
 

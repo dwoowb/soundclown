@@ -1,5 +1,7 @@
 class Reblog < ActiveRecord::Base
 
+  has_many :notifications, as: :notifiable, dependent: :destroy
+
   belongs_to(
     :reblogger,
     class_name: "User",

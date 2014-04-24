@@ -21,6 +21,16 @@ class Track < ActiveRecord::Base
     inverse_of: :tracks
   )
 
+  has_many(
+    :playlist_tracks,
+    class_name: "PlaylistTrack",
+    foreign_key: :track_id,
+    primary_key: :id
+  )
+
+  has_many :playlists, through: :playlist_tracks, source: :playlist
+
+
   validates :title, :artist, :poster, presence: true
 
 end

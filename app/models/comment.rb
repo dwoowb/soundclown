@@ -2,6 +2,8 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, polymorphic: true
 
+  has_many :notifications, as: :notifiable, dependent: :destroy
+
   belongs_to(
     :commenter,
     class_name: "User",
