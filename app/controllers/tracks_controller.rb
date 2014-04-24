@@ -5,6 +5,10 @@ class TracksController < ApplicationController
     @tracks = Track.all.where(["poster_id = ?", current_user.id])
   end
 
+  def add_to_playlist
+    @track = finish thissssss
+  end
+
   def new
     @track = Track.new
   end
