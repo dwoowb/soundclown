@@ -1,0 +1,8 @@
+<h1>Your Playlists</h1>
+
+<% @playlists.each do |playlist| %>
+  <%= playlist.title %>
+  <%= render "shared/playlist_form" track: HOW DO I PASS THE TRACK?! %>
+<% end %>
+
+<a href="<%= new_playlist_url %>">New Playlist</a>

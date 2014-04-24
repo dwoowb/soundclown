@@ -3,18 +3,13 @@
   <%= auth_token %>
   <input
     type="hidden"
-    name="comment[commentable_id]"
-    value="<%= commentable_id %>">
-
-  <input
-    type="hidden"
-    name="comment[commentable_type]"
-    value="<%= commentable_type %>">
+    name="comment[track_id]"
+    value="<%= track_id %>">
 
   <label>
     <textarea name="comment[body]"></textarea>
   </label>
   <br>
 
-  <input type="submit" value="Comment">
+  <input class="submit" type="submit" value="Comment">
 </form>

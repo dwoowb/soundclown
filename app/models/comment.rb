@@ -12,5 +12,13 @@ class Comment < ActiveRecord::Base
     inverse_of: :authored_comments
   )
 
+  belongs_to(
+    :track,
+    class_name: "Track",
+    foreign_key: :track_id,
+    primary_key: :id,
+    inverse_of: :comments
+  )
+
   validates :body, :commenter, presence: true
 end

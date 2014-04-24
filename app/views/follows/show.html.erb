@@ -4,10 +4,9 @@
   <article class="user info">
     <h3 class="name">
       <a href="<%= user_url(follower) %>">
-        <%= follower.fname + " " + follower.lname %>
+        <%= follower.username %>
       </a>
     </h3>
-    <h4 class="city"><%= follower.city %></h4>
     <a href="<%= user_follow_url(follower) %>">
       <%= follower.followers.length %> followers
     </a>

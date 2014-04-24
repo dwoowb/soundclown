@@ -42,6 +42,8 @@ gem 'pry-rails'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
+gem 'kaminari'
+gem 'pg_search'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'

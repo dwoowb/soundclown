@@ -1,50 +1,48 @@
-<h1>Sign Up</h1>
-
-<form action="<%= users_url %>" method="post">
+<form class="sign-up" action="<%= users_url %>" method="post">
 
   <%= auth_token %>
 
   <label>
     Email
-    <br>
-    <input type="email" name="user[email]">
+
+    <input class="input" type="email" name="user[email]">
   </label>
-  <br>
+
 
   <label>
     Username
-    <br>
-    <input type="text" name="user[username]">
+
+    <input class="input" type="text" name="user[username]">
   </label>
-  <br>
+
 
   <label>
     Password
-    <br>
-    <input type="password" name="user[password]">
+
+    <input class="input" type="password" name="user[password]">
   </label>
-  <br>
+
 
   <label>
     First Name
-    <br>
-    <input type="text" name="user[fname]">
+
+    <input class="input" type="text" name="user[fname]">
   </label>
-  <br>
+
 
   <label>
     Last Name
-    <br>
-    <input type="text" name="user[lname]">
+
+    <input class="input" type="text" name="user[lname]">
   </label>
-  <br>
+
 
   <label>
     City
-    <br>
-    <input type="text" name="user[city]">
-  </label>
-  <br>
 
-  <input type="submit" value="Sign Up">
+    <input class="input" type="text" name="user[city]">
+  </label>
+
+
+  <input class="submit" type="submit" value="Sign Up">
 </form>

@@ -20,18 +20,10 @@ class CommentsController < ApplicationController
   end
 
   def create_notification!(comment)
-    if comment.commentable_type == "User"
-      notified_user = User.find(comment.commentable_id)
-      event_id = 3
-    elsif comment.commentable_type == "Track"
-      track = Track.find(comment.commentable_id)
-      notified_user = track.poster
-      event_id = 6
-    elsif comment.commentable_type == "Playlist"
-      playlist = Playlist.find(comment.commentable_id)
-      notified_user = playlist.poster
-      event_id = 9
-    end
+    track = Track.find(comment.track_id)
+    notified_user = track.poster
+    event_id = 6
+
 
     Notification.create!({
       user_id: notified_user.id,
@@ -44,6 +36,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:commentable_id, :commentable_type, :body)
+    params.require(:comment).permit(:track_id, :body)
   end
 end

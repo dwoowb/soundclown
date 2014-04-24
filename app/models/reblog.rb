@@ -1,6 +1,7 @@
 class Reblog < ActiveRecord::Base
 
   has_many :notifications, as: :notifiable, dependent: :destroy
+  belongs_to :rebloggable, polymorphic: true
 
   belongs_to(
     :reblogger,
@@ -18,6 +19,6 @@ class Reblog < ActiveRecord::Base
     inverse_of: :reblogs
   )
 
-  validates :reblogger, :track, presence: true
+  validates :reblogger, presence: true
 
 end

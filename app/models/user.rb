@@ -12,10 +12,18 @@ class User < ActiveRecord::Base
   has_many :reblogged_tracks, through: :reblogs, source: :track
 
   has_many(
+    :playlists,
+    class_name: "Playlist",
+    foreign_key: :creator_id,
+    primary_key: :id
+  )
+
+  has_many(
     :notifications,
     class_name: "Notification",
     foreign_key: :user_id,
-    primary_key: :id
+    primary_key: :id,
+    dependent: :destroy
   )
 
   has_many(
@@ -47,15 +55,13 @@ class User < ActiveRecord::Base
   )
 
   has_many(
-  :authored_comments,
-  class_name: "Comment",
-  foreign_key: :commenter_id,
-  primary_key: :id,
-  inverse_of: :commenter,
-  dependent: :destroy
+    :authored_comments,
+    class_name: "Comment",
+    foreign_key: :commenter_id,
+    primary_key: :id,
+    inverse_of: :commenter,
+    dependent: :destroy
   )
-
-  has_many :comments, as: :commentable, dependent: :destroy
 
   before_validation :ensure_session_token
 

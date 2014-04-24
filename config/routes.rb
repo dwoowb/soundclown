@@ -7,8 +7,12 @@ Soundclown::Application.routes.draw do
   resources :users, except: [:index] do
     resources :tracks, only: [:index, :new, :create]
     resource :follow, only: [:create, :destroy, :show]
-    resources :notifications, only: [:index]
+    resources :playlists, only: [:index]
   end
+
+  resources :playlists, except: [:index]
+
+  resources :notifications, only: [:index]
 
   resources :comments, only: [:create, :destroy]
 

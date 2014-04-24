@@ -1,0 +1,22 @@
+<h2>Reblogged Playlists</h2>
+<% playlists.each do |playlist| %>
+  <article class="playlist info">
+    <h4 class="playlist title">
+      <a href="<%= playlist_url(playlist) %>">
+        <%= playlist.title %>
+      </a>
+    </h4>
+    <p class="creator">
+      <a href="<%= user_url(playlist.creator) %>"><%= playlist.creator.username %></a>
+    </p>
+  </article>
+
+  <article class="playlist stat">
+    <p class="reblogs">reblogs: <%= playlist.reblogs.length %></p>
+  </article>
+
+  <article class="playlist action">
+    <%= render "shared/reblog_form", playlist: playlist %>
+  </article>
+  <br>
+<% end %>

@@ -8,32 +8,240 @@
 </head>
 <body>
 
+<style>
+  html, body, form, input, label, h1, h2, h3, h4, p, ul, li {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    background: transparent;
+  }
 
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="submit"] {
+    -webkit-appearance: none;
+    box-sizing: content-box;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font: inherit;
+    vertical-align: baseline;
+    width: auto;
+    background: transparent;
+    color: inherit;
+  }
+
+  input [type="submit"] {
+    display: inline;
+    cursor: pointer;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  ul {
+    list-style: none;
+    padding-right: 10px;
+  }
+
+  .group:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  body {
+    font-family: sans-serif;
+    width: 100%;
+  }
+
+  header {
+    color: white;
+    width: 100%;
+    background: #272727;
+  }
+
+  nav {
+    width: 800px;
+    margin: auto;
+  }
+
+  .body {
+    width:800px;
+    margin: auto;
+  }
+
+  .logo {
+    padding: 15px 5px;
+    border-right: solid black 2px;
+    display: block;
+    float: left;
+    background: #FB4F19;
+  }
+
+  nav > ul {
+    display: block;
+    float: right;
+  }
+
+  nav > ul > li {
+    display: inline-block;
+    padding: 15px 5px;
+    border-left: solid black 2px;
+  }
+
+  nav > ul > li > a {
+    color: white;
+  }
+
+  section.user, section.tracks{
+    margin: 30px;
+    padding-bottom: 20px;
+    border-bottom: solid #EEE 1px;
+  }
+
+  .poster {
+    display: block;
+    color: #A1A1A1;
+    font-size: 15px;
+  }
+
+  .action {
+
+  }
+
+  .username {
+    font-size: 25px;
+    margin-top: 10px;
+  }
+
+  .name {
+    color: #A1A1A1;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  .city {
+    color: #A1A1A1;
+    font-size: 15px;
+    margin-bottom: 10px;
+  }
+
+  .followers {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+
+  form.sign-up, form.sign-in {
+    background: #fff;
+    padding: 50px;
+    width: 300px;
+    margin: 100px auto;
+    border: solid #272727 2px;
+    border-radius: 7px;
+  }
+
+  input.sign-out:hover {
+    cursor: pointer;
+  }
+
+  input.input {
+    margin: 20px 0;
+  }
+
+  input.input > label {
+    display: block;
+    font-weight: bold;
+  }
+
+  input.input {
+    border: 2px solid black;
+    padding: 5px;
+    width: 300px;
+    border-radius: 5px;
+  }
+
+  input.input:focus {
+    border-color: #FB4F19;
+  }
+
+  input.submit {
+    position: relative;
+    display: inline-block;
+    background: #272727;
+    color: #fff;
+    padding: 5px;
+    border-radius: 7px;
+    box-shadow: 0 3px 0 0 black;
+  }
+
+  input.submit:hover {
+    cursor: pointer;
+    background: #FB4F19;
+  }
+
+  input.submit:active {
+    top: 3px;
+    box-shadow: none;
+    background: #FB4F19;
+  }
+</style>
 
 <% if signed_in? %>
-  <nav>
-      <p>SoundClown</p>
+    <header>
+      <nav class="group">
+        <h1 class="logo">SoundClown</h1>
 
-      <a href="<%= user_url(current_user) %>">
-           <%= current_user.username %>
-      </a>
-      <br>
+        <ul>
+          <li>
+            <a href="<%= user_url(current_user) %>">
+                 <%= current_user.username %>
+            </a>
+          </li>
+          <li>
+            <a href="<%= user_tracks_url(current_user) %>">
+                 Tracks
+            </a>
+          </li>
+          <li>
+            <a href="<%= notifications_url %>">
+                Notifications
+            </a>
+          </li>
+          <li>
+            <a href="<%= new_user_track_url(current_user) %>">
+                 Upload
+            </a>
+          </li>
+          <li>
+            <form action="<%= session_url %>" method="post">
+              <%= auth_token %>
+              <input type="hidden" name="_method" value="delete">
+              <input class="sign-out" type="submit" value="Sign Out">
+            </form>
+          </li>
+        <ul>
+      </nav>
+    </header>
+<% else %>
+  <header>
+    <nav class="group">
+      <h1 class="logo">SoundClown</h1>
 
-      <a href="<%= user_tracks_url(current_user) %>">
-           Tracks
-      </a>
-      <br>
-
-      <a href="<%= user_notifications_url(current_user) %>">
-        Notifications
-      </a>
-      <br>
-
-      <a href="<%= new_user_track_url(current_user) %>">
-           Upload
-      </a>
-
-  </nav>
+      <ul>
+        <li>
+          <a class="sign-up" href="<%= new_user_url %>">Sign Up</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 <% end %>
 
 <% if flash[:errors] %>
@@ -42,15 +250,9 @@
   <% end %>
 <% end %>
 
-<%= yield %>
-
-<% if signed_in? %>
-  <form action="<%= session_url %>" method="post">
-    <%= auth_token %>
-    <input type="hidden" name="_method" value="delete">
-    <input type="submit" value="Sign Out">
-  </form>
-<% end %>
+<section class="body">
+  <%= yield %>
+</section>
 
 </body>
 </html>

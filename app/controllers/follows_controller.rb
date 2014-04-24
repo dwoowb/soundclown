@@ -5,6 +5,7 @@ class FollowsController < ApplicationController
 
     if @follow.save
       # user feedback about following
+      create_notification!(@follow)
       redirect_to :back
     else
       flash.now[:errors] = @follow.errors.full_messages
@@ -20,6 +21,17 @@ class FollowsController < ApplicationController
     @follow = Follow.find_by(followee_id: follow_params[:followee_id])
     @follow.destroy!
     redirect_to :back
+  end
+
+  def create_notification!(follow)
+    notified_user = User.find(follow.followee)
+
+    Notification.create!({
+      user_id: notified_user.id,
+      event_id: 1,
+      notifiable_id: follow.id,
+      notifiable_type: "Follow"
+    })
   end
 
   private

@@ -1,21 +1,24 @@
-<h1 class="heading">Sup <%= @user.username %></h1>
+<section class="user">
+  <article class="user info">
+    <h1 class="username"><strong><%= @user.username %></strong></h1>
+    <h3 class="name"><%= @user.fname + " " + @user.lname %></h3>
+    <h4 class="city"><%= @user.city %></h4>
+    <h1 class="followers">
+      <a href="<%= user_follow_url(@user) %>">
+        followers: <%= @user.followers.length %>
+      </a>
+    </h1>
+  </article>
 
-<article class="user info">
-  <h3 class="name"><%= @user.fname + " " + @user.lname %></h3>
-  <h4 class="city"><%= @user.city %></h4>
-  <a href="<%= user_follow_url(@user) %>">
-    <%= @user.followers.length %> followers
-  </a>
-</article>
+  <article class="user action">
+    <%= render "shared/follow_form", user: @user %>
+  </article>
+</section>
 
-<article class="user action">
-  <%= render "shared/follow_form", user: @user %>
-</article>
+<section class="tracks">
+  <%= render "shared/reblogged_track_index", tracks: @reblogged_tracks %>
 
-<%= render "shared/reblogged_track_index", tracks: @reblogged_tracks %>
+  <%= render "shared/uploaded_track_index", tracks: @user.tracks %>
 
-<%= render "shared/uploaded_track_index", tracks: @user.tracks %>
-
-<%= render "shared/comments_show", comments: @user.comments %>
-
-<%= render "shared/comments_form", commentable_id: @user.id, commentable_type: "User" %>
+  <%= render "shared/comments_show", comments: @user.authored_comments %>
+</section>

@@ -1,22 +1,22 @@
 <h2>Reblogged Tracks</h2>
 <% tracks.each do |track| %>
   <article class="track info">
-    <h4 class="artist-track">
-      <a href="<%= track_url(track) %>">
-        <%= track.artist %> - <%= track.title %>
-      </a>
-    </h4>
-    <p class="poster">
-      <a href="<%= user_url(track.poster) %>"><%= track.poster.username %></a>
-    </p>
+    <a class="poster" href="<%= user_url(track.poster) %>">
+      <%= track.poster.username %>
+    </a>
+    <a class="artist-track" href="<%= track_url(track) %>">
+      <%= track.artist %> - <%= track.title %>
+    </a>
   </article>
 
   <article class="track stat">
     <p class="reblogs">reblogs: <%= track.reblogs.length %></p>
+    <p class="comments">comments: <%= track.comments.length %></p>
   </article>
 
   <article class="track action">
     <%= render "shared/reblog_form", track: track %>
+    <%#= render "shared/playlist_form", track: track %>
   </article>
   <br>
 <% end %>

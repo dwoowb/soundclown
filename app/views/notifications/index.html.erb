@@ -1,4 +1,5 @@
 <h1>Notifications</h1>
+
 <% @notifications.each do |notification| %>
   <a href="<%= notification.url %>"><%= notification.text %></a>
 <% end %>

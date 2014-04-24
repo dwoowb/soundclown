@@ -9,6 +9,7 @@ class Playlist < ActiveRecord::Base
 
   has_many :tracks, through: :playlist_tracks, source: :track
 
+  belongs_to :creator
 
   validates :title, presence: true
 

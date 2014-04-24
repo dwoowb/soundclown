@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user = User.includes(:reblogged_tracks).find(params[:id])
     @reblogged_tracks = @user.reblogged_tracks
     @my_reblogged_tracks = current_user.reblogged_tracks
+    @playlists = @user.playlists
   end
 
   def edit
