@@ -4,14 +4,14 @@
       <input type="hidden" name="_method" value="delete">
       <input type="hidden" name="playlist[creator_id]" value="<%= current_user.id %>">
       <input type="hidden" name="playlist_track[track_id]" value="<%= track.id %>">
-      <input type="submit" value="Remove">
+      <input class="submit" type="submit" value="Remove">
     </form>
 <% else %>
-  <form action="<%= user_playlists_url(@user) %>" method="post">
+  <form action="<%= tracks_add_to_playlist_url %>" method="post">
     <%= auth_token %>
     <input type="hidden" name="playlist[creator_id]" value="<%= current_user.id %>">
-    <input type="hidden" name="reblog[track_id]" value="<%= track.id %>">
-    <input type="submit" value="Add">
+    <input type="hidden" name="playlist[track]" value="<%= track.id %>">
+    <input class="submit" type="submit" value="Add">
   </form>
 <% end %>
 

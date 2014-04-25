@@ -2,9 +2,7 @@
   <a class="poster" href="<%= user_url(@track.poster) %>">
     <%= @track.poster.username %>
   </a>
-  <a class="artist-track" href="<%= track_url(@track) %>">
-    <%= @track.artist %> - <%= @track.title %>
-  </a>
+   <%= @track.artist %> - <%= @track.title %>
 </article>
 
 <article class="track stat">

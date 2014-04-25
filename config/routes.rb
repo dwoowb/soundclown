@@ -3,22 +3,19 @@ Soundclown::Application.routes.draw do
   root to: "sessions#new"
 
   resource  :session, only: [:create, :new, :destroy]
-
   resources :users, except: [:index] do
-    resources :tracks, only: [:index, :new, :create]
+    resources :tracks, only: [:index, :new, :create] # users' show pages of uploaded/reblogged tracks
     resource :follow, only: [:create, :destroy, :show]
     resources :playlists, only: [:index]
   end
-
   resources :playlists, except: [:index]
-
   resources :notifications, only: [:index]
-
   resources :comments, only: [:create, :destroy]
-
-  resources :tracks, only: [:index, :show, :destroy] do
+  resources :tracks, only: [:index] # maybe the followee stream of uploaded/reblogged tracks?
+  resources :tracks, only: [:show, :destroy] do
     resource :reblog, only: [:create, :destroy]
   end
+  match 'tracks/add_to_playlist', via: [:post, :get]
 
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,11 @@
+<h1>Your Playlists</h1>
+
+<% @playlists.each do |playlist| %>
+  <%= playlist.title %>
+  <%= render "shared/playlist_form", track: @track %>
+<% end %>
+
+<form class="new-playlist" action="<%= new_playlist_url %>" method="get">
+	<input type="hidden" name="playlist[track_id]" value="<%= @track.id %>" >
+	<input class="submit" type="submit" value="New Playlist">
+</form>

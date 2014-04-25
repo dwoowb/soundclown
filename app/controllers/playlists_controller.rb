@@ -2,6 +2,10 @@ class PlaylistsController < ApplicationController
   def index
     @playlists = current_user.playlists
   end
+  
+  def new
+    
+  end
 
   def create
     @playlist = Playlist.new(playlist_params)

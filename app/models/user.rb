@@ -53,6 +53,15 @@ class User < ActiveRecord::Base
     inverse_of: :reblogger,
     dependent: :destroy
   )
+  
+  has_many(
+    :likes,
+    class_name: "Like",
+    foreign_key: :liker_id,
+    primary_key: :id,
+    inverse_of: :liker,
+    dependent: :destroy
+  )
 
   has_many(
     :authored_comments,

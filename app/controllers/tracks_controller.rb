@@ -2,11 +2,12 @@ class TracksController < ApplicationController
   before_action :require_signed_in!, except: [:show]
 
   def index
-    @tracks = Track.all.where(["poster_id = ?", current_user.id])
+    @tracks = Track.where(poster_id: current_user.id)
   end
 
   def add_to_playlist
-    @track = finish thissssss
+    @track = Track.find(playlist_params[:track])
+    @playlists = current_user.playlists
   end
 
   def new
@@ -40,6 +41,10 @@ class TracksController < ApplicationController
 
   def track_params
     params.require(:track).permit(:title, :artist, :poster_id)
+  end
+  
+  def playlist_params
+    params.require(:playlist).permit(:creator_id, :track)
   end
 
 end

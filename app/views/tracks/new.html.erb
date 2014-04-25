@@ -1,23 +1,17 @@
-<form action="<%= user_tracks_url(current_user) %>" method="post">
+<form class="new-track" action="<%= user_tracks_url(current_user) %>" method="post">
   <%= auth_token %>
-  <br>
 
   <label>
     Title
-    <br>
-    <input type="text" name="track[title]">
+    <input class="input" type="text" name="track[title]">
   </label>
-  <br>
 
   <label>
     Artist
-    <br>
-    <input type="text" name="track[artist]">
+    <input class="input" type="text" name="track[artist]">
   </label>
-  <br>
 
   <input type="hidden" name="track[poster_id]" value="<%= current_user.id %>">
-  <br>
 
-  <input type="submit" value="Upload chill sounds">
+  <input class="submit" type="submit" value="Upload">
 </form>
