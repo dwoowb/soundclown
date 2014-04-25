@@ -38,7 +38,7 @@ class Notification < ActiveRecord::Base
       reblog = Reblog.find(self.notifiable_id)
       reblogged_item = reblog.rebloggable_type.constantize.find(reblog.rebloggable_id)
 
-      if reblogged_item.rebloggable_type == "Track"
+      if reblog.rebloggable_type == "Track"
         @url = track_url(reblogged_item)
       else
         @url = playlist_url(reblogged_item)

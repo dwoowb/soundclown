@@ -11,12 +11,11 @@ Soundclown::Application.routes.draw do
   resources :playlists, except: [:index]
   resources :notifications, only: [:index]
   resources :comments, only: [:create, :destroy]
-  resources :tracks, only: [:index] # maybe the followee stream of uploaded/reblogged tracks?
   resources :tracks, only: [:show, :destroy] do
     resource :reblog, only: [:create, :destroy]
   end
-  match 'tracks/add_to_playlist', via: [:post, :get]
 
+  match 'playlists/remove_track', via: [:remove_track]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

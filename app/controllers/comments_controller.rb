@@ -24,6 +24,7 @@ class CommentsController < ApplicationController
     notified_user = track.poster
     event_id = 6
 
+    return if notified_user == comment.commenter
 
     Notification.create!({
       user_id: notified_user.id,

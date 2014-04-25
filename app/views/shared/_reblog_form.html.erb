@@ -8,7 +8,7 @@
       <input type="hidden" name="reblog[track_id]" value="<%= track.id %>">
       <input type="hidden" name="reblog[rebloggable_id]" value="<%= track.id %>">
       <input type="hidden" name="reblog[rebloggable_type]" value="Track">
-      <input type="submit" value="Unreblog">
+      <input class="submit" type="submit" value="Unreblog">
     </form>
 <% else %>
   <form action="<%= track_reblog_url(track) %>" method="post">
@@ -17,6 +17,6 @@
     <input type="hidden" name="reblog[track_id]" value="<%= track.id %>">
     <input type="hidden" name="reblog[rebloggable_id]" value="<%= track.id %>">
     <input type="hidden" name="reblog[rebloggable_type]" value="Track">
-    <input type="submit" value="Reblog">
+    <input class="submit" type="submit" value="Reblog">
   </form>
 <% end %>

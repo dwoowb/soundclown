@@ -69,13 +69,13 @@
   }
 
   nav {
-    width: 800px;
+    width: 1000px;
     margin: auto;
   }
 
   .body {
-    width:800px;
-    margin: auto;
+    width: 1000px;
+    margin: 20px auto;
   }
 
   .logo {
@@ -101,25 +101,81 @@
     color: white;
   }
 
-  section.user, section.tracks{
-    margin: 30px;
-    padding-bottom: 20px;
+  section.user {
+    width: 150px;
+    display: block;
+    float: left;
+  }
+
+  section.tracks{
+    width: 600px;
+    display: block;
+    float: left;
+    margin-bottom: 20px;
+    border-right: solid #EEE 1px;
+  }
+
+  section.track{
+    width: 600px;
+    margin: auto;
+    margin-bottom: 20px;
+  }
+
+  section.stats {
+    width: 240px;
+    display: block;
+    float: right;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
     border-bottom: solid #EEE 1px;
   }
 
-  .poster {
+  .poster, .creator {
     display: block;
     color: #A1A1A1;
     font-size: 15px;
   }
 
-  .action {
+  .original.poster {
+    color: #A1A1A1;
+  }
+
+  .track.nav {
+    width: 100%;
+  }
+
+  .track.action {
+    display: block;
+    float: left;
+  }
+
+  .track.action > li {
+    display: block;
+    border: none;
+    float: left;
+    padding: 3px;
+  }
+
+
+  .track.stat {
+    display: block;
+    float: right;
+  }
+
+  .track.stat > li {
+    display: block;
+    border:none;
+    float: left;
+    padding: 3px;
+  }
+
+  .track.comments {
+    display: block;
 
   }
 
   .username {
     font-size: 25px;
-    margin-top: 10px;
   }
 
   .name {
@@ -146,6 +202,17 @@
     margin: 100px auto;
     border: solid #272727 2px;
     border-radius: 7px;
+  }
+
+  form.follow > input.submit {
+    display: block;
+    float: left;
+  }
+
+  .form-title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 10px;
   }
 
   input.sign-out:hover {
@@ -193,6 +260,7 @@
     box-shadow: none;
     background: #FB4F19;
   }
+
 </style>
 
 <% if signed_in? %>
@@ -212,6 +280,11 @@
             </a>
           </li>
           <li>
+            <a href="<%= user_playlists_url(current_user) %>">
+                 Playlists
+            </a>
+          </li>
+          <li>
             <a href="<%= notifications_url %>">
                 Notifications
             </a>
@@ -220,6 +293,9 @@
             <a href="<%= new_user_track_url(current_user) %>">
                  Upload
             </a>
+          </li>
+          <li>
+            l> || # Player
           </li>
           <li>
             <form action="<%= session_url %>" method="post">

@@ -1,18 +1,22 @@
-<article class="track info">
-<a class="poster" href="<%= user_url(track.poster) %>">
-  <%= track.poster.username %>
-</a>
-<a class="artist-track" href="<%= track_url(track) %>">
-  <%= track.artist %> - <%= track.title %>
-</a>
-</article>
+<section class="track group">
+  <article class="track info">
+  <a class="poster" href="<%= user_url(track.poster) %>">
+    <%= track.poster.username %>
+  </a>
+  <a class="artist-track" href="<%= track_url(track) %>">
+    <%= track.artist %> - <%= track.title %>
+  </a>
+  </article>
 
-<article class="track stat">
-<p class="reblogs">reblogs: <%= track.reblogs.length %></p>
-<p class="comments">comments: <%= track.comments.length %></p>
-</article>
+  <nav class="track nav">
+    <ul class="track stat">
+      <li class="reblogs">reblogs: <%= track.reblogs.length %></li>
+      <li class="comments">comments: <%= track.comments.length %></li>
+    </ul>
 
-<article class="track action">
-<%= render "shared/reblog_form", track: track %>
-<%= render "shared/playlist_form", track: track %>
-</article>
+    <ul class="track action">
+      <li><%= render "shared/reblog_form", track: track %></li>
+      <li><%= render "shared/playlist_redirect", track: track %></li>
+    </ul>
+  </nav>
+</section>

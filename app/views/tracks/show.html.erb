@@ -1,19 +1,25 @@
-<article class="track info">
-  <a class="poster" href="<%= user_url(@track.poster) %>">
-    <%= @track.poster.username %>
-  </a>
-   <%= @track.artist %> - <%= @track.title %>
+<section class="track">
+  <article class="track info">
+    <a class="poster" href="<%= user_url(@track.poster) %>">
+      <%= @track.poster.username %>
+    </a>
+     <%= @track.artist %> - <%= @track.title %>
+  </article>
+
+  <article class="track stat">
+    <p class="reblogs">reblogs: <%= @track.reblogs.length %></p>
+    <a class="comments" href="<%= track_url(@track) %>">
+      comments: <%= @track.comments.length %>
+    </a>
+  </article>
+
+  <article class="track action">
+    <%= render "shared/reblog_form", track: @track %>
+    <%= render "shared/playlist_redirect", track: @track %>
+  </article>
+</section>
+
+<article class="track comments">
+  <%= render "shared/comments_show", comments: @track.comments %>
+  <%= render "shared/comments_form", track_id: @track.id %>
 </article>
-
-<article class="track stat">
-  <p class="reblogs">reblogs: <%= @track.reblogs.length %></p>
-  <p class="comments">comments: <%= @track.comments.length %></p>
-</article>
-
-<article class="track action">
-  <%= render "shared/reblog_form", track: @track %>
-</article>
-
-<%= render "shared/comments_show", comments: @track.comments %>
-
-<%= render "shared/comments_form", track_id: @track.id %>

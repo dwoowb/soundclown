@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   )
 
   has_many :reblogged_tracks, through: :reblogs, source: :track
+  has_many :reblogged_playlists, through: :reblogs, source: :playlist
 
   has_many(
     :playlists,
@@ -53,7 +54,7 @@ class User < ActiveRecord::Base
     inverse_of: :reblogger,
     dependent: :destroy
   )
-  
+
   has_many(
     :likes,
     class_name: "Like",

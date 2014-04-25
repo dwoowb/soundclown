@@ -1,0 +1,11 @@
+<%= @playlist.title %>
+<% @playlist.tracks.each do |track| %>
+  <article class="track info">
+    <a class="poster" href="<%= user_url(track.poster) %>">
+      <%= track.poster.username %>
+    </a>
+    <a class="track" href="<%= track_url(track) %>">
+      <%= track.artist %> - <%= track.title %>
+    </a>
+  </article>
+<% end %>

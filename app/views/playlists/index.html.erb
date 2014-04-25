@@ -1,1 +1,19 @@
+<% @playlists.each do |playlist| %>
 
+  <a class="creator" href="<%= user_url(playlist.creator) %>">
+    <%= playlist.creator.username %>
+  </a>
+  <a class="playlist-title" href="<%= playlist_url(playlist) %>">
+    <%= playlist.title %>
+  </a>
+  <% playlist.tracks.each_with_index do |track, idx| %>
+    <% if idx < 3 %>
+     <p class="original poster"><%= track.poster.username %></p> <%= " - " + track.artist + " - " + track.title %>
+    <% else %>
+      <a href="<%= playlist_url(playlist) %>">
+        View All Tracks
+      </a>
+      <% break %>
+    <% end %>
+  <% end %>
+<% end %>

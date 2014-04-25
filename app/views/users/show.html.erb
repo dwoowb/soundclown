@@ -16,9 +16,11 @@
 </section>
 
 <section class="tracks">
-  <%= render "shared/reblogged_track_index", tracks: @reblogged_tracks %>
+  <%= render "shared/reblogged_track_index", tracks: @reblogged_tracks.concat(@user.tracks).flatten %>
 
-  <%= render "shared/uploaded_track_index", tracks: @user.tracks %>
+  <!-- <%#= render "shared/uploaded_track_index", tracks: @user.tracks %> -->
+</section>
 
+<section class="stats">
   <%= render "shared/comments_show", comments: @user.authored_comments %>
 </section>

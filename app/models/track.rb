@@ -1,7 +1,7 @@
 class Track < ActiveRecord::Base
 
   has_many :comments
-  has_many :reblogs, as: :rebloggable
+  has_many :reblogs, as: :rebloggable, dependent: :destroy
   has_many :likes, as: :likeable
 
   has_many :rebloggers, through: :reblogs, source: :tracks
