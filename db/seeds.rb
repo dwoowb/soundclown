@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 dwoowb = User.create!({username: 'dwoowb', email: 'dwoowb@gmail.com', password: 'foobar', fname: "Daniel", lname: "Woo", city: "Los Angeles"})
-gavin = User.create!({username: 'gavin', email: 'gavin@gmail.com', password: 'foobar', fname: "Gavin", lname: "Uathuvikul" city: "Hong Kong"})
+gavin = User.create!({username: 'gavin', email: 'gavin@gmail.com', password: 'foobar', fname: "Gavin", lname: "Uathuvikul", city: "Hong Kong"})
 
 dwoowb.tracks.create!({title: 'Paradise Awaits', artist: 'ZHU'})
 dwoowb.tracks.create!({title: 'Love Strong', artist: 'Moon Boots'})
