@@ -1,0 +1,28 @@
+<% if item.is_a?(Track) %>
+  <% items = @my_liked_tracks %>
+<% elsif item.is_a?(Playlist) %>
+  <% items = @my_liked_playlists %>
+<% end %>
+<%# fail %>
+<% if items.try(:include?, item) %>
+    <form action="<%= track_like_url(item) %>" method="post">
+      <%= auth_token %>
+      <input type="hidden" name="_method" value="delete">
+      <input type="hidden" name="like[liker_id]" value="<%= current_user.id %>">
+      <input type="hidden" name="like[track_id]" value="<%= item.id %>">
+      <input type="hidden" name="like[likeable_id]" value="<%= item.id %>">
+      <input type="hidden" name="like[likeable_type]" value="<%= item.class.name %>">
+      <input class="submit" type="submit" value="Unlike">
+    </form>
+<% else %>
+  <form action="<%= track_like_url(item) %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="like[liker_id]" value="<%= current_user.id %>">
+    <input type="hidden" name="like[track_id]" value="<%= item.id %>">
+    <input type="hidden" name="like[likeable_id]" value="<%= item.id %>">
+    <input type="hidden" name="like[likeable_type]" value="<%= item.class.name %>">
+    <input class="submit" type="submit" value="Like">
+
+  </form>
+<% end %>
+

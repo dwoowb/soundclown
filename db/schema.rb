@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140425035125) do
+ActiveRecord::Schema.define(version: 20140427025359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -82,31 +82,38 @@ ActiveRecord::Schema.define(version: 20140425035125) do
     t.datetime "updated_at"
     t.integer  "rebloggable_id"
     t.string   "rebloggable_type"
-    t.integer  "track_id"
   end
 
   add_index "reblogs", ["reblogger_id"], name: "index_reblogs_on_reblogger_id", using: :btree
 
   create_table "tracks", force: true do |t|
-    t.string   "title",      null: false
-    t.string   "artist",     null: false
-    t.integer  "poster_id",  null: false
+    t.string   "title",                   null: false
+    t.string   "artist",                  null: false
+    t.integer  "poster_id",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "music_file_file_name"
+    t.string   "music_file_content_type"
+    t.integer  "music_file_file_size"
+    t.datetime "music_file_updated_at"
   end
 
   add_index "tracks", ["poster_id"], name: "index_tracks_on_poster_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
+    t.string   "email",               null: false
+    t.string   "password_digest",     null: false
+    t.string   "session_token",       null: false
     t.string   "username"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "city"
     t.string   "fname"
     t.string   "lname"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

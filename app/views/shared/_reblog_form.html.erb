@@ -1,22 +1,30 @@
-<% if current_user == track.poster %>
+<% if item.is_a?(Track) %>
+  <% items = @my_reblogged_tracks %>
+  <% user_check = item.poster %>
+<% elsif item.is_a?(Playlist) %>
+  <% items = @my_reblogged_playlists %>
+  <% user_check = item.creator %>
+<% end %>
+<%# fail %>
+<% if current_user == user_check %>
   <!-- a user should not be able to reblog their own posting -->
-<% elsif @my_reblogged_tracks.include?(track) %>
-    <form action="<%= track_reblog_url(track) %>" method="post">
+<% elsif items.try(:include?, item) %>
+    <form action="<%= track_reblog_url(item) %>" method="post">
       <%= auth_token %>
       <input type="hidden" name="_method" value="delete">
       <input type="hidden" name="reblog[reblogger_id]" value="<%= current_user.id %>">
-      <input type="hidden" name="reblog[track_id]" value="<%= track.id %>">
-      <input type="hidden" name="reblog[rebloggable_id]" value="<%= track.id %>">
-      <input type="hidden" name="reblog[rebloggable_type]" value="Track">
+      <input type="hidden" name="reblog[track_id]" value="<%= item.id %>">
+      <input type="hidden" name="reblog[rebloggable_id]" value="<%= item.id %>">
+      <input type="hidden" name="reblog[rebloggable_type]" value="<%= item.class.name %>">
       <input class="submit" type="submit" value="Unreblog">
     </form>
 <% else %>
-  <form action="<%= track_reblog_url(track) %>" method="post">
+  <form action="<%= track_reblog_url(item) %>" method="post">
     <%= auth_token %>
     <input type="hidden" name="reblog[reblogger_id]" value="<%= current_user.id %>">
-    <input type="hidden" name="reblog[track_id]" value="<%= track.id %>">
-    <input type="hidden" name="reblog[rebloggable_id]" value="<%= track.id %>">
-    <input type="hidden" name="reblog[rebloggable_type]" value="Track">
+    <input type="hidden" name="reblog[track_id]" value="<%= item.id %>">
+    <input type="hidden" name="reblog[rebloggable_id]" value="<%= item.id %>">
+    <input type="hidden" name="reblog[rebloggable_type]" value="<%= item.class.name %>">
     <input class="submit" type="submit" value="Reblog">
   </form>
 <% end %>

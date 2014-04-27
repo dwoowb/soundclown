@@ -4,7 +4,7 @@
   <%= commenter.username %>
 
   <% if commenter == current_user %>
-    <form action="<%= comment_url(comment) %>" method="post">
+    <form ]action="<%= comment_url(comment) %>" method="post">
       <%= auth_token %>
       <input type="hidden" name="_method" value="delete">
       <input class="submit" type="submit" value="Delete">

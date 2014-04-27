@@ -3,6 +3,8 @@ class TracksController < ApplicationController
 
   def index
     @tracks = Track.where(poster_id: current_user.id)
+    @my_liked_tracks = current_user.liked_tracks
+    @my_reblogged_tracks = current_user.reblogged_tracks
   end
 
   def new
@@ -22,8 +24,9 @@ class TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
-    @my_reblogged_tracks = current_user.reblogged_tracks
     @poster = User.find(@track.poster_id)
+    @my_liked_tracks = current_user.liked_tracks
+    @my_reblogged_tracks = current_user.reblogged_tracks
   end
 
   def destroy

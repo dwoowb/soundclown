@@ -1,7 +1,6 @@
 NOTIFICATION_EVENTS = {
   1 =>  "followed you",
-  5 =>  "track like",
+  5 =>  "liked",
   6 =>  "commented on",
-  7 =>  "reblogged",
-  8 =>  "playlist like"
+  7 =>  "reblogged"
 }

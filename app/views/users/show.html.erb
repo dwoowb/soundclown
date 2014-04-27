@@ -1,7 +1,10 @@
 <section class="user">
-  <article class="user info">
-    <h1 class="username"><strong><%= @user.username %></strong></h1>
-    <h3 class="name"><%= @user.fname + " " + @user.lname %></h3>
+  <h1 class="username"><strong><%= @user.username %></strong></h1>
+
+  <article class="user-info">
+    <img src="@user.avatar.url(:thumb)">
+    <h3 class="name"><%= @user.fname %></h3>
+    <h3 class="name"><%= @user.lname %></h3>
     <h4 class="city"><%= @user.city %></h4>
     <h1 class="followers">
       <a href="<%= user_follow_url(@user) %>">
@@ -10,17 +13,20 @@
     </h1>
   </article>
 
-  <article class="user action">
+  <article class="user-action">
     <%= render "shared/follow_form", user: @user %>
   </article>
 </section>
 
 <section class="tracks">
-  <%= render "shared/reblogged_track_index", tracks: @reblogged_tracks.concat(@user.tracks).flatten %>
-
-  <!-- <%#= render "shared/uploaded_track_index", tracks: @user.tracks %> -->
+  <%= render "shared/reblogged_track_index", tracks: @reblogged_tracks %>
+  <%= render "shared/uploaded_track_index", tracks: @user.tracks %>
 </section>
 
 <section class="stats">
+  <!-- playlists -->
+  <!-- likes -->
+  <!-- followees just the number -->
   <%= render "shared/comments_show", comments: @user.authored_comments %>
+
 </section>

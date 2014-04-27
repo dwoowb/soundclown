@@ -1,0 +1,41 @@
+<form enctype="multipart/form-data" class="sign-up" action="<%= user_url(@user) %>" method="post">
+
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="patch">
+
+  <label>
+    Email
+    <input class="input" type="email" name="user[email]" value="<%= @user.email %>">
+  </label>
+
+
+  <label>
+    Username
+    <input class="input" type="text" name="user[username]" value="<%= @user.username %>">
+  </label>
+
+  <label>
+    First Name
+    <input class="input" type="text" name="user[fname]" value="<%= @user.fname %>">
+  </label>
+
+
+  <label>
+    Last Name
+    <input class="input" type="text" name="user[lname]" value="<%= @user.lname %>">
+  </label>
+
+
+  <label>
+    City
+    <input class="input" type="text" name="user[city]" value="<%= @user.city %>">
+  </label>
+
+
+  <label>
+    Profile Picture
+    <input type="file" name="user[avatar]">
+  </label>
+
+  <input class="submit" type="submit" value="Edit">
+</form>

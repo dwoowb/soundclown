@@ -24,7 +24,7 @@ class ReblogsController < ApplicationController
       notified_user = track.poster
     elsif reblog.rebloggable_type == "Playlist"
       playlist = Playlist.find(reblog.rebloggable_id)
-      notified_user = playlist.poster
+      notified_user = playlist.creator
     end
 
     Notification.create!({
@@ -38,6 +38,6 @@ class ReblogsController < ApplicationController
   private
 
   def reblog_params
-    params.require(:reblog).permit(:rebloggable_id, :rebloggable_type, :reblogger_id, :track_id)
+    params.require(:reblog).permit(:rebloggable_id, :rebloggable_type, :reblogger_id)
   end
 end

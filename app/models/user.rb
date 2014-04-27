@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
 
+  has_attached_file :avatar, styles: { thumb: "100x100>", full: "300x300>", default_url: "/images/:style/missing.png"}
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   has_many(
     :tracks,
     class_name: "Track",
@@ -9,14 +12,19 @@ class User < ActiveRecord::Base
     dependent: :destroy
   )
 
-  has_many :reblogged_tracks, through: :reblogs, source: :track
-  has_many :reblogged_playlists, through: :reblogs, source: :playlist
+  has_many :reblogged_tracks, through: :reblogs, source: :rebloggable, source_type: "Track"
+  has_many :liked_tracks, through: :likes, source: :likeable, source_type: "Track"
+  has_many :reblogged_playlists, through: :reblogs, source: :rebloggable, source_type: "Playlist"
+  has_many :liked_playlists, through: :likes, source: :likeable, source_type: "Playlist"
+
 
   has_many(
     :playlists,
     class_name: "Playlist",
     foreign_key: :creator_id,
-    primary_key: :id
+    primary_key: :id,
+    inverse_of: :creator,
+    dependent: :destroy
   )
 
   has_many(

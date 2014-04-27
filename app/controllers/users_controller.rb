@@ -18,10 +18,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.includes(:reblogged_tracks).find(params[:id])
+    @user = User.find(params[:id])
+    @playlists = @user.playlists
+    @liked_tracks = @user.liked_tracks
+    @my_liked_tracks = current_user.liked_tracks
     @reblogged_tracks = @user.reblogged_tracks
     @my_reblogged_tracks = current_user.reblogged_tracks
-    @playlists = @user.playlists
+    @my_reblogged_playlists = current_user.reblogged_playlists
+    @liked_playlists = @user.liked_playlists
+    @my_liked_playlists = current_user.liked_playlists
+    @reblogged_playlists = @user.reblogged_playlists
+    @my_reblogged_playlists = current_user.reblogged_playlists
   end
 
   def edit
@@ -29,9 +36,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
 
-    if @user.update
+    if @user.update(user_params)
       redirect_to user_url(@user)
     else
       flash.now[:errors] = @user.errors.full_messages
@@ -47,6 +54,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :username, :fname, :lname, :city)
+    params.require(:user).permit(:email, :password, :username, :fname, :lname, :city, :avatar)
   end
 end

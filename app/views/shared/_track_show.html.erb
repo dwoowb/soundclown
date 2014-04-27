@@ -10,13 +10,15 @@
 
   <nav class="track nav">
     <ul class="track stat">
+      <li class="likes">likes: <%= track.likes.length %></li>
       <li class="reblogs">reblogs: <%= track.reblogs.length %></li>
       <li class="comments">comments: <%= track.comments.length %></li>
     </ul>
 
     <ul class="track action">
-      <li><%= render "shared/reblog_form", track: track %></li>
-      <li><%= render "shared/playlist_redirect", track: track %></li>
+      <li><%= render "shared/like_form", item: track %></li>
+      <li><%= render "shared/reblog_form", item: track %></li>
+      <li><%= render "shared/playlist_redirect", item: track %></li>
     </ul>
   </nav>
 </section>

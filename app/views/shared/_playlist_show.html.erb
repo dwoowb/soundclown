@@ -1,0 +1,46 @@
+<section class="playlist">
+
+  <article class="playlist">
+    <article class="playlist-info">
+      <a class="creator" href="<%= user_url(playlist.creator) %>">
+        <%= playlist.creator.username %>
+      </a>
+      <a class="playlist-title" href="<%= playlist_url(playlist) %>">
+        <%= playlist.title %>
+      </a>
+    </article>
+
+    <nav class="playlist nav group">
+      <ul class="playlist stat">
+        <li class="likes">likes: <%= playlist.likes.length %></li>
+        <li class="reblogs">reblogs: <%= playlist.reblogs.length %></li>
+      </ul>
+
+      <ul class="playlist action">
+        <li><%= render "shared/like_form", item: playlist %></li>
+        <li><%= render "shared/reblog_form", item: playlist %></li>
+      </ul>
+    </nav>
+  </article>
+
+  <ul class="playlist-tracks">
+    <% playlist.tracks.each_with_index do |track, idx| %>
+      <% if idx < 5 %>
+        <li>
+          <a href="<%= track_url(track) %>">
+             <p class="original poster">
+               <%= track.poster.username %>
+             </p>
+             <%= " - " + track.artist + " - " + track.title %>
+          </a>
+        </li>
+      <% end %>
+    <% end %>
+    <li>
+      <a href="<%= playlist_url(playlist) %>">
+        View All Tracks
+      </a>
+    </li>
+  </ul>
+
+</section>

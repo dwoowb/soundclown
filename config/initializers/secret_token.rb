@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Soundclown::Application.config.secret_key_base = 'c68b734993fc0c73f4b6fcb8437e3334e6a160e4b19fff0dd719537907842aa363d2a7fb6832704fa1cad59c105398577c5d3721bdfb913cbf9a94eb6c1a3249'
+Soundclown::Application.config.secret_key_base = ENV["SECRET_TOKEN"]
