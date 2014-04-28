@@ -22,17 +22,24 @@ class ReblogsController < ApplicationController
     if reblog.rebloggable_type == "Track"
       track = Track.find(reblog.rebloggable_id)
       notified_user = track.poster
+      Notification.create!({
+        user_id: notified_user.id,
+        event_id: 5,
+        notifiable_id: reblog.id,
+        notifiable_type: "Reblog"
+      })
     elsif reblog.rebloggable_type == "Playlist"
       playlist = Playlist.find(reblog.rebloggable_id)
       notified_user = playlist.creator
+      Notification.create!({
+        user_id: notified_user.id,
+        event_id: 6,
+        notifiable_id: reblog.id,
+        notifiable_type: "Reblog"
+      })
     end
 
-    Notification.create!({
-      user_id: notified_user.id,
-      event_id: 7,
-      notifiable_id: reblog.id,
-      notifiable_type: "Reblog"
-    })
+
   end
 
   private

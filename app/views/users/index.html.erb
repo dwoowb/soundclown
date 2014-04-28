@@ -1,0 +1,15 @@
+<% @stream_items.each do |item| %>
+  <% if item.class.name == "Reblog" %>
+    <!-- we want to pull out the reblogged item... -->
+    <!-- so I made a shitty n+1 helper method! -->
+    <% if item.rebloggable_type == "Track" %>
+      <%= render "shared/track_show", track: item.reblogged_item %>
+    <% elsif item.rebloggable_type == "Playlist" %>
+      <%= render "shared/playlist_show", playlist: item.reblogged_item %>
+    <% end %>
+  <% elsif item.class.name == "Track" %>
+    <%= render "shared/track_show", track: item %>
+  <% elsif item.class.name == "Playlist" %>
+    <%= render "shared/playlist_show", playlist: item %>
+  <% end %>
+<% end %>

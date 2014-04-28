@@ -45,7 +45,7 @@ class User < ActiveRecord::Base
 
   has_many(
     :out_follows,
-    class_name: "Reblog",
+    class_name: "Follow",
     foreign_key: :follower_id,
     primary_key: :id,
     dependent: :destroy

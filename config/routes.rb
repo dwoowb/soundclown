@@ -3,13 +3,20 @@ Soundclown::Application.routes.draw do
   root to: "sessions#new"
 
   resource  :session, only: [:create, :new, :destroy]
-  resources :users, except: [:index] do
+
+  resources :users do
     resources :tracks, only: [:index, :new, :create] # users' show pages of uploaded/reblogged tracks
-    resource :follow, only: [:create, :destroy, :show]
+    resources :follows, only: [:create, :destroy]
     resources :playlists, only: [:index]
   end
+
+  get "/users/:user_id/followers", action: "followers", controller: "users", as: "followers"
+  get "/users/:user_id/followees", action: "followees", controller: "users", as: "followees"
+
   resources :notifications, only: [:index]
+
   resources :comments, only: [:create, :destroy]
+
   resources :playlists, except: [:index] do
     resource :reblog, only: [:create, :destroy]
     resource :like, only: [:create, :destroy]

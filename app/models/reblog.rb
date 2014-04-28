@@ -1,5 +1,7 @@
 class Reblog < ActiveRecord::Base
 
+  attr_accessor :type
+
   has_many :notifications, as: :notifiable, dependent: :destroy
   belongs_to :rebloggable, polymorphic: true
 
@@ -12,5 +14,13 @@ class Reblog < ActiveRecord::Base
   )
 
   validates :reblogger, presence: true
+
+  def reblogged_item
+    if self.rebloggable_type == "Track"
+      return Track.find(self.rebloggable_id)
+    elsif self.rebloggable_type == "Playlist"
+      return Playlist.find(self.rebloggable_id)
+    end
+  end
 
 end

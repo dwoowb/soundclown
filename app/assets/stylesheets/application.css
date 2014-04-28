@@ -11,3 +11,302 @@
  *= require_self
  *= require_tree .
  */
+
+html, body, form, input, label, h1, h2, h3, h4, p, ul, li {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  box-sizing: content-box;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  vertical-align: baseline;
+  width: auto;
+  background: transparent;
+  color: inherit;
+}
+
+input [type="submit"] {
+  display: inline;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+ul {
+  list-style: none;
+  padding-right: 10px;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+body {
+  font-family: sans-serif;
+  width: 100%;
+}
+
+header {
+  background: #272727;
+}
+
+header a, header li, header input {
+  color: white;
+}
+
+nav {
+  width: 1000px;
+  margin: auto;
+}
+
+.body {
+  width: 1000px;
+  margin: 20px auto;
+}
+
+.logo, .stream {
+  padding: 15px 5px;
+  border-right: solid black 2px;
+  display: block;
+  float: left;
+  background: #FB4F19;
+}
+
+.stream {
+  background: #272727;
+}
+
+nav > ul {
+  display: block;
+  float: right;
+}
+
+nav > ul > li {
+  display: inline-block;
+  padding: 15px 5px;
+  border-left: solid black 2px;
+}
+
+nav > ul > li > a {
+  color: white;
+}
+
+section.user {
+  width: 150px;
+  display: block;
+  float: left;
+}
+
+section.tracks{
+  width: 600px;
+  display: block;
+  float: left;
+  margin-bottom: 20px;
+  border-right: solid #EEE 1px;
+}
+
+section.track, section.playlist{
+  width: 600px;
+  margin: auto;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: solid #EEE 1px;
+}
+
+section.stats {
+  width: 240px;
+  display: block;
+  float: right;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: solid #EEE 1px;
+}
+
+section.playlist {
+  margin: 20px auto;
+  padding-bottom: 20px;
+}
+
+.poster, .creator {
+  display: block;
+  color: #A1A1A1;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.original.poster {
+  display: inline;
+}
+
+.playlist-info {
+  margin-bottom: 20px;
+}
+
+.playlist-tracks {
+  display: block;
+  margin-top: 10px;
+  border: solid #EEE 1px;
+  border-radius: 5px;
+}
+
+.playlist-tracks > li {
+  width: 100%;
+  padding: 3px;
+  border-bottom: solid #EEE 1px;
+}
+
+.playlist-tracks > li:last-child {
+  text-align: center;
+  border-bottom: none;
+}
+
+.playlist-tracks > li:last-child > a {
+  color: #878787;
+}
+
+.playlist-tracks > li:last-child > a:hover {
+  color: black;
+}
+
+.user-info {
+  margin-top: 10px;
+}
+
+.nav {
+  width: 100%;
+}
+
+.action {
+  display: block;
+  float: left;
+}
+
+.action > li {
+  display: block;
+  border: none;
+  float: left;
+  padding: 3px;
+}
+
+
+.stat {
+  display: block;
+  float: right;
+}
+
+.stat > li {
+  display: block;
+  border:none;
+  float: left;
+  padding: 3px;
+}
+
+.track.comments {
+  display: block;
+}
+
+.username {
+  font-size: 25px;
+}
+
+.name {
+  display: inline;
+  color: #A1A1A1;
+  font-size: 15px;
+}
+
+.city {
+  color: #A1A1A1;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.followers {
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+form.sign-up, form.sign-in, form.new-track {
+  background: #fff;
+  padding: 50px;
+  width: 300px;
+  margin: 100px auto;
+  border: solid #272727 2px;
+  border-radius: 7px;
+}
+
+form.follow > input.submit {
+  display: block;
+  float: left;
+}
+
+.form-title {
+  text-align: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+input.sign-out:hover {
+  cursor: pointer;
+}
+
+input.input {
+  margin: 20px 0;
+}
+
+input.input > label {
+  display: block;
+  font-weight: bold;
+}
+
+input.input {
+  border: 2px solid black;
+  padding: 5px;
+  width: 300px;
+  border-radius: 5px;
+}
+
+input.input:focus {
+  border-color: #FB4F19;
+}
+
+input.submit {
+  position: relative;
+  display: block;
+margin: auto;
+  background: #272727;
+  color: #fff;
+  padding: 5px;
+  border-radius: 7px;
+  box-shadow: 0 3px 0 0 black;
+}
+
+input.submit:hover {
+  cursor: pointer;
+  background: #FB4F19;
+}
+
+input.submit:active {
+  top: 3px;
+  box-shadow: none;
+  background: #FB4F19;
+}

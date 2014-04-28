@@ -2,6 +2,20 @@ class UsersController < ApplicationController
   before_action :require_signed_in!, except: [:new, :create]
   before_action :require_signed_out!, only: [:new, :create]
 
+  def index
+    followees = current_user.followees
+    # stream_items are followee's uploaded/reblogged tracks/playlists
+    @stream_items = []
+    followees.each do |followee|
+      reblogs = followee.reblogs
+      created_items = followee.tracks + followee.playlists
+      @stream_items.concat(reblogs).concat(created_items)
+    end
+    unless @stream_items.empty?
+      @stream_items = @stream_items.sort_by(&:created_at).reverse!
+    end
+  end
+
   def new
   end
 
@@ -19,7 +33,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @tracks = @user.tracks
     @playlists = @user.playlists
+    @followees = @user.followees
     @liked_tracks = @user.liked_tracks
     @my_liked_tracks = current_user.liked_tracks
     @reblogged_tracks = @user.reblogged_tracks
@@ -49,6 +65,15 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find_by(params[:id])
     @user.destroy!
+    redirect_to new_session_url
+  end
+
+  def followers
+    @user = User.find_by(params[:id])
+  end
+
+  def followees
+    @user = User.find_by(params[:id])
   end
 
   private

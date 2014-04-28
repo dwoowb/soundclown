@@ -22,13 +22,12 @@ class CommentsController < ApplicationController
   def create_notification!(comment)
     track = Track.find(comment.track_id)
     notified_user = track.poster
-    event_id = 6
 
     return if notified_user == comment.commenter
 
     Notification.create!({
       user_id: notified_user.id,
-      event_id: event_id,
+      event_id: 4,
       notifiable_id: comment.id,
       notifiable_type: "Comment"
     })
