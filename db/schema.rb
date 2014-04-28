@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428023158) do
+ActiveRecord::Schema.define(version: 20140428161002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,10 +70,12 @@ ActiveRecord::Schema.define(version: 20140428023158) do
   add_index "playlist_tracks", ["track_id"], name: "index_playlist_tracks_on_track_id", using: :btree
 
   create_table "playlists", force: true do |t|
-    t.string   "title",      null: false
+    t.string   "title",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "creator_id"
+    t.integer  "likes_count"
+    t.integer  "reblogs_count"
   end
 
   create_table "reblogs", force: true do |t|
@@ -96,6 +98,9 @@ ActiveRecord::Schema.define(version: 20140428023158) do
     t.string   "music_file_content_type"
     t.integer  "music_file_file_size"
     t.datetime "music_file_updated_at"
+    t.integer  "likes_count"
+    t.integer  "reblogs_count"
+    t.integer  "comments_count"
   end
 
   add_index "tracks", ["poster_id"], name: "index_tracks_on_poster_id", using: :btree
@@ -114,6 +119,12 @@ ActiveRecord::Schema.define(version: 20140428023158) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.integer  "comments_count"
+    t.integer  "likes_count"
+    t.integer  "followers_count"
+    t.integer  "followees_count"
+    t.integer  "notifications_count"
+    t.integer  "tracks_count"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

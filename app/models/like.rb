@@ -19,8 +19,12 @@ class Like < ActiveRecord::Base
   private
 
   def set_notification
-    # YOU NEED TO ADJUST THIS
-    notification = self.notifications.unread.event(:gained_a_new_follower).new
+    case self.likeable_type
+    when "Track"
+      notification = self.notifications.unread.event(:track_got_liked).new
+    when "Playlist"
+      notification = self.notifications.unread.event(:playlist_got_liked).new
+    end
     notification.user = self.user
     notification.save
   end

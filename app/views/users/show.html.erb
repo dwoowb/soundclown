@@ -2,18 +2,19 @@
   <h1 class="username"><strong><%= @user.username %></strong></h1>
 
   <article class="user-info">
-    <img src="@user.avatar.url(:thumb)">
-    <h3 class="name"><%= @user.fname %></h3>
-    <h3 class="name"><%= @user.lname %></h3>
-    <h4 class="city"><%= @user.city %></h4>
+    <img src="<%= @user.avatar.url(:thumb) %>">
+    <h1 class="name"><%= @user.fname %></h1>
+    <h1 class="name"><%= @user.lname %></h1>
+    <h2 class="city"><%= @user.city %></h2>
     <h1 class="followers">
-      <a href="<%= user_follow_url(@user) %>">
-        followers: <%= @user.followers.length %>
+      <a href="<%= followers_url(@user) %>">
+        followers: <%= @user.followers.size %>
       </a>
     </h1>
   </article>
 
   <article class="user-action">
+
     <%= render "shared/follow_form", user: @user %>
   </article>
 </section>

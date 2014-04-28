@@ -12,9 +12,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by(likeable_id: like_params[:likeable_id])
-    # why is this like this? shouldn't you just do Like.find(params[:id])
-    @like.destroy!
+    @like = Like.find_by!(likeable_id: like_params[:likeable_id])
+    @like.destroy
     redirect_to :back
   end
 

@@ -64,7 +64,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user = User.find_by(params[:id])
-    @user.destroy!
+    @user.destroy
     redirect_to new_session_url
   end
 

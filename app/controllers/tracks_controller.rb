@@ -31,7 +31,7 @@ class TracksController < ApplicationController
 
   def destroy
     @track = Track.find(params[:id])
-    @track.destroy!
+    @track.destroy
     redirect_to user_tracks_url(current_user)
   end
 

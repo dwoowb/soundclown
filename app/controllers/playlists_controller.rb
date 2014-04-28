@@ -59,7 +59,7 @@ class PlaylistsController < ApplicationController
 
   def destroy
     @playlist = Playlist.find(params[:id])
-    @playlist.destroy!
+    @playlist.destroy
     redirect_to :back
   end
 

@@ -17,7 +17,7 @@ class FollowsController < ApplicationController
 
   def destroy
     @follow = Follow.find_by(followee_id: follow_params[:followee_id])
-    @follow.destroy!
+    @follow.destroy
     redirect_to :back
   end
 

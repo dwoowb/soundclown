@@ -7,9 +7,9 @@
   </article>
 
   <article class="track stat">
-    <p class="reblogs">reblogs: <%= @track.reblogs.length %></p>
+    <p class="reblogs">reblogs: <%= @track.reblogs.size %></p>
     <a class="comments" href="<%= track_url(@track) %>">
-      comments: <%= @track.comments.length %>
+      comments: <%= @track.comments.size %>
     </a>
   </article>
 

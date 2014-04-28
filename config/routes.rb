@@ -17,15 +17,14 @@ Soundclown::Application.routes.draw do
 
   resources :comments, only: [:create, :destroy]
 
-  resources :playlists, except: [:index] do
-    resource :reblog, only: [:create, :destroy]
-    resource :like, only: [:create, :destroy]
-  end
+  resources :playlists, except: [:index]
+  resources :tracks, only: [:show, :destroy]
 
-  resources :tracks, only: [:show, :destroy] do
-    resource :reblog, only: [:create, :destroy]
-    resource :like, only: [:create, :destroy]
-  end
+  resource :reblog, only: [:create, :destroy]
+  resource :like, only: [:create, :destroy]
+
+
+
 
   patch "/playlists/:id/add", action: "add_track", controller: "playlists", as: "add_to_playlist"
   patch "/playlists/:id/remove", action: "remove_track", controller: "playlists", as: "remove_from_playlist"

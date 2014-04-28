@@ -3,7 +3,7 @@ class Reblog < ActiveRecord::Base
   attr_accessor :type
 
   has_many :notifications, as: :notifiable, dependent: :destroy
-  belongs_to :rebloggable, polymorphic: true
+  belongs_to :rebloggable, polymorphic: true, counter_cache: true
 
   belongs_to(
     :reblogger,
@@ -22,5 +22,19 @@ class Reblog < ActiveRecord::Base
       return Playlist.find(self.rebloggable_id)
     end
   end
+
+  private
+
+  def set_notification
+    case self.rebloggable_type
+    when "Track"
+      notification = self.notifications.unread.event(:track_got_reblogged).new
+    when "Playlist"
+      notification = self.notifications.unread.event(:playlist_got_reblogged).new
+    end
+    notification.user = self.user
+    notification.save
+  end
+
 
 end

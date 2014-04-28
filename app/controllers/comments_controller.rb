@@ -8,29 +8,13 @@ class CommentsController < ApplicationController
     unless @comment.save
       flash.now[:errors] = @comment.errors.full_messages
     end
-    create_notification!(@comment)
     redirect_to :back
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy!
-    create_notification!(@comment)
+    @comment.destroy
     redirect_to :back
-  end
-
-  def create_notification!(comment)
-    track = Track.find(comment.track_id)
-    notified_user = track.poster
-
-    return if notified_user == comment.commenter
-
-    Notification.create!({
-      user_id: notified_user.id,
-      event_id: 4,
-      notifiable_id: comment.id,
-      notifiable_type: "Comment"
-    })
   end
 
   private

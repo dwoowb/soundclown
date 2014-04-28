@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Soundclown</title>
+  <title>SoundClone</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
@@ -9,66 +9,90 @@
 <body>
 
 <% if signed_in? %>
-    <header>
-      <nav class="group">
-        <h1 class="logo">
-          <a href="<%= users_url %>">SoundClown</a>
+    <header class="header">
+      <div class="header-wrap group">
+
+        <h1 class="header-logo">
+          <a href="<%= users_url %>">
+            <img src="<%= asset_path "logo.png" %>" width="92" height="51" alt="Logo">
+          </a>
         </h1>
 
-        <h1 class="stream">
+        <h1 class="header-stream">
           <a href="<%= users_url %>">Stream</a>
         </h1>
 
-        <ul>
-          <li>
-            <a href="<%= user_url(current_user) %>">
-                 <%= current_user.username %>
-            </a>
-          </li>
-          <li>
-            <a href="<%= user_tracks_url(current_user) %>">
-                 Tracks
-            </a>
-          </li>
-          <li>
-            <a href="<%= user_playlists_url(current_user) %>">
-                 Playlists
-            </a>
-          </li>
-          <li>
-            <a href="<%= notifications_url %>">
-                Notifications
-            </a>
-          </li>
-          <li>
-            <a href="<%= new_user_track_url(current_user) %>">
-                 Upload
-            </a>
-          </li>
-          <li>
-            l> || # Player
-          </li>
-          <li>
-            <form action="<%= session_url %>" method="post">
-              <%= auth_token %>
-              <input type="hidden" name="_method" value="delete">
-              <input class="sign-out" type="submit" value="Sign Out">
-            </form>
-          </li>
-        <ul>
-      </nav>
+        <nav class="header-nav group">
+          <ul>
+            <li>
+              <a href="<%= user_url(current_user) %>">
+                   <%= current_user.username %>
+              </a>
+            </li>
+
+            <li>
+              <a href="<%= user_tracks_url(current_user) %>">
+                   Tracks
+              </a>
+            </li>
+
+            <li>
+              <a href="<%= user_playlists_url(current_user) %>">
+                   Playlists
+              </a>
+            </li>
+
+            <li>
+              <a href="<%= notifications_url %>">
+                  Notifications
+              </a>
+            </li>
+
+            <li>
+              <a href="<%= new_user_track_url(current_user) %>">
+                   Upload
+              </a>
+            </li>
+
+            <li>
+              <a href="#">
+                l> || # Player
+              </a>
+            </li>
+
+            <li>
+              <form action="<%= session_url %>" method="post">
+                <%= auth_token %>
+                <input type="hidden" name="_method" value="delete">
+                <input class="sign-out" type="submit" value="Sign Out">
+              </form>
+            </li>
+          <ul>
+        </nav>
+
+      </div>
     </header>
 <% else %>
-  <header>
-    <nav class="group">
-      <h1 class="logo">SoundClown</h1>
+  <header class="header group">
 
+    <h1 class="header-logo">
+      <a href="<%= users_url %>">
+         <img src="<%= asset_path "logo.png" %>" width="92" height="51" alt="Logo">
+      </a>
+    </h1>
+
+    <nav class="header-nav group">
       <ul>
         <li>
-          <a class="sign-up" href="<%= new_user_url %>">Sign Up</a>
+          <a href="<%= new_session_url %>">Sign In</a>
+        </li>
+
+        <li>
+          <a href="<%= new_user_url %>">Sign Up</a>
         </li>
       </ul>
     </nav>
+
   </header>
 <% end %>
 
@@ -78,7 +102,7 @@
   <% end %>
 <% end %>
 
-<section class="body">
+<section class="content group">
   <%= yield %>
 </section>
 
