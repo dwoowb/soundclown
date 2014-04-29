@@ -199,78 +199,7 @@ input.submit:hover {
   background: #FB4F19;
 }
 
-/*input [type="submit"] {
-  display: inline;
-  cursor: pointer;
-}
-
-a {
-  text-decoration: none;
-  color: black;
-}
-
-ul {
-  list-style: none;
-  padding-right: 10px;
-}
-
-.group:after {
-  content: "";
-  display: block;
-  clear: both;
-}
-
-body {
-  font-family: sans-serif;
-  width: 100%;
-}
-
-header {
-  background: #272727;
-}
-
-header a, header li, header input {
-  color: white;
-}
-
-nav {
-  width: 1000px;
-  margin: auto;
-}
-
-.body {
-  width: 1000px;
-  margin: 20px auto;
-}
-
-.logo, .stream {
-  padding: 15px 5px;
-  border-right: solid black 2px;
-  display: block;
-  float: left;
-  background: #FB4F19;
-}
-
-.stream {
-  background: #272727;
-}
-
-nav > ul {
-  display: block;
-  float: right;
-}
-
-nav > ul > li {
-  display: inline-block;
-  padding: 15px 5px;
-  border-left: solid black 2px;
-}
-
-nav > ul > li > a {
-  color: white;
-}
-
-section.user {
+/*section.user {
   width: 150px;
   display: block;
   float: left;
