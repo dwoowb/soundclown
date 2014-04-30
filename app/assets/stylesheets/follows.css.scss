@@ -1,3 +1,47 @@
 // Place all the styles related to the Follows controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.follow {
+  margin-left: 160px;
+}
+
+.follow-profile {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  display: block;
+  float: left;
+}
+
+.follow-profile > ul {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.follow-profile > ul > .name > a {
+  font-size: 20px;
+}
+
+.follow-profile > ul > .follows {
+  margin: 0px;
+}
+
+.follow-profile > ul > .follows > a {
+  font-size: 14px;
+}
+
+.follow-profile > ul > li {
+  display: block;
+  background: #000;
+  opacity: .7;
+}
+
+.follow-profile > ul > li > a {
+  color: #fff;
+  opacity: 1;
+  padding: 2px 5px;
+  // this opacity is not working :[
+}
+

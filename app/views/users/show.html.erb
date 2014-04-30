@@ -7,19 +7,22 @@
     <h1 class="name"><%= @user.fname %></h1>
     <h1 class="name"><%= @user.lname %></h1>
     <h2 class="city"><%= @user.city %></h2>
-    <h1 class="followers">
-      <a href="<%= followers_url(@user) %>">
-        <i class="fa fa-users"></i> <%= @user.followers.size %>
-      </a>
-    </h1>
-    <h1 class="tracks">
-      <a href="<%= user_tracks_url(@user) %>">
-        <i class="fa fa-music"></i> <%= @user.tracks.size %>
-      </a>
-    </h1>
+
+    <div class="user-stats group">
+      <h1 class="followers">
+        <a href="<%= followers_url(@user) %>">
+          <i class="fa fa-users"></i> <%= @user.followers.size %>
+        </a>
+      </h1>
+      <h1 class="tracks">
+        <a href="<%= user_tracks_url(@user) %>">
+          <i class="fa fa-music"></i> <%= @user.tracks.size %>
+        </a>
+      </h1>
+    </div>
   </article>
 
-  <article class="user-action group">
+  <article class="user-action">
     <%= render "shared/edit_redirect", user: @user %>
     <%= render "shared/follow_form", user: @user %>
   </article>

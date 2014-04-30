@@ -39,6 +39,10 @@ section.user {
   margin-bottom: 10px;
 }
 
+.user-stats {
+  display: block;
+}
+
 .followers {
   display: block;
   float: left;
@@ -87,50 +91,6 @@ section.stats {
 .stat-action {
   display: block;
   float: right;
-}
-
-/* FOLLOWERS/FOLLOWEES SHOW */
-
-.follow {
-
-}
-
-.follow-profile {
-  width: 200px;
-  height: 200px;
-  position: relative;
-  display: block;
-}
-
-.follow-profile > ul {
-  position: absolute;
-  top: 5px;
-  left: 5px;
-}
-
-.follow-profile > ul > .name > a {
-  font-size: 20px;
-}
-
-.follow-profile > ul > .follows {
-  margin: 0px;
-}
-
-.follow-profile > ul > .follows > a {
-  font-size: 14px;
-}
-
-.follow-profile > ul > li {
-  display: block;
-  background: #000;
-  opacity: .7;
-}
-
-.follow-profile > ul > li > a {
-  color: #fff;
-  opacity: 1;
-  padding: 2px 5px;
-  // this opacity is not working :[
 }
 
 /* USER NAVBAR */
