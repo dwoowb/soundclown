@@ -1,15 +1,19 @@
 <% comments.each do |comment| %>
-  <%= "on " + comment.track.title %>
-  <% commenter = User.find(comment.commenter_id) %>
-  <%= commenter.username + ":"%>
-  <%= comment.body%>
+  <section class="comment group">
+    <article class="comment-info">
+      <p class="comment-setup">on </p>
+      <h1 class="name"><%= comment.track.title %></h1>
+    </article>
 
-  <% if commenter == current_user %>
-    <form action="<%= comment_url(comment) %>" method="post">
-      <%= auth_token %>
-      <input type="hidden" name="_method" value="delete">
-      <input class="submit" type="submit" value="Delete">
-    </form>
-  <% end %>
-  <!-- too many queries! -->
+
+    <p class="comment-body">" <%= comment.body%> "</p>
+
+    <% if comment.commenter == current_user %>
+      <form action="<%= comment_url(comment) %>" method="post">
+        <%= auth_token %>
+        <input type="hidden" name="_method" value="delete">
+        <input class="submit" type="submit" value="&#xf014;">
+      </form>
+    <% end %>
+  </section>
 <% end %>

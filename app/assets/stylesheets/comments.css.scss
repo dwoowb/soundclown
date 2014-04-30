@@ -1,3 +1,36 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comment {
+  display: block;
+  margin-left: 160px;
+  width: 600px;
+}
+
+.comment-setup {
+  display: inline;
+  font-size: 14px;
+}
+
+.comment-info {
+  display: block;
+  padding-bottom: 3px;
+}
+
+.comment-body {
+
+}
+
+input[type="submit"] {
+  font-family: "FontAwesome";
+}
+
+.comment .submit {
+  display: block;
+  float: right;
+  position: relative;
+  margin: none;
+  bottom: 25px;
+}
+
