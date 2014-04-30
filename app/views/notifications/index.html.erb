@@ -1,5 +1,13 @@
-<h1>Notifications</h1>
+<section class="notifications-content">
 
-<% @notifications.each do |notification| %>
-  <a href="<%= notification.url %>"><%= notification.text %></a>
-<% end %>
+  <h1 class="title">Notifications</h1>
+
+  <ul class="notifications">
+    <% @notifications.each do |notification| %>
+      <li>
+        <a href="<%= notification.url %>"><%= notification.text %></a>
+      </li>
+    <% end %>
+  </ul>
+
+</section>

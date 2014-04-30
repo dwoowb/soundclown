@@ -9,7 +9,7 @@
 <% if current_user == user_check %>
   <!-- a user should not be able to reblog their own posting -->
 <% elsif items.try(:include?, item) %>
-    <form action="<%= track_reblog_url(item) %>" method="post">
+    <form action="<%= reblog_url %>" method="post">
       <%= auth_token %>
       <input type="hidden" name="_method" value="delete">
       <input type="hidden" name="reblog[reblogger_id]" value="<%= current_user.id %>">
@@ -19,7 +19,7 @@
       <input class="submit" type="submit" value="Unreblog">
     </form>
 <% else %>
-  <form action="<%= track_reblog_url(item) %>" method="post">
+  <form action="<%= reblog_url %>" method="post">
     <%= auth_token %>
     <input type="hidden" name="reblog[reblogger_id]" value="<%= current_user.id %>">
     <input type="hidden" name="reblog[track_id]" value="<%= item.id %>">

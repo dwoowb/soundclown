@@ -1,0 +1,15 @@
+<% unless @user.followees.size == 0 %>
+
+  <section class="stat-line group">
+    <article class="stat-info">
+      <i class="fa fa-users"></i>
+      <%= @user.followees.size %>
+      following
+    </article>
+
+    <article class="stat-action">
+      <a href="<%= followees_url(@user) %>">View all</a>
+    </article>
+  </section>
+
+<% end %>

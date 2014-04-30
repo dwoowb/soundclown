@@ -6,8 +6,10 @@ Soundclown::Application.routes.draw do
 
   resources :users do
     resources :tracks, only: [:index, :new, :create] # users' show pages of uploaded/reblogged tracks
-    resources :follows, only: [:create, :destroy]
+    resource :follow, only: [:create, :destroy]
     resources :playlists, only: [:index]
+    resources :likes, only: [:index]
+    resources :comments, only: [:index]
   end
 
   get "/users/:user_id/followers", action: "followers", controller: "users", as: "followers"
@@ -22,9 +24,6 @@ Soundclown::Application.routes.draw do
 
   resource :reblog, only: [:create, :destroy]
   resource :like, only: [:create, :destroy]
-
-
-
 
   patch "/playlists/:id/add", action: "add_track", controller: "playlists", as: "add_to_playlist"
   patch "/playlists/:id/remove", action: "remove_track", controller: "playlists", as: "remove_from_playlist"

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
-  has_attached_file :avatar, styles: { thumb: "100x100>", full: "300x300>", default_url: "/images/:style/missing.png"}
+  has_attached_file :avatar, styles: { thumb: "100x100>", full: "300x300>"},
+  default_url: "https://s3.amazonaws.com/soundclown_dev/users/avatars/000/000/default_avatar/default-avatar.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   has_many(
@@ -32,27 +33,30 @@ class User < ActiveRecord::Base
     class_name: "Notification",
     foreign_key: :user_id,
     primary_key: :id,
+    inverse_of: :user,
     dependent: :destroy
   )
 
   has_many(
     :in_follows,
     class_name: "Follow",
-    foreign_key: :followee_id,
+    foreign_key: :follower_id,
     primary_key: :id,
+    inverse_of: :follower,
     dependent: :destroy
   )
 
   has_many(
     :out_follows,
     class_name: "Follow",
-    foreign_key: :follower_id,
+    foreign_key: :followee_id,
     primary_key: :id,
+    inverse_of: :followee,
     dependent: :destroy
   )
 
-  has_many :followers, through: :in_follows, source: :follower
-  has_many :followees, through: :out_follows, source: :followee
+  has_many :followees, through: :in_follows, source: :followee
+  has_many :followers, through: :out_follows, source: :follower
 
   has_many(
     :reblogs,

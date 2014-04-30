@@ -2,7 +2,8 @@ class TracksController < ApplicationController
   before_action :require_signed_in!, except: [:show]
 
   def index
-    @tracks = Track.where(poster_id: current_user.id)
+    @user = User.find(params[:user_id])
+    @tracks = @user.tracks
     @my_liked_tracks = current_user.liked_tracks
     @my_reblogged_tracks = current_user.reblogged_tracks
   end

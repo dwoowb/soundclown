@@ -1,7 +1,7 @@
 class PlaylistsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @playlists = current_user.playlists
+    @playlists = @user.playlists
     @my_liked_playlists = current_user.liked_playlists
     @my_reblogged_playlists = current_user.reblogged_playlists
   end

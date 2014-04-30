@@ -1,6 +1,11 @@
 class CommentsController < ApplicationController
   # after_action :create_notification, only: [:create, :destroy]
 
+  def index
+    @user = User.find(params[:user_id])
+    @comments = @user.authored_comments
+  end
+
   def create
     @comment = Comment.new(comment_params)
     @comment.commenter_id = current_user.id

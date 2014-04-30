@@ -1,14 +1,4 @@
-<h1><%= @user.username %>'s Followers</h1>
+<h1><%= @user.username %>'s Followees</h1>
 
-<% @user.followees.each do |followee| %>
-  <article class="user info">
-    <h3 class="name">
-      <a href="<%= user_url(followee) %>">
-        <%= followee.username %>
-      </a>
-    </h3>
-    <a href="<%= user_follow_url(followee) %>">
-      <%= followee.followers.size %> followers
-    </a>
-  </article>
-<% end %>
+<%= render "shared/mini_nav",  user: @user %>
+<%= render "users/follows", follows: @user.followees %>

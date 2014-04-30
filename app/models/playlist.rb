@@ -9,8 +9,8 @@ class Playlist < ActiveRecord::Base
   )
 
   has_many :tracks, through: :playlist_tracks, source: :track
-  has_many :reblogs, as: :rebloggable, dependent: :destroy
-  has_many :likes, as: :likeable, dependent: :destroy
+  has_many :reblogs, as: :rebloggable, inverse_of: :rebloggable, dependent: :destroy
+  has_many :likes, as: :likeable, inverse_of: :likeable, dependent: :destroy
 
   has_many :rebloggers, through: :reblogs, source: :tracks
   has_many :likers, through: :likes, source: :likes

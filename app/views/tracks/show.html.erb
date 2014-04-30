@@ -1,23 +1,4 @@
-<section class="track">
-  <article class="track info">
-    <a class="poster" href="<%= user_url(@track.poster) %>">
-      <%= @track.poster.username %>
-    </a>
-     <%= @track.artist %> - <%= @track.title %>
-  </article>
-
-  <article class="track stat">
-    <p class="reblogs">reblogs: <%= @track.reblogs.size %></p>
-    <a class="comments" href="<%= track_url(@track) %>">
-      comments: <%= @track.comments.size %>
-    </a>
-  </article>
-
-  <article class="track action">
-    <%= render "shared/reblog_form", item: @track %>
-    <%= render "shared/playlist_redirect", item: @track %>
-  </article>
-</section>
+<%= render "shared/track_show", track: @track %>
 
 <article class="track comments">
   <%= render "shared/comments_show", comments: @track.comments %>

@@ -1,3 +1,60 @@
 // Place all the styles related to the Playlists controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+section.playlist{
+  width: 600px;
+  margin: auto;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: solid #EEE 1px;
+}
+
+.playlist-header {
+  padding-bottom: 20px;
+  border-bottom: solid #EEE 1px;
+}
+
+.poster, .creator {
+  display: block;
+  color: #A1A1A1;
+  font-size: 15px;
+  margin-bottom: 3px;
+}
+
+.original.poster {
+  display: inline;
+}
+
+.playlist-info {
+  margin-bottom: 20px;
+}
+
+.playlist-preview {
+  display: block;
+  margin-top: 10px;
+  border: solid #EEE 1px;
+  border-radius: 5px;
+}
+
+.playlist-preview > li {
+  padding: 3px;
+  border-bottom: solid #EEE 1px;
+}
+
+.playlist-preview > li:last-child {
+  text-align: center;
+  border-bottom: none;
+}
+
+.playlist-preview > li:last-child > a {
+  color: #878787;
+}
+
+.playlist-preview > li:last-child > a:hover {
+  color: black;
+}
+
+.playlist-nav {
+  width: 100%;
+}

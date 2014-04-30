@@ -1,3 +1,5 @@
+<%= render "shared/mini_nav",  user: @user %>
+
 <% @tracks.each do |track| %>
   <%= render "shared/track_show", track: track %>
 <% end %>

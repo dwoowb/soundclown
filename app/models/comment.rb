@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
 
-  has_many :notifications, as: :notifiable, dependent: :destroy
+  has_many :notifications, as: :notifiable, inverse_of: :notifiable, dependent: :destroy
 
   belongs_to(
     :commenter,
@@ -20,12 +20,14 @@ class Comment < ActiveRecord::Base
     counter_cache: true
   )
 
+  after_create :set_notification
+
   validates :body, :commenter, presence: true
 
   def set_notification
     notification = self.notifications.unread.event(:track_got_commented).new
-    notification.user = self.user
-    notification.save
+    notification.user = self.track.poster
+    notification.save!
   end
 
 end

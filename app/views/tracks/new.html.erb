@@ -1,4 +1,4 @@
-<form class="new-track" action="<%= user_tracks_url(current_user) %>" method="post">
+<form class="new-track" enctype="multipart/form-data" action="<%= user_tracks_url(current_user) %>" method="post">
   <%= auth_token %>
 
   <h1 class="form-title">Upload Chill Sounds</h1>
@@ -11,6 +11,11 @@
   <label>
     Artist
     <input class="input" type="text" name="track[artist]">
+  </label>
+
+  <label>
+    Sound
+    <input type="file" name="track[music_file]">
   </label>
 
   <input type="hidden" name="track[poster_id]" value="<%= current_user.id %>">

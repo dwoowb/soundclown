@@ -1,0 +1,19 @@
+<% unless @user.likes.size == 0 %>
+
+  <section class="stat-line group">
+    <article class="stat-info">
+      <i class="fa fa-heart"></i>
+      <%= @user.likes.size %>
+      <% if @user.likes.size > 1 %>
+        likes
+      <% else %>
+        like
+      <% end %>
+    </article>
+
+    <article class="stat-action">
+      <a href="<%= user_likes_url(@user) %>">View all</a>
+    </article>
+  </section>
+
+<% end %>

@@ -1,10 +1,11 @@
 <% comments.each do |comment| %>
-  <%= comment.body + ":" %>
+  <%= "on " + comment.track.title %>
   <% commenter = User.find(comment.commenter_id) %>
-  <%= commenter.username %>
+  <%= commenter.username + ":"%>
+  <%= comment.body%>
 
   <% if commenter == current_user %>
-    <form ]action="<%= comment_url(comment) %>" method="post">
+    <form action="<%= comment_url(comment) %>" method="post">
       <%= auth_token %>
       <input type="hidden" name="_method" value="delete">
       <input class="submit" type="submit" value="Delete">

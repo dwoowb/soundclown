@@ -1,33 +1,39 @@
 <section class="user">
-  <h1 class="username"><strong><%= @user.username %></strong></h1>
+
+  <img class= "avatar" src="<%= @user.avatar.url(:thumb) %>">
 
   <article class="user-info">
-    <img src="<%= @user.avatar.url(:thumb) %>">
+    <h1 class="username"><strong><%= @user.username %></strong></h1>
     <h1 class="name"><%= @user.fname %></h1>
     <h1 class="name"><%= @user.lname %></h1>
     <h2 class="city"><%= @user.city %></h2>
     <h1 class="followers">
       <a href="<%= followers_url(@user) %>">
-        followers: <%= @user.followers.size %>
+        <i class="fa fa-users"></i> <%= @user.followers.size %>
+      </a>
+    </h1>
+    <h1 class="tracks">
+      <a href="<%= user_tracks_url(@user) %>">
+        <i class="fa fa-music"></i> <%= @user.tracks.size %>
       </a>
     </h1>
   </article>
 
   <article class="user-action">
-
+    <%= render "shared/edit_redirect", user: @user %>
     <%= render "shared/follow_form", user: @user %>
   </article>
 </section>
 
-<section class="tracks">
-  <%= render "shared/reblogged_track_index", tracks: @reblogged_tracks %>
-  <%= render "shared/uploaded_track_index", tracks: @user.tracks %>
+<section class="user-stream">
+  <%= render "shared/stream_index", items: @stream_items  %>
 </section>
 
 <section class="stats">
-  <!-- playlists -->
-  <!-- likes -->
-  <!-- followees just the number -->
-  <%= render "shared/comments_show", comments: @user.authored_comments %>
-
+  <ul>
+    <li><%= render "users/stats/playlists", playlists: @user.playlists %></li>
+    <li><%= render "users/stats/likes", likes: @user.likes %></li>
+    <li><%= render "users/stats/followees", followees: @user.followees %></li>
+    <li><%= render "users/stats/comments", comments: @user.authored_comments %></li>
+  </ul>
 </section>

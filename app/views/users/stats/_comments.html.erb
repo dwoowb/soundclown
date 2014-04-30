@@ -1,0 +1,20 @@
+<% unless @user.authored_comments.size == 0 %>
+
+  <section class="stat-line group">
+    <article class="stat-info">
+      <i class="fa fa-comments"></i>
+      <%= @user.authored_comments.size %>
+      <% if @user.authored_comments.size > 1 %>
+        comments
+      <% else %>
+        comment
+      <% end %>
+    </article>
+
+    <article class="stat-action">
+      <a href="<%= user_comments_url(@user) %>">View all</a>
+    </article>
+  </section>
+
+<% end %>
+

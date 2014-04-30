@@ -45,6 +45,7 @@ gem 'figaro'
 gem 'kaminari'
 gem 'pg_search'
 gem 'rails_12factor', group: :production
+gem 'font-awesome-rails'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'

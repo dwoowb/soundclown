@@ -1,6 +1,6 @@
 <section class="playlist">
 
-  <article class="playlist-header">
+  <article class="playlist">
     <article class="playlist-info">
       <a class="creator" href="<%= user_url(playlist.creator) %>">
         <%= playlist.creator.username %>
@@ -23,10 +23,24 @@
     </nav>
   </article>
 
-  <ul class="playlist-tracks">
+  <ul class="playlist-preview">
     <% playlist.tracks.each_with_index do |track, idx| %>
-      <li><%= render "shared/track_show", track: track %></li>
+      <% if idx < 5 %>
+        <li>
+          <a href="<%= track_url(track) %>">
+             <p class="original poster">
+               <%= track.poster.username %>
+             </p>
+             <%= " - " + track.artist + " - " + track.title %>
+          </a>
+        </li>
+      <% end %>
     <% end %>
+    <li>
+      <a href="<%= playlist_url(playlist) %>">
+        View All Tracks
+      </a>
+    </li>
   </ul>
 
 </section>

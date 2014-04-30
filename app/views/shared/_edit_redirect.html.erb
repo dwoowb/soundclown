@@ -1,1 +1,3 @@
-<a href="<%= edit_user_url %>"></a>
+<% if user == current_user %>
+  <a href="<%= edit_user_url(user) %>">Edit</a>
+<% end %>

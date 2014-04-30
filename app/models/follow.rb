@@ -1,11 +1,14 @@
 class Follow < ActiveRecord::Base
 
+  has_many :notifications, as: :notifiable, inverse_of: :notifiable, dependent: :destroy
+
   belongs_to(
     :follower,
     class_name: "User",
     foreign_key: :follower_id,
     primary_key: :id,
-    counter_cache: true
+    inverse_of: :in_follows
+    # counter_cache: true
   )
 
   belongs_to(
@@ -13,10 +16,11 @@ class Follow < ActiveRecord::Base
     class_name: "User",
     foreign_key: :followee_id,
     primary_key: :id,
-    counter_cache: true
+    inverse_of: :out_follows
+    # counter_cache: true
   )
 
-  after_commit :set_notification, on: [:create]
+  after_create :set_notification
 
   validates :followee, :follower, presence: true
 
@@ -24,7 +28,7 @@ class Follow < ActiveRecord::Base
 
   def set_notification
     notification = self.notifications.unread.event(:gained_a_new_follower).new
-    notification.user = self.user
-    notification.save
+    notification.user = self.followee
+    notification.save!
   end
 end

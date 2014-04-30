@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require font-awesome
  *= require_tree .
  */
 
@@ -39,6 +40,7 @@ ul {
 
 a {
   text-decoration: none;
+  color: #000;
 }
 
 img {
@@ -79,13 +81,12 @@ input[type="submit"] {
 /* HEADER */
 
 .header {
-  background: #272727;
+  background: -webkit-linear-gradient(#272727, #393939, #393939, #272727);
 }
 
 .header-wrap {
   margin: auto;
-  width: 1000px;
-  /* maybe make this 900px */
+  width: 1240px;
   border-left: 1px solid #000;
   border-right: 1px solid #000;
 }
@@ -124,6 +125,32 @@ input[type="submit"] {
 .header-nav > ul > li > a:active,
 .header-nav > ul > li:active,
 .header-stream > a:active  {
+  color: #fff;
+}
+
+.navbar-dropdown {
+  display: none;
+  position: absolute;
+  background: #272727;
+  width: 120px;
+}
+
+li:hover > .navbar-dropdown {
+  display: block;
+}
+
+.navbar-dropdown > li {
+  border-top: 1px solid #000;
+}
+
+.navbar-dropdown > li > a {
+  display: block;
+  padding: 5px 10px;
+  color: #999;
+}
+
+.navbar-dropdown > li > a:hover {
+  background: #000;
   color: #fff;
 }
 
@@ -186,7 +213,7 @@ input.input:focus {
 input.submit {
   position: relative;
   display: block;
-margin: auto;
+  margin: auto;
   background: #272727;
   color: #fff;
   padding: 5px;
@@ -199,143 +226,12 @@ input.submit:hover {
   background: #FB4F19;
 }
 
-/*section.user {
-  width: 150px;
-  display: block;
-  float: left;
-}
+/* CONTENT */
 
-section.tracks{
-  width: 600px;
-  display: block;
-  float: left;
-  margin-bottom: 20px;
-  border-right: solid #EEE 1px;
-}
-
-section.track, section.playlist{
-  width: 600px;
+.content {
+  width: 1240px;
+  min-height: 850px;
   margin: auto;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: solid #EEE 1px;
+  padding: 30px 0 30px 0;
+  background: #fff;
 }
-
-section.stats {
-  width: 240px;
-  display: block;
-  float: right;
-  padding-bottom: 10px;
-  margin-bottom: 10px;
-  border-bottom: solid #EEE 1px;
-}
-
-section.playlist {
-  margin: 20px auto;
-  padding-bottom: 20px;
-}
-
-.poster, .creator {
-  display: block;
-  color: #A1A1A1;
-  font-size: 15px;
-  margin-bottom: 3px;
-}
-
-.original.poster {
-  display: inline;
-}
-
-.playlist-info {
-  margin-bottom: 20px;
-}
-
-.playlist-tracks {
-  display: block;
-  margin-top: 10px;
-  border: solid #EEE 1px;
-  border-radius: 5px;
-}
-
-.playlist-tracks > li {
-  width: 100%;
-  padding: 3px;
-  border-bottom: solid #EEE 1px;
-}
-
-.playlist-tracks > li:last-child {
-  text-align: center;
-  border-bottom: none;
-}
-
-.playlist-tracks > li:last-child > a {
-  color: #878787;
-}
-
-.playlist-tracks > li:last-child > a:hover {
-  color: black;
-}
-
-.user-info {
-  margin-top: 10px;
-}
-
-.nav {
-  width: 100%;
-}
-
-.action {
-  display: block;
-  float: left;
-}
-
-.action > li {
-  display: block;
-  border: none;
-  float: left;
-  padding: 3px;
-}
-
-
-.stat {
-  display: block;
-  float: right;
-}
-
-.stat > li {
-  display: block;
-  border:none;
-  float: left;
-  padding: 3px;
-}
-
-.track.comments {
-  display: block;
-}
-
-.username {
-  font-size: 25px;
-}
-
-.name {
-  display: inline;
-  color: #A1A1A1;
-  font-size: 15px;
-}
-
-.city {
-  color: #A1A1A1;
-  font-size: 15px;
-  margin-bottom: 10px;
-}
-
-.followers {
-  font-size: 20px;
-  margin: 10px 0;
-}
-
-
-
-
-
-*/

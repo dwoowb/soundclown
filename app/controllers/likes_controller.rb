@@ -1,5 +1,14 @@
 class LikesController < ApplicationController
 
+  def index
+    @user = User.find(params[:user_id])
+    likes = @user.likes
+    @liked_items = []
+    likes.each do |like|
+      @liked_items << like.likeable
+    end
+  end
+
   def create
     @like = Like.new(like_params)
     if @like.save

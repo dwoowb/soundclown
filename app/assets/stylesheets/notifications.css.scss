@@ -1,3 +1,22 @@
 // Place all the styles related to the Notifications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.notifications-content {
+  padding: 0 30px;
+}
+
+.title {
+  font-size: 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #EEE;
+}
+
+.notifications {
+
+}
+
+.notifications > li {
+  padding: 20px 0;
+  border-bottom: 1px solid #EEE;
+}

@@ -11,37 +11,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140428161002) do
+ActiveRecord::Schema.define(version: 20140429190600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: true do |t|
-    t.text     "body",         null: false
-    t.integer  "commenter_id", null: false
+    t.text     "body",                null: false
+    t.integer  "commenter_id",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "track_id"
+    t.integer  "notifications_count"
   end
 
   add_index "comments", ["commenter_id"], name: "index_comments_on_commenter_id", using: :btree
 
   create_table "follows", force: true do |t|
-    t.integer  "follower_id", null: false
-    t.integer  "followee_id", null: false
+    t.integer  "follower_id",         null: false
+    t.integer  "followee_id",         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "notifications_count"
   end
 
   add_index "follows", ["followee_id"], name: "index_follows_on_followee_id", using: :btree
   add_index "follows", ["follower_id"], name: "index_follows_on_follower_id", using: :btree
 
   create_table "likes", force: true do |t|
-    t.integer  "liker_id",      null: false
+    t.integer  "liker_id",            null: false
     t.integer  "likeable_id"
     t.string   "likeable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "notifications_count"
   end
 
   add_index "likes", ["liker_id"], name: "index_likes_on_liker_id", using: :btree
@@ -79,11 +82,12 @@ ActiveRecord::Schema.define(version: 20140428161002) do
   end
 
   create_table "reblogs", force: true do |t|
-    t.integer  "reblogger_id",     null: false
+    t.integer  "reblogger_id",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "rebloggable_id"
     t.string   "rebloggable_type"
+    t.integer  "notifications_count"
   end
 
   add_index "reblogs", ["reblogger_id"], name: "index_reblogs_on_reblogger_id", using: :btree
@@ -121,10 +125,10 @@ ActiveRecord::Schema.define(version: 20140428161002) do
     t.datetime "avatar_updated_at"
     t.integer  "comments_count"
     t.integer  "likes_count"
-    t.integer  "followers_count"
-    t.integer  "followees_count"
     t.integer  "notifications_count"
     t.integer  "tracks_count"
+    t.integer  "in_follows_count"
+    t.integer  "out_follows_count"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -1,0 +1,22 @@
+<% follows.each do |follow| %>
+
+  <section class="follow">
+
+    <article class="follow-profile">
+        <ul>
+          <li class="name">
+            <a href="<%= user_url(follow) %>">
+              <%= follow.username %>
+            </a>
+          </li>
+          <li class="follows">
+            <a href="<%= user_follow_url(follow) %>">
+             <i class="fa fa-users"></i> <%= follow.followers.size %>
+            </a>
+          </li>
+        </ul>
+        <img class= "avatar" src="<%= follow.avatar.url(:thumb) %>">
+    </article>
+
+  </section>
+<% end %>

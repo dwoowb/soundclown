@@ -4,6 +4,8 @@
   <title>SoundClone</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -25,28 +27,46 @@
         <nav class="header-nav group">
           <ul>
             <li>
-              <a href="<%= user_url(current_user) %>">
-                   <%= current_user.username %>
-              </a>
-            </li>
-
-            <li>
-              <a href="<%= user_tracks_url(current_user) %>">
-                   Tracks
-              </a>
-            </li>
-
-            <li>
-              <a href="<%= user_playlists_url(current_user) %>">
-                   Playlists
-              </a>
-            </li>
-
-            <li>
               <a href="<%= notifications_url %>">
-                  Notifications
+                  <i class="fa fa-flag"></i>
               </a>
             </li>
+
+            <li>
+              <a href="<%= user_url(current_user) %>">
+                   <i class="fa fa-user"></i>
+              </a>
+
+              <ul class="navbar-dropdown">
+                <li>
+                  <a href="<%= user_likes_url(current_user) %>">
+                       <i class="fa fa-heart"></i> Likes
+                  </a>
+                </li>
+
+                <li>
+                  <a href="<%= followees_url(current_user) %>">
+                       <i class="fa fa-users"></i> Following
+                  </a>
+                </li>
+
+                <li>
+                  <a href="<%= user_tracks_url(current_user) %>">
+                     <i class="fa fa-music"></i> Tracks
+                  </a>
+                </li>
+
+                <li>
+                  <a href="<%= user_playlists_url(current_user) %>">
+                      <i class="fa fa-headphones"></i> Playlists
+                  </a>
+                </li>
+
+
+              </ul>
+
+            </li>
+
 
             <li>
               <a href="<%= new_user_track_url(current_user) %>">
@@ -56,7 +76,9 @@
 
             <li>
               <a href="#">
-                l> || # Player
+                <i class-"fa fa-step-backward"></i>
+                <i class="fa fa-play"></i>
+                <i class-"fa fa-step-forward"></i>
               </a>
             </li>
 

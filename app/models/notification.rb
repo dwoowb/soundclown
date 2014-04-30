@@ -4,8 +4,8 @@ class Notification < ActiveRecord::Base
 
   EVENT_IDS = EVENTS.invert
 
-  belongs_to :user, inverse_of: :user, counter_cache: true
-  belongs_to :notifiable, polymorphic: true, counter_cache: true
+  belongs_to :user, inverse_of: :notifications, counter_cache: true
+  belongs_to :notifiable, inverse_of: :notifications, polymorphic: true, counter_cache: true
 
   validates :event_id, inclusion: { in: EVENTS.keys }
   validates :is_read, inclusion: { in: [true, false] }

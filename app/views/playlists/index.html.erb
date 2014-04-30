@@ -1,3 +1,5 @@
+<%= render "shared/mini_nav",  user: @user %>
+
 <% @playlists.each do |playlist| %>
-  <%= render "shared/playlist_show", playlist: playlist %>
+  <%= render "shared/playlist_preview", playlist: playlist %>
 <% end %>

@@ -1,0 +1,19 @@
+<% unless @user.playlists.size == 0 %>
+
+  <section class="stat-line group">
+    <article class="stat-info">
+      <i class="fa fa-headphones"></i>
+      <%= @user.playlists.size %>
+      <% if @user.playlists.size > 1 %>
+        playlists
+      <% else %>
+        playlist
+      <% end %>
+    </article>
+
+    <article class="stat-action">
+      <a href="<%= user_playlists_url(@user) %>">View all</a>
+    </article>
+  </section>
+
+<% end %>

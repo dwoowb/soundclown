@@ -2,8 +2,8 @@ class Reblog < ActiveRecord::Base
 
   attr_accessor :type
 
-  has_many :notifications, as: :notifiable, dependent: :destroy
-  belongs_to :rebloggable, polymorphic: true, counter_cache: true
+  has_many :notifications, as: :notifiable, inverse_of: :notifiable, dependent: :destroy
+  belongs_to :rebloggable, inverse_of: :reblogs, polymorphic: true, counter_cache: true
 
   belongs_to(
     :reblogger,
@@ -12,6 +12,8 @@ class Reblog < ActiveRecord::Base
     primary_key: :id,
     inverse_of: :reblogs
   )
+
+  after_create :set_notification
 
   validates :reblogger, presence: true
 
@@ -29,11 +31,12 @@ class Reblog < ActiveRecord::Base
     case self.rebloggable_type
     when "Track"
       notification = self.notifications.unread.event(:track_got_reblogged).new
+      notification.user = self.rebloggable.poster
     when "Playlist"
       notification = self.notifications.unread.event(:playlist_got_reblogged).new
+      notification.user = self.rebloggable.creator
     end
-    notification.user = self.user
-    notification.save
+    notification.save!
   end
 
 

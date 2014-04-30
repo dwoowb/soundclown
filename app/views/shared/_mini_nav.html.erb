@@ -1,0 +1,45 @@
+<section class="mini-nav-header group">
+
+  <img class="mini-avatar" src="<%= user.avatar.url(:thumb) %>">
+
+  <article class="mini-nav-wrapper group">
+
+    <h1 class="username"><%= user.username %></h1>
+
+    <nav class="mini-nav group">
+      <ul>
+        <li>
+          <a href="<%= followees_url(user) %>">
+            <i class="fa fa-users"> <%= user.followees.length %> Following</i>
+          </a>
+        </li>
+        <li>
+          <a href="<%= followers_url(user) %>">
+            <i class="fa fa-users"> <%= user.followers.length %> Followers</i>
+          </a>
+        </li>
+        <li>
+          <a href="<%= user_playlists_url(user) %>">
+            <i class="fa fa-headphones"> <%= user.playlists.size %> Playlists</i>
+          </a>
+        </li>
+        <li>
+          <a href="<%= user_likes_url(user) %>">
+            <i class="fa fa-heart"> <%= user.likes.size %> Likes</i>
+          </a>
+        </li>
+        <li>
+          <a href="<%= user_comments_url(user) %>">
+            <i class="fa fa-comments"> <%= user.authored_comments.size %> Comments</i>
+          </a>
+        </li>
+        <li>
+          <a href="<%= user_tracks_url(user) %>">
+            <i class="fa fa-music"> <%= user.tracks.size %> Tracks</i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </article>
+</section>

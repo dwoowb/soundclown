@@ -45,6 +45,11 @@ class UsersController < ApplicationController
     @my_liked_playlists = current_user.liked_playlists
     @reblogged_playlists = @user.reblogged_playlists
     @my_reblogged_playlists = current_user.reblogged_playlists
+
+    @stream_items = (@playlists +  @tracks + @user.reblogs)
+    unless @stream_items.empty?
+      @stream_items = @stream_items.sort_by(&:created_at).reverse!
+    end
   end
 
   def edit
@@ -69,11 +74,11 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   def followees
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:user_id])
   end
 
   private

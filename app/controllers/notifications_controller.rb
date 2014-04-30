@@ -2,7 +2,7 @@ class NotificationsController < ApplicationController
   before_action :require_signed_in!
 
   def index
-    @notifications = Notification.all.where(["user_id = ?", current_user.id])
+    @notifications = current_user.notifications
   end
 
   def show

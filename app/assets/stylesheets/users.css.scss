@@ -1,3 +1,187 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* USER SHOW */
+
+.avatar {
+  height: 200px;
+  width: 200px;
+
+}
+
+section.user {
+  width: 200px;
+  display: block;
+  float: left;
+  padding: 0 30px;
+}
+
+.user > .user-info {
+  display: block;
+  margin: 20px 0;
+}
+
+.username {
+  font-size: 25px;
+  margin-bottom: 10px;
+}
+
+.name {
+  display: inline;
+  color: #A1A1A1;
+  font-size: 15px;
+}
+
+.city {
+  color: #A1A1A1;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.followers {
+  display: block;
+  float: left;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.tracks {
+  display: block;
+  float: right;
+  font-size: 20px;
+  margin: 10px 0;
+}
+
+.user-action {
+  display: block;
+}
+
+.user-stream {
+  width: 600px;
+  display: block;
+  float: left;
+  padding: 0 20px;
+  border-right: solid #EEE 1px;
+}
+
+section.stats {
+  width: 300px;
+  display: block;
+  float: left;
+  margin-left: 20px;
+}
+
+.stat-line {
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: solid #EEE 1px;
+}
+
+.stat-info {
+  display: block;
+  float: left;
+}
+
+.stat-action {
+  display: block;
+  float: right;
+}
+
+/* FOLLOWERS/FOLLOWEES SHOW */
+
+.follow {
+
+}
+
+.follow-profile {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  display: block;
+}
+
+.follow-profile > ul {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
+.follow-profile > ul > .name > a {
+  font-size: 20px;
+}
+
+.follow-profile > ul > .follows {
+  margin: 0px;
+}
+
+.follow-profile > ul > .follows > a {
+  font-size: 14px;
+}
+
+.follow-profile > ul > li {
+  display: block;
+  background: #000;
+  opacity: .7;
+}
+
+.follow-profile > ul > li > a {
+  color: #fff;
+  opacity: 1;
+  padding: 2px 5px;
+  // this opacity is not working :[
+}
+
+/* USER NAVBAR */
+
+.mini-nav-header {
+  display: block;
+  width: 1240px;
+  padding-bottom: 20px;
+}
+
+.mini-avatar {
+  display: block;
+  float: left;
+  width: 100px;
+  height: 100px;
+  margin: 0 30px;
+}
+
+.mini-nav-wrapper {
+  display: block;
+  float: left;
+  width: 1050px;
+  border-bottom: 1px solid #EEE;
+}
+
+.mini-nav-wrapper > .username {
+  display: block;
+  margin: 5px 0 32px 0;
+}
+
+.mini-nav > ul{
+  display: block;
+  float: left;
+  padding-bottom: 5px;
+}
+
+.mini-nav > ul > li {
+  float: left;
+}
+
+.mini-nav > ul > li > a {
+  display: block;
+  padding: 5px 15px;
+}
+
+
+
+
+
+
+
+
+
+
+

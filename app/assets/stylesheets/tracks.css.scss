@@ -1,3 +1,40 @@
 // Place all the styles related to the Tracks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+section.track {
+  width: 600px;
+  margin: auto;
+  padding: 20px 0;
+  border-bottom: solid #EEE 1px;
+}
+
+.action {
+  display: block;
+  float: left;
+}
+
+.action > li {
+  display: block;
+  border: none;
+  float: left;
+  padding: 3px;
+}
+
+
+.stat {
+  display: block;
+  float: right;
+}
+
+.stat > li {
+  display: block;
+  border:none;
+  float: left;
+  padding: 3px;
+}
+
+.track.comments {
+  display: block;
+}
+
