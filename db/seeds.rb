@@ -21,3 +21,4 @@ gavin.tracks.create!({title: 'Hey Brother', artist: 'Avicii'})
 gavin.tracks.create!({title: 'A Bumpy Ride', artist: 'Mohombi'})
 
 
+# demo_user = User.create!({username: 'demo-user', email: 'demo@gmail.com', password: 'foobar', fname: "Kenny", lname: "Loggins", city: "Danger Zone"})

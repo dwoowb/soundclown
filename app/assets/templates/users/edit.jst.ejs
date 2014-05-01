@@ -1,0 +1,38 @@
+<form class="sign-up">
+
+  <label>
+    Email
+    <input class="input" type="email" name="user[email]" value="<%= user.escape("email") %>">
+  </label>
+
+
+  <label>
+    Username
+    <input class="input" type="text" name="user[username]" value="<%= user.escape("username") %>">
+  </label>
+
+  <label>
+    First Name
+    <input class="input" type="text" name="user[fname]" value="<%= user.escape("fname") %>">
+  </label>
+
+
+  <label>
+    Last Name
+    <input class="input" type="text" name="user[lname]" value="<%= user.escape("lname") %>">
+  </label>
+
+
+  <label>
+    City
+    <input class="input" type="text" name="user[city]" value="<%= user.escape("city") %>">
+  </label>
+
+
+  <label>
+    Profile Picture
+    <input type="file" name="user[avatar]">
+  </label>
+
+  <input class="submit" type="submit" value="Update">
+</form>

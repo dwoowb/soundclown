@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :require_signed_in!, except: [:new, :create]
   before_action :require_signed_out!, only: [:new, :create]
 
-  def index
+  def stream
     followees = current_user.followees
     # stream_items are followee's uploaded/reblogged tracks/playlists
     @stream_items = []
@@ -32,7 +32,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.includes(:tracks,
+     :playlists,
+     :followees,
+     :followers,
+     :liked_tracks,
+     :reblogged_tracks,
+     :liked_playlists,
+     :reblogged_playlists)
+     .find(params[:id])
+
     @tracks = @user.tracks
     @playlists = @user.playlists
     @followees = @user.followees
@@ -74,11 +83,11 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
   end
 
   def followees
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
   end
 
   private

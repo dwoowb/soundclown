@@ -1,0 +1,4 @@
+user_new.js is posting through AJAX but is also doing a GET request anyways
+despite event.preventDefault
+
+basically same goes for user_edit.js

@@ -15,49 +15,49 @@
       <div class="header-wrap group">
 
         <h1 class="header-logo">
-          <a href="<%= users_url %>">
+          <a href="#">
             <img src="<%= asset_path "logo.png" %>" width="92" height="51" alt="Logo">
           </a>
         </h1>
 
         <h1 class="header-stream">
-          <a href="<%= users_url %>">Stream</a>
+          <a href="#">Stream</a>
         </h1>
 
         <nav class="header-nav group">
           <ul>
             <li>
-              <a href="<%= notifications_url %>">
+              <a href="#">
                   <i class="fa fa-flag"></i>
               </a>
             </li>
 
             <li>
-              <a href="<%= user_url(current_user) %>">
+              <a href="#">
                    <i class="fa fa-user"></i>
               </a>
 
               <ul class="navbar-dropdown">
                 <li>
-                  <a href="<%= user_likes_url(current_user) %>">
+                  <a href="#">
                        <i class="fa fa-heart"></i> Likes
                   </a>
                 </li>
 
                 <li>
-                  <a href="<%= followees_url(current_user) %>">
+                  <a href="#">
                        <i class="fa fa-users"></i> Following
                   </a>
                 </li>
 
                 <li>
-                  <a href="<%= user_tracks_url(current_user) %>">
+                  <a href="#">
                      <i class="fa fa-music"></i> Tracks
                   </a>
                 </li>
 
                 <li>
-                  <a href="<%= user_playlists_url(current_user) %>">
+                  <a href="#">
                       <i class="fa fa-headphones"></i> Playlists
                   </a>
                 </li>
@@ -69,7 +69,7 @@
 
 
             <li>
-              <a href="<%= new_user_track_url(current_user) %>">
+              <a href="#">
                    Upload
               </a>
             </li>
@@ -83,7 +83,7 @@
             </li>
 
             <li>
-              <form action="<%= session_url %>" method="post">
+              <form action="#" method="#">
                 <%= auth_token %>
                 <input type="hidden" name="_method" value="delete">
                 <input class="sign-out" type="submit" value="Sign Out">
@@ -98,7 +98,7 @@
   <header class="header group">
 
     <h1 class="header-logo">
-      <a href="<%= users_url %>">
+      <a href="#">
          <img src="<%= asset_path "logo.png" %>" width="92" height="51" alt="Logo">
       </a>
     </h1>
@@ -106,11 +106,11 @@
     <nav class="header-nav group">
       <ul>
         <li>
-          <a href="<%= new_session_url %>">Sign In</a>
+          <a href="#">Sign In</a>
         </li>
 
         <li>
-          <a href="<%= new_user_url %>">Sign Up</a>
+          <a href="#">Sign Up</a>
         </li>
       </ul>
     </nav>
