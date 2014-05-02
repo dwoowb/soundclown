@@ -4,16 +4,20 @@ window.Soundclown = {
   Views: {},
   Routers: {},
   initialize: function() {
-    this.users = new Soundclown.Collections.Users();
-    this.users.fetch({
-      success: function () {
-        new Soundclown.Routers.Users({
-          $rootEl: $("#content"),
-          users: Soundclown.users
-          // current_user:
-        });
-        Backbone.history.start();
-      }
-    });
+
+    var data = JSON.parse($("#bootstrapped-json").html());
+    console.log(data)
+
+    Soundclown.currentUser = new Soundclown.Models.User(data["currentUser"]);
+    Soundclown.users = new Soundclown.Collections.Users(Soundclown.currentUser)
+
+    new Soundclown.Routers.Users({
+      $leftbar: $("#leftbar"),
+      $rootEl: $("#content"),
+      $rightbar: $("#rightbar")
+    })
+
+    Backbone.history.start();
+
   }
 };

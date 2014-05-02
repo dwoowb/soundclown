@@ -2,15 +2,6 @@ Soundclown::Application.routes.draw do
 
   root to: "root#root"
 
-
-
-  namespace :api, defaults: { format: :json } do
-    resource  :session, only: [:create, :new, :destroy]
-    resources :users do
-      resources :tracks, only: [:index, :new, :create]
-    end
-  end
-
   # namespacing api for backbone is entirely different from the normal rails routes
   resource  :session, only: [:create, :new, :destroy]
 

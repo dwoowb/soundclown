@@ -3,9 +3,9 @@
     <!-- we want to pull out the reblogged item... -->
     <!-- so I made a shitty n+1 helper method! -->
     <% if item.rebloggable_type == "Track" %>
-      <%= render "shared/track_show", track: item.reblogged_item %>
+      <%= render "shared/track_show", track: item.rebloggable %>
     <% elsif item.rebloggable_type == "Playlist" %>
-      <%= render "shared/playlist_preview", playlist: item.reblogged_item %>
+      <%= render "shared/playlist_preview", playlist: item.rebloggable %>
     <% end %>
   <% elsif item.class.name == "Track" %>
     <%= render "shared/track_show", track: item %>

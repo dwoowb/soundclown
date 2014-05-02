@@ -1,6 +1,15 @@
+<div id="leftbar"></div>
 <div id="content"></div>
+<div id="rightbar"></div>
+
 <script>
-$(document).ready(function() {
-  $(Soundclown.initialize());
-})
+  $(document).ready(function() {
+    $(Soundclown.initialize());
+  })
 </script>
+
+<script type="application/json" id="bootstrapped-json">
+  { "currentUser": <%= render(partial: "users/show.json", locals: { user: current_user }).html_safe %> }
+</script>
+
+

@@ -2,11 +2,9 @@ class Api::UsersController < ApplicationController
   before_action :require_signed_in!, except: [:new, :create]
   before_action :require_signed_out!, only: [:new, :create]
 
-  # use jbuilder,
-
   def index
     @users = User.all
-    render json: @user
+    render json: @users
   end
 
   def stream
@@ -25,25 +23,9 @@ class Api::UsersController < ApplicationController
     render json: @stream_items
   end
 
-  def new
-    @user = User.new
-    render json: @user
-  end
-
-  def create
-    @user = User.new(user_params)
-
-    if @user.save
-      sign_in(@user)
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
-  end
-
   def show
     @user = User.find(params[:id])
-    render json: @user
+    render partial: "users/show", locals: { user: @user }
   end
 
   def edit
@@ -64,7 +46,7 @@ class Api::UsersController < ApplicationController
   def destroy
     @user = User.find_by(params[:id])
     @user.destroy if @user
-    render json: {}
+    redirect_to root_url
   end
 
   def followers

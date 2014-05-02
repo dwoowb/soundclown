@@ -83,7 +83,7 @@
             </li>
 
             <li>
-              <form action="#" method="#">
+              <form action="<%= session_url %>" method="post">
                 <%= auth_token %>
                 <input type="hidden" name="_method" value="delete">
                 <input class="sign-out" type="submit" value="Sign Out">
@@ -106,11 +106,11 @@
     <nav class="header-nav group">
       <ul>
         <li>
-          <a href="#">Sign In</a>
+          <a href="<%= new_session_url %>">Sign In</a>
         </li>
 
         <li>
-          <a href="#">Sign Up</a>
+          <a href="<%= new_user_url %>">Sign Up</a>
         </li>
       </ul>
     </nav>

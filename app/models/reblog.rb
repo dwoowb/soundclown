@@ -17,14 +17,6 @@ class Reblog < ActiveRecord::Base
 
   validates :reblogger, presence: true
 
-  def reblogged_item
-    if self.rebloggable_type == "Track"
-      return Track.find(self.rebloggable_id)
-    elsif self.rebloggable_type == "Playlist"
-      return Playlist.find(self.rebloggable_id)
-    end
-  end
-
   private
 
   def set_notification

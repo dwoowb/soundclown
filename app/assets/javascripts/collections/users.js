@@ -4,3 +4,5 @@ Soundclown.Collections.Users = Backbone.Collection.extend({
 
 
 });
+
+// window.Soundclown.Collections.users = new Soundclown.Collections.Users();

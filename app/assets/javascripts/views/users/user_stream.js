@@ -1,10 +1,9 @@
-Soundclown.Views.UserShow = Backbone.View.extend({
-  template: JST["users/show"],
-  className: "user-show",
+Soundclown.Views.UserStream = Backbone.View.extend({
+  template: JST["users/stream"],
+  className: "user-stream",
 
   initialize: function(options) {
-    this.listenTo(this.model.tracks(), "add", this.render);
-    console.log(this.model.tracks())
+    this.user = options.model
   },
 
   events: {
@@ -19,4 +18,5 @@ Soundclown.Views.UserShow = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   }
+
 })
