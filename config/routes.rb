@@ -3,6 +3,8 @@ Soundclown::Application.routes.draw do
   root to: "root#root"
 
   # namespacing api for backbone is entirely different from the normal rails routes
+
+  # in this case that everything moves to backbone, there's no point namespacing with api
   resource  :session, only: [:create, :new, :destroy]
 
   resources :users, except: [:index] do

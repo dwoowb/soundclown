@@ -18,9 +18,9 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.reblogs().set(jsonResp.reblogs);
       delete jsonResp.reblogs;
     }
-    if (jsonResp.authored_comments) {
-      this.authored_comments().set(jsonResp.authored_comments);
-      delete jsonResp.authored_comments;
+    if (jsonResp.authoredComments) {
+      this.authoredComments().set(jsonResp.authoredComments);
+      delete jsonResp.authoredComments;
     }
     if (jsonResp.notifications) {
       this.notifications().set(jsonResp.notifications);
@@ -50,6 +50,97 @@ Soundclown.Models.User = Backbone.Model.extend({
     }
 
     return this.get("tracks");
+  },
+
+  playlists: function() {
+    if (!this.get("playlists")) {
+      var userPlaylists = new Soundclown.Collections.UserPlaylists([], {
+        user: this
+      });
+      this.set({
+        playlists: userPlaylists
+      });
+    }
+
+    return this.get("playlists");
+  },
+
+  likes: function() {
+    if (!this.get("likes")) {
+      var userLikes = new Soundclown.Collections.UserLikes([], {
+        user: this
+      });
+      this.set({
+        likes: userLikes
+      });
+    }
+
+    return this.get("likes");
+  },
+
+  reblogs: function() {
+    if (!this.get("reblogs")) {
+      var userReblogs = new Soundclown.Collections.UserReblogs([], {
+        user: this
+      });
+      this.set({
+        reblogs: userReblogs
+      });
+    }
+
+    return this.get("reblogs");
+  },
+
+  authoredComments: function() {
+    if (!this.get("authoredComments")) {
+      var userCommments = new Soundclown.Collections.UserComments([], {
+        user: this
+      });
+      this.set({
+        authoredComments: userComments
+      });
+    }
+
+    return this.get("authoredComments");
+  },
+
+  notifications: function() {
+    if (!this.get("notifications")) {
+      var notifications = new Soundclown.Collections.UserNotifications([], {
+        user: this
+      });
+      this.set({
+        notifications: notifications
+      });
+    }
+
+    return this.get("notifications");
+  },
+
+  followers: function() {
+    if (!this.get("followers")) {
+      var followers = new Soundclown.Collections.UserFollowers([], {
+        user: this
+      });
+      this.set({
+        followers: followers
+      });
+    }
+
+    return this.get("followers");
+  },
+
+  followees: function() {
+    if (!this.get("followees")) {
+      var followees = new Soundclown.Collections.UserFollowees([], {
+        user: this
+      });
+      this.set({
+        followees: followees
+      });
+    }
+
+    return this.get("followees");
   }
 
 });

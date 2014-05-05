@@ -1,8 +1,5 @@
 Soundclown.Routers.Users = Backbone.Router.extend({
   initialize: function(options) {
-    this.$rootEl = options.$rootEl;
-    this.$leftbar = options.$leftbar;
-    this.$rightbar = options.$rightbar;
   },
 
   routes: {
@@ -10,7 +7,11 @@ Soundclown.Routers.Users = Backbone.Router.extend({
     "users/:id": "usersShow",
     "users/:id/edit": "usersEdit",
     "users/:id/followers": "usersFollowers",
-    "users/:id/followees": "usersFollowees"
+    "users/:id/followees": "usersFollowees",
+    "users/:id/playlists": "usersPlaylists",
+    "users/:id/likes": "usersLikes",
+    "users/:id/comments": "usersComments",
+    "users/:id/tracks": "usersTracks",
   },
 
   userStream: function() {
@@ -19,28 +20,76 @@ Soundclown.Routers.Users = Backbone.Router.extend({
       model: Soundclown.currentUser
     });
 
-    this._swapView(this.$rootEl, streamView);
+    Soundclown._swapView("rootEl", streamView);
   },
 
   usersShow: function(id) {
     var that = this;
     this._getUser(id, function(user) {
-      var showView = new Soundclown.Views.UserShow({
+      var mainView = new Soundclown.Views.UserMain({
         model: user
       });
-      this._swapView(this.$leftbar, user profile);
-      this._swapView(this.$rootEl, tracks in the middle);
-      this._swapView(this.$rightbar, user stats);
+      // Soundclown._swapView(leftbar, profileView);
+      Soundclown._swapView("rootEl", mainView);
+      // Soundclown._swapView(rightbar, statsView);
     })
 
   },
 
-  usersEdit: function() {
+  usersEdit: function(id) {
+    // doesn't use id but... whatever
     var editView = new Soundclown.Views.UserEdit({
       collection: Soundclown.users,
       model: Soundclown.currentUser
     });
-    this._swapView(this.$rootEl, editView);
+    Soundclown._swapView("rootEl", editView);
+  },
+
+  // these are going to require leftbars
+  // they should also all render the mini nav, in the rootEl perhaps?
+
+  usersTracks: function(id) {
+    var that = this;
+    this._getUser(id, function(user) {
+      var tracksView = new Soundclown.Views.UserTracks({
+        model: user,
+        collection: user.tracks()
+      });
+      Soundclown._swapView("rootEl", tracksView);
+    })
+  },
+
+  usersPlaylists: function(id) {
+    var that = this;
+    this._getUser(id, function(user) {
+      var playlistsView = new Soundclown.Views.UserPlaylists({
+        model: user,
+        collection: user.playlists()
+      });
+      Soundclown._swapView("rootEl", playlistsView);
+    })
+  },
+
+  usersLikes: function(id) {
+    var that = this;
+    this._getUser(id, function(user) {
+      var likesView = new Soundclown.Views.UserLikes({
+        model: user,
+        collection: user.likes()
+      });
+      Soundclown._swapView("rootEl", likesView);
+    })
+  },
+
+  usersComments: function(id) {
+    var that = this;
+    this._getUser(id, function(user) {
+      var commentsView = new Soundclown.Views.UserComments({
+        model: user,
+        collection: user.authoredComments()
+      });
+      Soundclown._swapView("rootEl", commentsView);
+    })
   },
 
   _getUser: function(id, callback) {
@@ -59,12 +108,6 @@ Soundclown.Routers.Users = Backbone.Router.extend({
     } else {
       callback(user)
     }
-  },
-
-  _swapView: function(domEl, view) {
-    this._currentView && this._currentView.remove();
-    this._currentView = view;
-    domEl.html(view.render().$el);
   }
 
 });

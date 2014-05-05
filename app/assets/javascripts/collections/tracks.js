@@ -4,6 +4,7 @@ Soundclown.Collections.Tracks = Backbone.Collection.extend({
 
   comparator: function(track) {
     return -track.get('id');
-  }
+  },
+
 
 });
