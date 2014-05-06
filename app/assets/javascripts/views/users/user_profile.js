@@ -1,10 +1,9 @@
-Soundclown.Views.UserMain = Backbone.View.extend({
-  template: JST["users/main"],
-  className: "user-main",
+Soundclown.Views.UserProfile = Backbone.View.extend({
+  template: JST["users/profile"],
+  className: "user-profile",
 
   initialize: function(options) {
-    this.user = options.model
-    this.listenTo(this.user.tracks(), "add remove change", this.render);
+    this.listenTo(this.model, "add remove change", this.render);
   },
 
   events: {

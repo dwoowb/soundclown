@@ -17,9 +17,9 @@ window.Soundclown = {
   },
 
   _elements: {
-    leftbar: $("#leftbar"),
-    rootEl: $("#content"),
-    rightbar: $("#rightbar")
+    leftbar: "#leftbar",
+    rootEl: "#content",
+    rightbar: "#rightbar"
   },
 
   _currentViews: {
@@ -31,6 +31,6 @@ window.Soundclown = {
   _swapView: function(partialEl, view) {
     this._currentViews[partialEl] && this._currentViews[partialEl].remove();
     this._currentViews[partialEl] = view;
-    this._elements[partialEl].html(view.render().$el);
+    $(this._elements[partialEl]).html(view.render().$el);
   }
 };

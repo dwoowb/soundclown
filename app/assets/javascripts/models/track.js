@@ -1,5 +1,5 @@
 Soundclown.Models.Track = Backbone.Model.extend({
-  urlRoot: "/api/tracks",
+  urlRoot: "/tracks",
 
   parse: function(jsonResp) {
     if (jsonResp["poster"]) {
