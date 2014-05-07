@@ -1,8 +1,10 @@
 <section class="track group">
   <article class="track info">
-  <a class="poster" href="<%= user_url(track.poster) %>">
-    <%= track.poster.username %>
-  </a>
+  <h2 class="poster">
+    <a href="<%= user_url(track.poster) %>">
+      <%= track.poster.username %>
+    </a>
+  </h2>
   <a class="artist-track" href="<%= track_url(track) %>">
     <%= track.artist %> - <%= track.title %>
   </a>

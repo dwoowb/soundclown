@@ -1,4 +1,4 @@
-json.partial! "tracks/index.json",
+json.partial! "api/tracks/index.json",
 poster: user, tracks: user.tracks(),
 playlists: user.playlists(),
 reblogged_items: user.reblogs()

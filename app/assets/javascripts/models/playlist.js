@@ -1,5 +1,5 @@
 Soundclown.Models.Playlist = Backbone.Model.extend({
-  urlRoot: "/api/playlists",
+  urlRoot: "/playlists",
 
   parse: function(jsonResp) {
     if (jsonResp["creator"]) {

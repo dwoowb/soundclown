@@ -10,7 +10,7 @@
 
     <div class="user-stats group">
       <h1 class="followers">
-        <a href="<%= followers_url(@user) %>">
+        <a href="<%= followers_user_url(@user) %>">
           <i class="fa fa-users"></i> <%= @user.followers.size %>
         </a>
       </h1>

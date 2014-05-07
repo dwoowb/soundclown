@@ -34,7 +34,7 @@ dillon.tracks.create!({title: 'IDGAFOS', artist: 'Dillon Francis'})
 dillon.tracks.create!({title: 'Flight 4555', artist: 'Dillon Francis'})
 dillon.tracks.create!({title: 'Masta Blasta', artist: 'Dillon Francis'})
 dillon.tracks.create!({title: 'Music is Dead', artist: 'Doctor P & Dillon Francis'})
-dillon.tracks.create!({title: 'Money Makin\'', artist: 'A-Track & Dillon Francis'})
+dillon.tracks.create!({title: 'Money Makin\'', artist: 'A-Trak & Dillon Francis'})
 dillon.tracks.create!({title: 'Beautician 2.0', artist: 'Dillon Francis'})
 dillon.tracks.create!({title: 'Hits Me Like A Rock (Dillon Francis Remix)', artist: 'CSS'})
 

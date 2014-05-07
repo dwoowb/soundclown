@@ -9,12 +9,12 @@
     <nav class="mini-nav group">
       <ul>
         <li>
-          <a href="<%= followees_url(user) %>">
+          <a href="<%= followees_user_url(user) %>">
             <i class="fa fa-users"> <%= user.followees.length %> Following</i>
           </a>
         </li>
         <li>
-          <a href="<%= followers_url(user) %>">
+          <a href="<%= followers_user_url(user) %>">
             <i class="fa fa-users"> <%= user.followers.length %> Followers</i>
           </a>
         </li>

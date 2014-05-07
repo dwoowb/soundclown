@@ -9,7 +9,7 @@
 </script>
 
 <script type="application/json" id="bootstrapped-json">
-  { "currentUser": <%= render(partial: "users/show.json", locals: { user: current_user }).html_safe %> }
+  { "currentUser": <%= render(partial: "api/users/show.json", locals: { user: current_user }).html_safe %> }
 </script>
 
 

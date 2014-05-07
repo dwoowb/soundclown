@@ -1,6 +1,6 @@
-Soundclown.Views.UserTracks = Backbone.View.extend({
-  template: JST["users/tracks"],
-  className: "user-tracks",
+Soundclown.Views.UserPlaylists = Backbone.View.extend({
+  template: JST["users/playlists"],
+  className: "user-playlists",
 
   initialize: function(options) {
     this.user = options.model

@@ -1,10 +1,8 @@
-<% user.tracks().each(function(track) { %>
-
   <section class="track group">
     <article class="track info">
       <h2 class="poster">
-        <a href="#/api/users/<%= user.id %>">
-          <%= user.escape("username") %>
+        <a href="#/api/users/<%= track.get("poster").id %>">
+          <%= track.get("poster").username %>
         </a>
       </h2>
       <a class="artist-track" href="#/api/tracks/<%= track.id %>">
@@ -13,8 +11,5 @@
     </article>
 
     <!-- add nav later, track_show etc -->
+
   </section>
-
-<% }); %>
-
-<!-- should also have the mini-nav and the user profile in the leftbar -->

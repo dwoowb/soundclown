@@ -1,0 +1,21 @@
+<% user.playlists().each(function(playlist) { %>
+
+  <section class="playlist-header">
+    <article class="playlist-info">
+      <h2 class="creator">
+        <a href="#/api/users/<%= user.id %>">
+          <%= user.escape("username") %>
+        </a>
+      </h2>
+      <a class="playlist-title" href="#/api/playlists/<%= playlist.id %>">
+        <%= playlist.escape("title") %>
+      </a>
+    </article>
+
+    <!-- add nav later, playlist_show etc -->
+
+  </section>
+
+<% }); %>
+
+<!-- should also have the mini-nav and the user profile in the leftbar -->

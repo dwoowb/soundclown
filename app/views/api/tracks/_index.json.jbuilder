@@ -1,7 +1,7 @@
 json.poster poster
 
 json.tracks tracks,
-:title, :artist,
+:id, :title, :artist,
 :reblogs_count, :likes_count,
 :comments_count
 

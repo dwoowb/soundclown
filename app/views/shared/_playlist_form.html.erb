@@ -1,12 +1,12 @@
 <% if playlist.tracks.include?(track.last) %>
-    <form action="<%= remove_from_playlist_url(playlist) %>" method="post">
+    <form action="<%= remove_track_playlist_url(playlist) %>" method="post">
       <%= auth_token %>
       <input type="hidden" name="_method" value="patch">
       <input type="hidden" name="playlist[track_id]" value="<%= track.last.id %>">
       <input class="submit" type="submit" value="Remove">
     </form>
 <% else %>
-  <form action="<%= add_to_playlist_url(playlist) %>" method="post">
+  <form action="<%= add_track_playlist_url(playlist) %>" method="post">
     <%= auth_token %>
     <input type="hidden" name="_method" value="patch">
     <input type="hidden" name="playlist[track_id]" value="<%= track.last.id %>">

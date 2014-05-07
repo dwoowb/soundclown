@@ -5,6 +5,7 @@ Soundclown.Views.UserMain = Backbone.View.extend({
   initialize: function(options) {
     this.user = options.model
     this.listenTo(this.user.tracks(), "add remove change", this.render);
+    // should also have listeners for user's reblogged items
   },
 
   events: {

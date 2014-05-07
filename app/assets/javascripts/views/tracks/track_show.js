@@ -1,9 +1,8 @@
-Soundclown.Views.UserTracks = Backbone.View.extend({
-  template: JST["users/tracks"],
-  className: "user-tracks",
+Soundclown.Views.TrackShow = Backbone.View.extend({
+  template: JST['tracks/show'],
 
   initialize: function(options) {
-    this.user = options.model
+    this.track = options.model
   },
 
   events: {
@@ -12,10 +11,12 @@ Soundclown.Views.UserTracks = Backbone.View.extend({
 
   render: function() {
     var renderedContent = this.template({
-      user: this.user
+      track: this.track
     });
     this.$el.html(renderedContent);
     return this;
   }
 
-})
+
+
+});

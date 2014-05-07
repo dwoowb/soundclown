@@ -5,7 +5,7 @@
   <% items = @my_reblogged_playlists %>
   <% user_check = item.creator %>
 <% end %>
-<%# fail %>
+
 <% if current_user == user_check %>
   <!-- a user should not be able to reblog their own posting -->
 <% elsif items.try(:include?, item) %>
@@ -28,3 +28,5 @@
     <input class="submit" type="submit" value="Reblog">
   </form>
 <% end %>
+
+<!-- there is an issue with button toggling for tracks, in playlist show -->
