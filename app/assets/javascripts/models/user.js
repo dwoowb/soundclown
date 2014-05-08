@@ -12,7 +12,7 @@ Soundclown.Models.User = Backbone.Model.extend({
     };
     if (jsonResp.playlists) {
       this.playlists().set(jsonResp.playlists);
-      this.playlsits().each(function(playlist) {
+      this.playlists().each(function(playlist) {
         playlist.set("creator", that);
       })
       delete jsonResp.playlists;
@@ -65,16 +65,13 @@ Soundclown.Models.User = Backbone.Model.extend({
   },
 
   tracks: function() {
-    if (!this.get("tracks")) {
-      var userTracks = new Soundclown.Collections.Tracks([], {
+    if (!this._tracks) {
+      this._tracks = new Soundclown.Collections.Tracks([], {
         user: this
-      });
-      this.set({
-        tracks: userTracks
       });
     }
 
-    return this.get("tracks");
+    return this._tracks;
   },
 
   playlists: function() {

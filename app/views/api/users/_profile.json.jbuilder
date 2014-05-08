@@ -4,3 +4,5 @@ json.(user,
 :username, :city,
 :tracks_count
 )
+
+json.followers_count user.followers.size

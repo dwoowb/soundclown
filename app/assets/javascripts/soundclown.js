@@ -7,11 +7,11 @@ window.Soundclown = {
 
     var data = JSON.parse($("#bootstrapped-json").html());
 
-    Soundclown.currentUser = new Soundclown.Models.User(data["currentUser"], { parse: true });
-    Soundclown.users = new Soundclown.Collections.Users(Soundclown.currentUser);
-    Soundclown.tracks = new Soundclown.Collections.Tracks(Soundclown.currentUser.tracks());
-    Soundclown.playlists = new Soundclown.Collections.Playlists(Soundclown.currentUser.playlists());
-
+    this.currentUser = new Soundclown.Models.User(data["currentUser"], { parse: true });
+    this.users = new Soundclown.Collections.Users(Soundclown.currentUser);
+    this.tracks = new Soundclown.Collections.Tracks(Soundclown.currentUser.tracks());
+    this.playlists = new Soundclown.Collections.Playlists(Soundclown.currentUser.playlists());
+    debugger
     new Soundclown.Routers.Users({});
     new Soundclown.Routers.Tracks({});
     new Soundclown.Routers.Playlists({});
