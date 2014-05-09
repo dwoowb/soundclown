@@ -14,7 +14,7 @@ window.Soundclown = {
     this.likes = new Soundclown.Collections.Likes(Soundclown.currentUser.likes());
     this.reblogs = new Soundclown.Collections.Reblogs(Soundclown.currentUser.reblogs());
     this.comments = new Soundclown.Collections.Comments(Soundclown.currentUser.comments());
-
+    debugger
     new Soundclown.Routers.Users({});
     new Soundclown.Routers.Tracks({});
     new Soundclown.Routers.Playlists({});

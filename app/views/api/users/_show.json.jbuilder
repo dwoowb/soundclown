@@ -20,8 +20,24 @@ json.likes do
   json.partial! "api/likes/index.json", likes: user.likes
 end
 
+json.likedTracks do
+  json.partial! "api/tracks/index.json", tracks: user.liked_tracks
+end
+
+json.likedPlaylists do
+  json.partial! "api/playlists/index.json", playlists: user.liked_playlists
+end
+
 json.reblogs do
   json.partial! "api/reblogs/index.json", reblogs: user.reblogs
+end
+
+json.rebloggedTracks do
+  json.partial! "api/tracks/index.json", tracks: user.reblogged_tracks
+end
+
+json.rebloggedPlaylists do
+  json.partial! "api/playlists/index.json", playlists: user.reblogged_playlists
 end
 
 json.comments do

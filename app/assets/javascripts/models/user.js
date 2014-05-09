@@ -24,12 +24,28 @@ Soundclown.Models.User = Backbone.Model.extend({
       })
       delete jsonResp.likes;
     };
+    if (jsonResp.likedTracks) {
+      this.likedTracks().set(jsonResp.likedTracks);
+      delete jsonResp.likedTracks;
+    };
+    if (jsonResp.likedPlaylists) {
+      this.likedPlaylists().set(jsonResp.likedPlaylists);
+      delete jsonResp.likedPlaylists;
+    };
     if (jsonResp.reblogs) {
       this.reblogs().set(jsonResp.reblogs);
       this.reblogs().each(function(reblog) {
         reblog.set("reblogger", that);
       })
       delete jsonResp.reblogs;
+    };
+    if (jsonResp.rebloggedTracks) {
+      this.rebloggedTracks().set(jsonResp.rebloggedTracks);
+      delete jsonResp.rebloggedTracks;
+    };
+    if (jsonResp.rebloggedPlaylists) {
+      this.rebloggedPlaylists().set(jsonResp.rebloggedPlaylists);
+      delete jsonResp.rebloggedPlaylists;
     };
     if (jsonResp.comments) {
       this.comments().set(jsonResp.comments);
@@ -105,6 +121,34 @@ Soundclown.Models.User = Backbone.Model.extend({
     return this.get("likes");
   },
 
+  likedTracks: function() {
+    if (!this.get("likedTracks")) {
+      var likedTracks = new Soundclown.Collections.Tracks([], {
+        user: this
+      });
+      this.set({
+        likedTracks: likedTracks
+      });
+    }
+
+    return this.get("likedTracks");
+
+  },
+
+  likedPlaylists: function() {
+    if (!this.get("likedPlaylists")) {
+      var likedPlaylists = new Soundclown.Collections.Playlists([], {
+        user: this
+      });
+      this.set({
+        likedPlaylists: likedPlaylists
+      });
+    }
+
+    return this.get("likedPlaylists");
+
+  },
+
   reblogs: function() {
     if (!this.get("reblogs")) {
       var userReblogs = new Soundclown.Collections.Reblogs([], {
@@ -116,6 +160,34 @@ Soundclown.Models.User = Backbone.Model.extend({
     }
 
     return this.get("reblogs");
+  },
+
+  rebloggedTracks: function() {
+    if (!this.get("rebloggedTracks")) {
+      var rebloggedTracks = new Soundclown.Collections.Tracks([], {
+        user: this
+      });
+      this.set({
+        rebloggedTracks: rebloggedTracks
+      });
+    }
+
+    return this.get("rebloggedTracks");
+
+  },
+
+  rebloggedPlaylists: function() {
+    if (!this.get("rebloggedPlaylists")) {
+      var rebloggedPlaylists = new Soundclown.Collections.Playlists([], {
+        user: this
+      });
+      this.set({
+        rebloggedPlaylists: rebloggedPlaylists
+      });
+    }
+
+    return this.get("rebloggedPlaylists");
+
   },
 
   comments: function() {

@@ -25,9 +25,7 @@
     </ul>
 
     <ul class="track action">
-      <li><%= render "shared/like_form", item: track %></li>
-      <li><%= render "shared/reblog_form", item: track %></li>
-      <li><%= render "shared/playlist_redirect", item: track %></li>
+      <li><%= JST['likes/new']({ likeableType: "Track", item: track, user: Soundclown.currentUser}) %></li>
     </ul>
   </nav>
 

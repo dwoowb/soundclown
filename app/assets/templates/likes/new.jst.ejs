@@ -1,0 +1,21 @@
+<% var items = likeableType === "Track" ? user.likedTracks() : user.likedPlaylists() %>
+
+
+<% if (items.include(item)) { %>
+    <form class="unlike">
+      <input type="hidden" name="like[liker_id]" value="<%= user.escape("id") %>">
+      <input type="hidden" name="like[likeable_id]" value="<%= item.escape("id") %>">
+      <input type="hidden" name="like[likeable_type]" value="<%= likeableType %>">
+      <input class="submit" type="submit" value="Unlike">
+    </form>
+<% } else { %>
+  <form class="like">
+    <input type="hidden" name="like[liker_id]" value="<%= user.escape("id") %>">
+    <input type="hidden" name="like[likeable_id]" value="<%= item.escape("id") %>">
+    <input type="hidden" name="like[likeable_type]" value="<%= likeableType %>">
+    <input class="submit" type="submit" value="Like">
+  </form>
+<% } %>
+
+
+

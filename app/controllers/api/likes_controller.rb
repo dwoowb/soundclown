@@ -2,14 +2,13 @@ class Api::LikesController < ApplicationController
 
   def index
     @likes = User.find(params[:user_id]).likes
-    render partial: "api/likes/index", locals: { likes: @likes }
+    render partial: "api/likes/index.json", locals: { likes: @likes }
   end
 
   def create
-    @like = Like.new(like_params)
+    @like = current_user.likes.create(like_params)
     if @like.save
-      # user feedback about liking track
-      render json: @like
+      render partial: "api/likes/show.json", locals: { like: @like }
     else
       flash.now[:errors] = @like.errors.full_messages
       render json: @like.errors, status: :unprocessable_entity
@@ -19,7 +18,7 @@ class Api::LikesController < ApplicationController
   def destroy
     @like = Like.find_by!(likeable_id: like_params[:likeable_id])
     @like.destroy
-    redirect_to :back
+    render partial: "api/likes/show.json", locals: { like: @like }
   end
 
   private
