@@ -1,15 +1,34 @@
-  <section class="track group">
-    <article class="track info">
-      <h2 class="poster">
-        <a href="#/api/users/<%= track.get("poster").id %>">
-          <%= track.get("poster").username %>
-        </a>
-      </h2>
-      <a class="artist-track" href="#/api/tracks/<%= track.id %>">
-        <%= track.escape("artist") %> - <%= track.escape("title") %>
+<section class="track group">
+  <article class="track info">
+    <h2 class="poster">
+      <a href="#/api/users/<%= track.get("poster").id %>">
+        <%= track.get("poster").username %>
       </a>
-    </article>
+    </h2>
+    <a class="artist-track" href="#/api/tracks/<%= track.id %>">
+      <%= track.escape("artist") %> - <%= track.escape("title") %>
+    </a>
+  </article>
 
-    <!-- add nav later, track_show etc -->
+  <nav class="track nav">
+    <ul class="track stat">
+      <!-- should really just display nothing if count is null -->
+        <li class="likes">
+          <i class="fa fa-heart"></i> <%= track.escape("likes_count") %>
+        </li>
+        <li class="reblogs">
+          <i class="fa fa-retweet"></i> <%= track.escape("reblogs_count") %>
+        </li>
+        <li class="comments">
+          <i class="fa fa-comments"></i> <%= track.escape("comments_count") %>
+        </li>
+    </ul>
 
-  </section>
+    <ul class="track action">
+      <li><%= render "shared/like_form", item: track %></li>
+      <li><%= render "shared/reblog_form", item: track %></li>
+      <li><%= render "shared/playlist_redirect", item: track %></li>
+    </ul>
+  </nav>
+
+</section>

@@ -1,7 +1,5 @@
 <% items.each do |item| %>
   <% if item.class.name == "Reblog" %>
-    <!-- we want to pull out the reblogged item... -->
-    <!-- so I made a shitty n+1 helper method! -->
     <% if item.rebloggable_type == "Track" %>
       <%= render "shared/track_show", track: item.rebloggable %>
     <% elsif item.rebloggable_type == "Playlist" %>

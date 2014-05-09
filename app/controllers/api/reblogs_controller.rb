@@ -1,13 +1,18 @@
 class Api::ReblogsController < ApplicationController
 
+  def index
+    @reblogs = User.find(params[:user_id]).reblogs
+    render partial: "api/reblogs/index.json", locals: { reblogs: @reblogs}
+  end
+
   def create
     @reblog = Reblog.new(reblog_params)
     if @reblog.save
       # user feedback about reblogging track
-      redirect_to :back
+      render json: @reblog
     else
       flash.now[:errors] = @reblog.errors.full_messages
-      redirect_to :back
+      render json: @reblog.errors, status: :unprocessable_entity
     end
   end
 

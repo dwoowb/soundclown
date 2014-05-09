@@ -1,22 +1,18 @@
 class Api::LikesController < ApplicationController
 
   def index
-    @user = User.find(params[:user_id])
-    likes = @user.likes
-    @liked_items = []
-    likes.each do |like|
-      @liked_items << like.likeable
-    end
+    @likes = User.find(params[:user_id]).likes
+    render partial: "api/likes/index", locals: { likes: @likes }
   end
 
   def create
     @like = Like.new(like_params)
     if @like.save
       # user feedback about liking track
-      redirect_to :back
+      render json: @like
     else
       flash.now[:errors] = @like.errors.full_messages
-      redirect_to :back
+      render json: @like.errors, status: :unprocessable_entity
     end
   end
 

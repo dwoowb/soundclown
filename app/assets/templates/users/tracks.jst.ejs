@@ -1,20 +1,5 @@
 <% user.tracks().each(function(track) { %>
-
-  <section class="track group">
-    <article class="track info">
-      <h2 class="poster">
-        <a href="#/api/users/<%= user.id %>">
-          <%= user.escape("username") %>
-        </a>
-      </h2>
-      <a class="artist-track" href="#/api/tracks/<%= track.id %>">
-        <%= track.escape("artist") %> - <%= track.escape("title") %>
-      </a>
-    </article>
-
-    <!-- add nav later, track_show etc -->
-  </section>
-
+  <%= JST['tracks/show']({ track: track }) %>
 <% }); %>
 
 <!-- should also have the mini-nav and the user profile in the leftbar -->

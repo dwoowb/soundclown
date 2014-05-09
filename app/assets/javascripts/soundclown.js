@@ -11,7 +11,10 @@ window.Soundclown = {
     this.users = new Soundclown.Collections.Users(Soundclown.currentUser);
     this.tracks = new Soundclown.Collections.Tracks(Soundclown.currentUser.tracks());
     this.playlists = new Soundclown.Collections.Playlists(Soundclown.currentUser.playlists());
-    debugger
+    this.likes = new Soundclown.Collections.Likes(Soundclown.currentUser.likes());
+    this.reblogs = new Soundclown.Collections.Reblogs(Soundclown.currentUser.reblogs());
+    this.comments = new Soundclown.Collections.Comments(Soundclown.currentUser.comments());
+
     new Soundclown.Routers.Users({});
     new Soundclown.Routers.Tracks({});
     new Soundclown.Routers.Playlists({});

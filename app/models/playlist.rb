@@ -21,7 +21,8 @@ class Playlist < ActiveRecord::Base
     class_name: "User",
     foreign_key: :creator_id,
     primary_key: :id,
-    inverse_of: :playlists
+    inverse_of: :playlists,
+    counter_cache: true
   )
 
   validates :title, :creator_id, presence: true

@@ -1,21 +1,45 @@
-<% user.playlists().each(function(playlist) { %>
+<section class="playlist">
+  <% user.playlists().each(function(playlist) { %>
 
-  <section class="playlist-header">
-    <article class="playlist-info">
-      <h2 class="creator">
-        <a href="#/api/users/<%= user.id %>">
-          <%= user.escape("username") %>
+    <section class="playlist-header">
+      <article class="playlist-info">
+        <h2 class="creator">
+          <a href="#/api/users/<%= user.id %>">
+            <%= user.escape("username") %>
+          </a>
+        </h2>
+        <a class="playlist-title" href="#/api/playlists/<%= playlist.id %>">
+          <%= playlist.escape("title") %>
         </a>
-      </h2>
-      <a class="playlist-title" href="#/api/playlists/<%= playlist.id %>">
-        <%= playlist.escape("title") %>
-      </a>
-    </article>
+      </article>
 
-    <!-- add nav later, playlist_show etc -->
+      <!-- add nav later, playlist_show etc -->
 
-  </section>
+    </section>
+    <ul class="playlist-tracks">
+      <% playlist.get("tracks").each(function(track) { %>
 
-<% }); %>
+        <li>
+          <section class="track group">
+            <article class="track info">
+              <h2 class="poster">
+                <a href="#/api/users/<%= track.get("poster_id") %>">
+                  <%= track.get("poster").username %>
+                </a>
+              </h2>
+              <a class="artist-track" href="#/api/tracks/<%= track.id %>">
+                <%= track.escape("artist") %> - <%= track.escape("title") %>
+              </a>
+            </article>
 
-<!-- should also have the mini-nav and the user profile in the leftbar -->
+            <!-- add nav later, track_show etc -->
+
+          </section>
+        </li>
+      <% }); %>
+    </ul>
+
+  <% }); %>
+</section>
+
+  <!-- should also have the mini-nav and the user profile in the leftbar -->

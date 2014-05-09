@@ -7,7 +7,7 @@ class Api::TracksController < ApplicationController
     @my_liked_tracks = current_user.liked_tracks
     @my_reblogged_tracks = current_user.reblogged_tracks
 
-
+    render partial: "api/tracks/index.json", locals: { tracks: @tracks }
   end
 
   def new
@@ -22,7 +22,7 @@ class Api::TracksController < ApplicationController
       render partial: "api/users/show.json", locals: { poster: current_user }
     else
       flash.now[:errors] = @track.errors.full_messages
-      render json: current_user.errors, status: :unprocessable_entity
+      render json: @track.errors, status: :unprocessable_entity
     end
   end
 

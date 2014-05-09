@@ -1,8 +1,5 @@
-json.poster poster
+json.array!(tracks) do |track|
+  json.partial! "api/tracks/show.json", track: track
+end
 
-json.tracks tracks,
-:id, :title, :artist,
-:reblogs_count, :likes_count,
-:comments_count
 
-# a user's uploaded tracks

@@ -31,17 +31,17 @@ Soundclown.Models.User = Backbone.Model.extend({
       })
       delete jsonResp.reblogs;
     };
-    if (jsonResp.authoredComments) {
-      this.authoredComments().set(jsonResp.authoredComments);
-      this.authoredComments().each(function(comment) {
+    if (jsonResp.comments) {
+      this.comments().set(jsonResp.comments);
+      this.comments().each(function(comment) {
         comment.set("commenter", that);
       })
-      delete jsonResp.authoredComments;
+      delete jsonResp.comments;
     };
     if (jsonResp.notifications) {
       this.notifications().set(jsonResp.notifications);
       this.notifications().each(function(notification) {
-        comment.set("user", that);
+        notification.set("user", that);
       });
       delete jsonResp.notifications;
     };
@@ -64,14 +64,19 @@ Soundclown.Models.User = Backbone.Model.extend({
     return jsonResp;
   },
 
+  // I don't think any of these collections need to be passed the user
+
   tracks: function() {
-    if (!this._tracks) {
-      this._tracks = new Soundclown.Collections.Tracks([], {
+    if (!this.get("tracks")) {
+      var userTracks = new Soundclown.Collections.Tracks([], {
         user: this
+      });
+      this.set({
+        tracks: userTracks
       });
     }
 
-    return this._tracks;
+    return this.get("tracks");
   },
 
   playlists: function() {
@@ -113,17 +118,17 @@ Soundclown.Models.User = Backbone.Model.extend({
     return this.get("reblogs");
   },
 
-  authoredComments: function() {
-    if (!this.get("authoredComments")) {
-      var userCommments = new Soundclown.Collections.Comments([], {
+  comments: function() {
+    if (!this.get("comments")) {
+      var userComments = new Soundclown.Collections.Comments([], {
         user: this
       });
       this.set({
-        authoredComments: userComments
+        comments: userComments
       });
     }
 
-    return this.get("authoredComments");
+    return this.get("comments");
   },
 
   notifications: function() {
@@ -141,7 +146,7 @@ Soundclown.Models.User = Backbone.Model.extend({
 
   followers: function() {
     if (!this.get("followers")) {
-      var followers = new Soundclown.Collections.Followers([], {
+      var followers = new Soundclown.Collections.Users([], {
         user: this
       });
       this.set({
@@ -154,7 +159,7 @@ Soundclown.Models.User = Backbone.Model.extend({
 
   followees: function() {
     if (!this.get("followees")) {
-      var followees = new Soundclown.Collections.Followees([], {
+      var followees = new Soundclown.Collections.Users([], {
         user: this
       });
       this.set({

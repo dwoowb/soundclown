@@ -2,8 +2,8 @@ class Api::CommentsController < ApplicationController
   # after_action :create_notification, only: [:create, :destroy]
 
   def index
-    @user = User.find(params[:user_id])
-    @comments = @user.authored_comments
+    @comments = User.find(params[:user_id]).authored_comments
+    render partial: "api/comments/index", locals: { comments: @comments }
   end
 
   def create

@@ -42,13 +42,11 @@ Soundclown.Routers.Users = Backbone.Router.extend({
       Soundclown._swapView("rootEl", mainView);
       Soundclown._swapView("rightbar", statsView);
     })
-
   },
 
   usersEdit: function(id) {
     // doesn't use id but... whatever
     var editView = new Soundclown.Views.UserEdit({
-      collection: Soundclown.users,
       model: Soundclown.currentUser
     });
     Soundclown._swapView("rootEl", editView);
@@ -81,8 +79,7 @@ Soundclown.Routers.Users = Backbone.Router.extend({
     var that = this;
     this._getUser(id, function(user) {
       var likesView = new Soundclown.Views.UserLikes({
-        model: user,
-        collection: user.likes()
+        model: user
       });
       Soundclown._swapView("rootEl", likesView);
     })
@@ -92,8 +89,7 @@ Soundclown.Routers.Users = Backbone.Router.extend({
     var that = this;
     this._getUser(id, function(user) {
       var commentsView = new Soundclown.Views.UserComments({
-        model: user,
-        collection: user.authoredComments()
+        model: user
       });
       Soundclown._swapView("rootEl", commentsView);
     })
