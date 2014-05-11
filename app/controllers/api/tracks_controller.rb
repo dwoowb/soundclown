@@ -28,11 +28,7 @@ class Api::TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
-    @poster = User.find(@track.poster_id)
-    @my_liked_tracks = current_user.liked_tracks
-    @my_reblogged_tracks = current_user.reblogged_tracks
-
-    render partial: "api/tracks/show.json", locals: { poster: @poster, track: @track}
+    render partial: "api/tracks/show.json", locals: { track: @track, comments: @track.comments }
   end
 
   def destroy

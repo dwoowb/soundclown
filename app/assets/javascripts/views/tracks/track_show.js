@@ -2,7 +2,6 @@ Soundclown.Views.TrackShow = Backbone.View.extend({
   template: JST['tracks/show'],
 
   initialize: function(options) {
-    this.track = options.model
     this.listenTo(this.model.comments(), "add", this.addComment);
     this.listenTo(this.model.comments(), "remove", this.removeComment);
   },
@@ -12,14 +11,15 @@ Soundclown.Views.TrackShow = Backbone.View.extend({
   },
 
   render: function() {
+
     var renderedContent = this.template({
-      track: this.track
+      track: this.model
     });
     this.$el.html(renderedContent);
 
-    var likeNewView = new Soundclown.Views.LikesNew({
-      model: this.model
-    });
+    // i don't like rebuilding a new view on every render
+    var commentNew = new Soundclown.Views.CommentsNew();
+    this.$(".comment-new").html(commentNew.render().$el);
 
     return this;
   }

@@ -32,11 +32,11 @@ Soundclown.Routers.Users = Backbone.Router.extend({
 
       var profileView = new Soundclown.Views.UserProfile({
         model: user
-      })
+      });
 
       var statsView = new Soundclown.Views.UserStats({
         model: user
-      })
+      });
 
       Soundclown._swapView("leftbar", profileView);
       Soundclown._swapView("rootEl", mainView);

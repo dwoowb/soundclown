@@ -1,9 +1,13 @@
 json.(track,
 :id, :title, :artist,
-:poster,
 :reblogs_count, :likes_count,
 :comments_count
 )
+
+json.poster do
+  json.id track.poster.id
+  json.username track.poster.username
+end
 
 comments ||= nil
 unless comments.nil?

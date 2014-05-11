@@ -4,7 +4,7 @@ Soundclown.Models.User = Backbone.Model.extend({
   parse: function(jsonResp) {
     var that = this;
     if (jsonResp.tracks) {
-      this.tracks().set(jsonResp.tracks);
+      this.tracks().set(jsonResp.tracks, { parse: true });
       this.tracks().each(function(track) {
         track.set("poster", that);
       });

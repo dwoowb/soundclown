@@ -3,22 +3,26 @@ Soundclown.Models.Track = Backbone.Model.extend({
 
   parse: function(jsonResp) {
     var that = this;
-    this.comments().set(jsonResp.comments);
-    this.comments().each(function(comment) {
-      comment.set("track", that);
-    });
-    delete jsonResp.comments
+    if (jsonResp.comments) {
+      this.comments().set(jsonResp.comments);
+      this.comments().each(function(comment) {
+        comment.set("track", that);
+      });
+      delete jsonResp.comments;
+    };
+
+    return jsonResp;
   },
 
   comments: function() {
     if (!this.get("comments")) {
-      var comments = new Soundclown.Collections.Comments([], {});
+      var trackComments = new Soundclown.Collections.Comments([], {});
       this.set({
-        comments: comments
+        comments: trackComments
       });
-    }
+    };
 
-    return this.get("comments")
+    return this.get("comments");
   }
 
 });
