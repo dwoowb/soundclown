@@ -1,0 +1,11 @@
+<form>	
+	<input type="hidden" name="comment[commenter_id]" value="<%= Soundclown.currentUser.id %>">
+	
+	<input type="hidden" name="comment[track_id]" value="<%= track.get("id") %>">
+	
+  <label>
+    <textarea class="comment-box" name="comment[body]"></textarea>
+  </label>
+
+  <input class="submit" type="submit" value="Comment">
+</form>

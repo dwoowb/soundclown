@@ -1,7 +1,11 @@
 <% comments.each do |comment| %>
   <section class="comment group">
     <article class="comment-info">
-      <p class="comment-setup">on </p>
+      <p class="comment-setup">
+		  <a href="<%= user_url(comment.commenter) %>">
+			  <%= comment.commenter.username %> on 
+		  </a>
+	 	 	</p>
       <h1 class="name"><%= comment.track.title %></h1>
     </article>
 

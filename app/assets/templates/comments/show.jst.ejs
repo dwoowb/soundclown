@@ -1,0 +1,12 @@
+<li class="comment group">
+	<section class="comment-info">  
+	  <a class="name" href="#/api/users/<%= comment.get("commenter").id %>">
+		  <%= comment.get("commenter").username %>  
+	  </a>	
+	  <p><%= comment.escape("body")%></p>
+	</section>
+
+	<% if (comment.get("commenter").id === Soundclown.currentUser.id) { %>
+		<button class="destroy"><i class="fa fa-trash-o"></i></button>
+	<% }; %>
+</li>

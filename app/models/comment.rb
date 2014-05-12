@@ -22,7 +22,7 @@ class Comment < ActiveRecord::Base
 
   after_create :set_notification
 
-  validates :body, :commenter, presence: true
+  validates :body, :commenter, :track, presence: true
 
   def set_notification
     notification = self.notifications.unread.event(:track_got_commented).new

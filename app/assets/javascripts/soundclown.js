@@ -41,3 +41,9 @@ window.Soundclown = {
     $(this._elements[partialEl]).html(view.render().$el);
   }
 };
+
+Backbone.CompositeView = Backbone.View.extend({
+	subviews: {
+		
+	}
+});

@@ -5,11 +5,8 @@
 .comment {
   display: block;
   margin-left: 160px;
+	margin-top: 10px;
   width: 600px;
-}
-
-.comment-form {
-
 }
 
 .comment-setup {
@@ -17,13 +14,25 @@
   font-size: 14px;
 }
 
+.comments-index {
+	display: block;
+	margin-left: 160px;
+}
+
 .comment-info {
   display: block;
+	float: left;
   padding-bottom: 3px;
 }
 
-.comment-body {
+.comment .destroy {
+	display: block;
+	float: right;
+}
 
+.comment-box {
+  width: 600px;
+	margin: 10px 0 0 320px;
 }
 
 input[type="submit"] {
@@ -31,7 +40,7 @@ input[type="submit"] {
 }
 
 .comment .submit {
-  display: block;
+  display: inline-block;
   float: right;
   position: relative;
   margin: none;
