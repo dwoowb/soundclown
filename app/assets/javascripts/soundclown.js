@@ -43,7 +43,53 @@ window.Soundclown = {
 };
 
 Backbone.CompositeView = Backbone.View.extend({
-	subviews: {
-		
+  addSubview: function(selector, subview) {
+    var selectorSubviews = this.subviews()[selector] || (this.subviews()[selector] = []);
+    selectorSubviews.push(subview);
+
+    var $selectorEl = this.$(selector);
+    $selectorEl.append(subview.$el);
+  },
+
+  remove: function() {
+    Backbone.View.prototype.remove.call(this);
+
+    _(this.subviews()).each(function(selectorSubviews, selector) {
+      _(selectorSubviews).each(function(subview) {
+        subview.remove();
+      })
+    })
+  },
+
+  removeSubview: function(selector, subview) {
+    var selectorSubviews = this.subviews()[selector] || (this.subviews()[selector] = []);
+
+    var subviewIndex = selectorSubviews.indexOf(subview);
+    selectorSubviews.splice(subviewIndex, 1);
+    subview.remove();
+  },
+
+  renderSubviews: function() {
+    var view = this;
+
+    _(this.subviews()).each(function(selectorSubviews, selector) {
+      var $selectorEl = view.$(selector);
+      $selectorEl.empty();
+
+      _(selectorSubviews).each(function(subview) {
+        $selectorEl.append(subview.render().$el);
+        subview.delegateEvents();
+        // delegateEvents reattaches event handlers that were cleared by replaced the DOM elements in the subview's render()
+      });
+    });
+  },
+
+	subviews: function() {
+    if (!this._subviews) {
+      this._subviews = {};
+    }
+
+    return this._subviews;
+    // subviews as a function is necessary as it should be setting subviews for instances of CompositeView, not as a prototype
 	}
 });

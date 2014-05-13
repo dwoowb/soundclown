@@ -10,7 +10,7 @@ class Api::CommentsController < ApplicationController
     @track = @comment.track
 
     if @comment.save
-      render partial: "api/tracks/show.json", locals: { track: @track, comments: @track.comments }
+      render partial: "api/comments/show.json", locals: { comment: @comment }
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
@@ -19,11 +19,11 @@ class Api::CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    render partial: "api/comments/show.json"
+    render partial: "api/comments/show.json", locals: { comment: @comment }
   end
-  
+
   private
-  
+
   def comment_params
     params.require(:comment).permit(:body, :commenter_id, :track_id)
   end
