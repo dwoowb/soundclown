@@ -16,7 +16,7 @@ class Api::LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find_by!(likeable_id: like_params[:likeable_id])
+    @like = Like.find(params[:id])
     @like.destroy
     render partial: "api/likes/show.json", locals: { like: @like }
   end

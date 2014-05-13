@@ -172,7 +172,6 @@ form.sign-up, form.sign-in, form.new-track {
 input.submit:active {
   top: 3px;
   box-shadow: none;
-  background: #FB4F19;
 }
 
 form.follow > input.submit {

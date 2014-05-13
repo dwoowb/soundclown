@@ -1,3 +1,31 @@
 // Place all the styles related to the Likes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* DEFAULT STATES */
+
+.like {
+  display: block;
+}
+
+.unlike {
+  display: none;
+}
+
+/* MODIFIED STATES */
+
+.been-liked .like {
+  display: none;
+}
+
+.been-liked .unlike {
+  display: block;
+}
+
+.like .submit {
+  color: #fff;
+}
+
+.unlike .submit {
+  color: #FB4417;
+}

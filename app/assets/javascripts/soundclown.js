@@ -11,9 +11,9 @@ window.Soundclown = {
     this.users = new Soundclown.Collections.Users(Soundclown.currentUser);
     this.tracks = Soundclown.currentUser.tracks();
     this.playlists = Soundclown.currentUser.playlists();
-    // this.likes = Soundclown.currentUser.likes();
-    // this.reblogs = Soundclown.currentUser.reblogs();
-    // this.comments = Soundclown.currentUser.comments();
+    this.likes = Soundclown.currentUser.likes();
+    this.reblogs = Soundclown.currentUser.reblogs();
+    this.comments = Soundclown.currentUser.comments();
 
     new Soundclown.Routers.Users({});
     new Soundclown.Routers.Tracks({});
@@ -48,7 +48,7 @@ Backbone.CompositeView = Backbone.View.extend({
     selectorSubviews.push(subview);
 
     var $selectorEl = this.$(selector);
-    $selectorEl.append(subview.$el);
+    $selectorEl.prepend(subview.$el);
   },
 
   remove: function() {

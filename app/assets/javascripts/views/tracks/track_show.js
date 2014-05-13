@@ -6,21 +6,30 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.comments(), "add", this.addComment);
     this.listenTo(this.model.comments(), "remove", this.removeComment);
 
-    // this.model.comments().each(this.addComment.bind(this));
+    var likesNew = new Soundclown.Views.LikesNew({
+      likedItem: this.model,
+      likeableType: "Track"
+    });
+    this.addSubview(".like-new", likesNew);
+
+    this.model.comments().each(this.addComment.bind(this));
+    // the above line is an abbreviation for the below block
+    // var view = this;
+//     this.model.comments().each(function(comment) {
+//       var commentsShow = new Soundclown.Views.CommentsShow({
+//         model: comment
+//       });
+//
+//       view.addSubview(".comments-index", commentsShow);
+//     });
+
 
     var commentsNew = new Soundclown.Views.CommentsNew({
       track: this.model
     });
-    this.addSubview(".comment-new", commentsNew);
+    this.addSubview(".comments-new", commentsNew);
 
-    var view = this;
-    this.model.comments().each(function(comment) {
-      var commentsShow = new Soundclown.Views.CommentsShow({
-        model: comment
-      });
 
-      view.addSubview(".comments-index", commentsShow);
-    });
   },
 
 	addComment: function(comment) {

@@ -1,22 +1,38 @@
-<% var items = likeableType === "Track" ? user.likedTracks() : user.likedPlaylists() %>
+<% var likedItems = likeableType === "Track" ? user.likedTracks() : user.likedPlaylists() %>
 
+<% if (likedItems.findWhere({ id: likedItem.id })) { %>
+  <div class="like-form been-liked">
+    <form class="like">
+      <input type="hidden" name="like[liker_id]" value="<%= user.escape("id") %>">
+      <input type="hidden" name="like[likeable_id]" value="<%= likedItem.escape("id") %>">
+      <input type="hidden" name="like[likeable_type]" value="<%= likeableType %>">
+      <input class="submit" type="submit" value="&#xf004;">
+    </form>
 
-<% if (items.include(item)) { %>
     <form class="unlike">
       <input type="hidden" name="like[liker_id]" value="<%= user.escape("id") %>">
-      <input type="hidden" name="like[likeable_id]" value="<%= item.escape("id") %>">
+      <input type="hidden" name="like[likeable_id]" value="<%= likedItem.escape("id") %>">
       <input type="hidden" name="like[likeable_type]" value="<%= likeableType %>">
-      <input class="submit" type="submit" value="Unlike">
+      <input class="submit" type="submit" value="&#xf004;">
     </form>
+  </div>
 <% } else { %>
-  <form class="like">
-    <input type="hidden" name="like[liker_id]" value="<%= user.escape("id") %>">
-    <input type="hidden" name="like[likeable_id]" value="<%= item.escape("id") %>">
-    <input type="hidden" name="like[likeable_type]" value="<%= likeableType %>">
-    <input class="submit" type="submit" value="Like">
-  </form>
+  <div class="like-form">
+    <form class="like">
+      <input type="hidden" name="like[liker_id]" value="<%= user.escape("id") %>">
+      <input type="hidden" name="like[likeable_id]" value="<%= likedItem.escape("id") %>">
+      <input type="hidden" name="like[likeable_type]" value="<%= likeableType %>">
+      <input class="submit" type="submit" value="&#xf004;">
+    </form>
+
+    <form class="unlike">
+      <input type="hidden" name="like[liker_id]" value="<%= user.escape("id") %>">
+      <input type="hidden" name="like[likeable_id]" value="<%= likedItem.escape("id") %>">
+      <input type="hidden" name="like[likeable_type]" value="<%= likeableType %>">
+      <input class="submit" type="submit" value="&#xf004;">
+    </form>
+  </div>
 <% } %>
 
-<!-- <%#= JST['likes/new']({ likeableType: "Track", item: track, user: Soundclown.currentUser }) %> -->
 
 
