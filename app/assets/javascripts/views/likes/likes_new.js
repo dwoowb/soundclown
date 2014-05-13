@@ -2,12 +2,9 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
   template: JST["likes/new"],
   className: "like-new",
 
-  initialize: function(options) {
-
-  },
-
   events: {
-    "submit form": "submit"
+    "submit form.like": "like",
+    "submit form.unlike": "unlike"
   },
 
   render: function() {
@@ -19,16 +16,26 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
     return this;
   },
 
-  submit: function(event) {
-      event.preventDefault();
+  like: function(event) {
+    event.preventDefault();
 
-      var params = $(event.currentTarget).serializeJSON()["like"];
-      var newLike = new Soundclown.Models.Like(params);
+    var params = $(event.currentTarget).serializeJSON()["like"];
+    var like = new Soundclown.Models.Like(params);
 
-      newLike.update({}, {
-        success: function() {
-          Soundclown.Collections.Likes.add(newLike);
-        }
-      })
-    }
+    like.save({}, {
+      success: function() {
+        Soundclown.likes.add(like);
+        Soundclown.currentUser.likes().add(like);
+      }
+    })
+  },
+
+  unlike: function(event) {
+    event.preventDefault();
+
+    var params = $(event.currentTarget).serializeJSON()["like"];
+    // var unlike = Soundclown.currentUser.likes().find()
+
+  }
+
 })
