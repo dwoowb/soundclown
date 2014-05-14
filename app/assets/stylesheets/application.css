@@ -204,19 +204,19 @@ input.input:focus {
   border-color: #FB4F19;
 }
 
-input.submit {
+input.submit, .open-modal > i {
   position: relative;
   display: block;
   margin: auto;
   font-size: 12px;
   background: #eee;
   color: #000;
-  padding: 5px;
+  padding: 3px 6px;
   border-radius: 3px;
   border: 1px solid #ddd;
 }
 
-input.submit:hover {
+input.submit:hover, .open-modal.submit:hover {
   cursor: pointer;
   border-color: #dcc;
   box-shadow: 0 1px 2px #ddd;

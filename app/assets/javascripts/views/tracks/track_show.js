@@ -39,7 +39,10 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
     var likesStat = new Soundclown.Views.LikesStat({
       track: this.model
     });
-
+    // debugger
+    if (_.include(this.subviews(), likesStat)) {
+      this.removeSubview(".likes-stat", likesStat);
+    };
     this.addSubview(".likes-stat", likesStat);
     likesStat.render();
   },
