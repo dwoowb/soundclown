@@ -15,3 +15,17 @@ unless comments.nil?
     json.partial! "api/comments/index.json", comments: comments
   end
 end
+
+likes ||= nil
+unless likes.nil?
+  json.likes do
+    json.partial! "api/likes/index.json", likes: likes
+  end
+end
+
+reblogs ||= nil
+unless reblogs.nil?
+  json.reblogs do
+    json.partial! "api/reblogs/index.json", reblogs: reblogs
+  end
+end

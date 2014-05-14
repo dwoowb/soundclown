@@ -24,6 +24,7 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
   },
 
   like: function(event) {
+    var view = this;
     event.preventDefault();
 
     var $submit = $(event.currentTarget)
@@ -31,12 +32,11 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
     var params = $submit.serializeJSON()["like"];
     var like = new Soundclown.Models.Like(params);
 
-    // debugger
-
     like.save({}, {
       success: function() {
         Soundclown.likes.add(like);
         Soundclown.currentUser.likes().add(like);
+        view.likedItem.likes().add(like);
         $(".like-form").addClass("been-liked");
       }
     });

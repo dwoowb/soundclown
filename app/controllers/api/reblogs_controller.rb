@@ -6,20 +6,18 @@ class Api::ReblogsController < ApplicationController
   end
 
   def create
-    @reblog = Reblog.new(reblog_params)
+    @reblog = current_user.reblogs.create(reblog_params)
     if @reblog.save
-      # user feedback about reblogging track
-      render json: @reblog
+      render partial: "api/reblogs/show.json", locals: { reblog: @reblog}
     else
-      flash.now[:errors] = @reblog.errors.full_messages
       render json: @reblog.errors, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @reblog = Reblog.find_by(rebloggable_id: reblog_params[:rebloggable_id])
+    @reblog = Reblog.find(params[:id])
     @reblog.destroy
-    redirect_to :back
+    render partial: "api/reblogs/show.json", locals: { reblog: @reblog}
   end
 
   private

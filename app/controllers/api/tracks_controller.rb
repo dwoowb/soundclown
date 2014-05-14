@@ -12,7 +12,7 @@ class Api::TracksController < ApplicationController
 
   def new
     @track = Track.new
-    render json: @track
+    render partial: "api/users/show.json", locals: { track: @track }
   end
 
   def create
@@ -28,7 +28,11 @@ class Api::TracksController < ApplicationController
 
   def show
     @track = Track.find(params[:id])
-    render partial: "api/tracks/show.json", locals: { track: @track, comments: @track.comments }
+    render partial: "api/tracks/show.json",
+           locals: { track: @track,
+                     comments: @track.comments,
+                     likes: @track.likes,
+                     reblogs: @track.reblogs }
   end
 
   def destroy

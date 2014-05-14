@@ -30,7 +30,7 @@ Soundclown::Application.routes.draw do
     end
     resources :tracks, only: [:show, :destroy]
 
-    resource :reblogs, only: [:create, :destroy]
+    resources :reblogs, only: [:create, :destroy]
     resources :likes, only: [:create, :destroy]
   end
 

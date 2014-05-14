@@ -10,7 +10,6 @@ class Api::LikesController < ApplicationController
     if @like.save
       render partial: "api/likes/show.json", locals: { like: @like }
     else
-      flash.now[:errors] = @like.errors.full_messages
       render json: @like.errors, status: :unprocessable_entity
     end
   end

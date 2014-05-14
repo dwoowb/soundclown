@@ -11,6 +11,21 @@ Soundclown.Models.Track = Backbone.Model.extend({
       delete jsonResp.comments;
     };
 
+    if (jsonResp.likes) {
+      this.likes().set(jsonResp.likes);
+      this.likes().each(function(like) {
+        like.set("track", that);
+      });
+      delete jsonResp.likes;
+    };
+    if (jsonResp.reblogs) {
+      this.reblogs().set(jsonResp.reblogs);
+      this.reblogs().each(function(reblog) {
+        reblog.set("track", that);
+      });
+      delete jsonResp.reblogs;
+    };
+
     return jsonResp;
   },
 
@@ -21,8 +36,27 @@ Soundclown.Models.Track = Backbone.Model.extend({
         comments: trackComments
       });
     };
-
     return this.get("comments");
+  },
+
+  likes: function() {
+    if(!this.get("likes")) {
+      var trackLikes = new Soundclown.Collections.Likes([], {});
+      this.set({
+        likes: trackLikes
+      });
+    };
+    return this.get("likes");
+  },
+
+  reblogs: function() {
+    if(!this.get("reblogs")) {
+      var trackReblogs = new Soundclown.Collections.Reblogs([], {});
+      this.set({
+        reblogs: trackReblogs
+      });
+    };
+    return this.get("reblogs");
   }
 
 });

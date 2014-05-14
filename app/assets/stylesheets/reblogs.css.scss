@@ -1,3 +1,29 @@
 // Place all the styles related to the Reblogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.reblog {
+  display: block;
+}
+
+.unreblog {
+  display: none;
+}
+
+/* MODIFIED STATES */
+
+.been-reblogged .reblog {
+  display: none;
+}
+
+.been-reblogged .unreblog {
+  display: block;
+}
+
+.reblog .submit {
+  color: #1a1a1a;
+}
+
+.unreblog .submit {
+  color: #FB4F19;
+}

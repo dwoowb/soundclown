@@ -12,22 +12,15 @@
 
   <nav class="track nav">
     <ul class="track stat">
-      <!-- should really just display nothing if count is null -->
-        <li class="likes">
-          <i class="fa fa-heart"></i> <%= track.escape("likes_count") %>
-        </li>
-        <li class="reblogs">
-          <i class="fa fa-retweet"></i> <%= track.escape("reblogs_count") %>
-        </li>
-        <li class="comments">
-          <i class="fa fa-comments"></i> <%= track.escape("comments_count") %>
-        </li>
+      <li class="likes-stat"></li>
+      <li class="reblogs-stat"></li>
+      <li class="comments-stat"></li>
     </ul>
 
     <ul class="track action">
       <li class="like-new"></li>
-      <li></li>
-      <li></li>
+      <li class="reblog-new"></li>
+      <li class="playlist-new"></li>
     </ul>
   </nav>
 

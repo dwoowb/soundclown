@@ -2,7 +2,7 @@ Soundclown.Views.CommentsShow = Backbone.View.extend({
 	template: JST["comments/show"],
 
 	events: {
-		"click button.destroy": "destroy"
+		"submit form.destroy": "destroy"
 	},
 
 	render: function() {

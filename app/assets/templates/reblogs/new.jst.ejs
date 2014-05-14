@@ -1,0 +1,38 @@
+<% var rebloggedItems = rebloggableType === "Track" ? user.rebloggedTracks() : user.rebloggedPlaylists() %>
+
+<% if (rebloggedItems.findWhere({ id: rebloggedItem.id })) { %>
+  <div class="reblog-form been-reblogged">
+    <form class="reblog">
+      <input type="hidden" name="reblog[reblogger_id]" value="<%= user.escape("id") %>">
+      <input type="hidden" name="reblog[rebloggable_id]" value="<%= rebloggedItem.escape("id") %>">
+      <input type="hidden" name="reblog[rebloggable_type]" value="<%= rebloggableType %>">
+      <input class="submit" type="submit" value="&#xf079;">
+    </form>
+
+    <form class="unreblog">
+      <input type="hidden" name="reblog[reblogger_id]" value="<%= user.escape("id") %>">
+      <input type="hidden" name="reblog[rebloggable_id]" value="<%= rebloggedItem.escape("id") %>">
+      <input type="hidden" name="reblog[rebloggable_type]" value="<%= rebloggableType %>">
+      <input class="submit" type="submit" value="&#xf079;">
+    </form>
+  </div>
+<% } else { %>
+  <div class="reblog-form">
+    <form class="reblog">
+      <input type="hidden" name="reblog[reblogger_id]" value="<%= user.escape("id") %>">
+      <input type="hidden" name="reblog[rebloggable_id]" value="<%= rebloggedItem.escape("id") %>">
+      <input type="hidden" name="reblog[rebloggable_type]" value="<%= rebloggableType %>">
+      <input class="submit" type="submit" value="&#xf079;">
+    </form>
+
+    <form class="unreblog">
+      <input type="hidden" name="reblog[reblogger_id]" value="<%= user.escape("id") %>">
+      <input type="hidden" name="reblog[rebloggable_id]" value="<%= rebloggedItem.escape("id") %>">
+      <input type="hidden" name="reblog[rebloggable_type]" value="<%= rebloggableType %>">
+      <input class="submit" type="submit" value="&#xf079;">
+    </form>
+  </div>
+<% } %>
+
+
+
