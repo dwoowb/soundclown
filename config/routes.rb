@@ -22,12 +22,8 @@ Soundclown::Application.routes.draw do
 
     resources :comments, only: [:create, :destroy]
 
-    resources :playlists, except: [:index] do
-      member do
-        patch "add_track"
-        patch "remove_track"
-      end
-    end
+    resources :playlist_tracks, only: [:create, :destroy]
+    resources :playlists, except: [:index]
     resources :tracks, only: [:show, :destroy]
 
     resources :reblogs, only: [:create, :destroy]

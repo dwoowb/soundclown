@@ -27,7 +27,7 @@ class Api::PlaylistsController < ApplicationController
                        reblogs: @playlist.reblogs
                      }
     else
-      render json: current_user.errors, status: :unprocessable_entity
+      render json: @playlist.errors, status: :unprocessable_entity
     end
   end
 
@@ -41,7 +41,7 @@ class Api::PlaylistsController < ApplicationController
                        reblogs: @playlist.reblogs
                      }
     else
-      render json: @user.errors, status: :unprocessable_entity
+      render json: @playlist.errors, status: :unprocessable_entity
     end
   end
 

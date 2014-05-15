@@ -11,7 +11,7 @@ Soundclown.Models.User = Backbone.Model.extend({
       delete jsonResp.tracks;
     };
     if (jsonResp.playlists) {
-      this.playlists().set(jsonResp.playlists);
+      this.playlists().set(jsonResp.playlists, { parse: true });
       this.playlists().each(function(playlist) {
         playlist.set("creator", that);
       })

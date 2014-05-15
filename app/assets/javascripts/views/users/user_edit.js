@@ -23,11 +23,11 @@ Soundclown.Views.UserEdit = Backbone.View.extend({
       event.preventDefault();
 
       var params = $(event.currentTarget).serializeJSON()["user"];
-      var newUser = new Soundclown.Models.User(params);
+      var editedUser = new Soundclown.Models.User(params);
 
-      newUser.update({}, {
+      editedUser.update({}, {
         success: function() {
-          Soundclown.Collections.Users.add(newUser);
+          Soundclown.Collections.Users.add(editedUser);
           // should this be a lowercase `users`?
           // render user show page
         }

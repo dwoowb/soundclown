@@ -1,6 +1,11 @@
 Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
   template: JST['tracks/show'],
 
+  events: {
+    "click .fa-plus": "openModal",
+    "click .modal-x": "closeModal"
+  },
+
   initialize: function(options) {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.likes(), "add change remove", this.changeLikesStat);
@@ -26,6 +31,8 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
       track: this.model
     });
     this.addSubview(".comments-new", commentsNew);
+
+
 
     // TODO: have these work, perhaps implement a top level updateSubview method
     this.changeLikesStat();
@@ -83,6 +90,35 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
 
     this.removeSubview(".comments-index", commentsShow);
 	},
+
+  openModal: function(event) {
+    view = this;
+    event.preventDefault();
+    $("#playlist-modal").addClass("is-active");
+    Soundclown.currentUser.playlists().each(function(playlist) {
+      var playlistsAdd = new Soundclown.Views.PlaylistsAdd({
+        model: playlist,
+        track: view.model
+      });
+      view.addSubview(".modal-content", playlistsAdd);
+      playlistsAdd.render();
+    });
+  },
+
+  closeModal: function(event) {
+    view = this;
+    event.preventDefault();
+    $("#playlist-modal").removeClass("is-active");
+    Soundclown.currentUser.playlists().each(function(playlist) {
+      // debugger
+      var playlistsAdd = _(view.subviews()[".modal-content"]).find(function(subview) {
+        // debugger
+        return subview.model == playlist;
+      });
+
+      view.removeSubview(".modal-content", playlistsAdd);
+    });
+  },
 
   render: function() {
     var renderedContent = this.template({

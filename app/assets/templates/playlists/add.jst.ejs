@@ -1,0 +1,11 @@
+<% if (playlist.tracks().include(track)) { %>
+    <h1><%= playlist.get("title") %></h1>
+    <form class="remove">
+      <input class="submit" type="submit" value="Remove">
+    </form>
+<% } else { %>
+  <h1><%= playlist.get("title") %></h1>
+  <form class="add">
+    <input class="submit" type="submit" value="Add">
+  </form>
+<% }; %>
