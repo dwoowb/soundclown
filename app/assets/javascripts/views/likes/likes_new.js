@@ -30,7 +30,7 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
     var $submit = $(event.currentTarget)
     var $scope = $submit.closest("form");
     var params = $submit.serializeJSON()["like"];
-    var like = new Soundclown.Models.Like(params);
+    var like = new Soundclown.Models.Like(params);	
 
     like.save({}, {
       success: function() {

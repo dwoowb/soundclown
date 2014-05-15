@@ -9,8 +9,8 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
   initialize: function(options) {
     this.listenTo(this.model, "sync", this.render);
     this.listenTo(this.model.likes(), "add change remove", this.changeLikesStat);
-    this.listenTo(this.model.reblogs(), "add change remove", this.changeReblogsStat);
-    this.listenTo(this.model.comments(), "add change remove", this.changeCommentsStat);
+    // this.listenTo(this.model.reblogs(), "add change remove", this.changeReblogsStat);
+    // this.listenTo(this.model.comments(), "add change remove", this.changeCommentsStat);
     this.listenTo(this.model.comments(), "add", this.addComment);
     this.listenTo(this.model.comments(), "remove", this.removeComment);
 
@@ -31,27 +31,33 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
       track: this.model
     });
     this.addSubview(".comments-new", commentsNew);
+		
+		var likesStat = new Soundclown.Views.LikesStat({
+			track: this.model
+		});
+		this.addSubview(".likes-stat", likesStat);
 
-
-
-    // TODO: have these work, perhaps implement a top level updateSubview method
-    this.changeLikesStat();
-    this.changeReblogsStat();
-    this.changeCommentsStat();
     this.model.comments().each(this.addComment.bind(this));
   },
 
   changeLikesStat: function() {
     // :[ it shows up but renders before the likes_count is updated...
-    var likesStat = new Soundclown.Views.LikesStat({
+		var track = this.model;
+		debugger
+    var newLikesStat = new Soundclown.Views.LikesStat({
       track: this.model
     });
-    // debugger
-    if (_.include(this.subviews(), likesStat)) {
-      this.removeSubview(".likes-stat", likesStat);
-    };
-    this.addSubview(".likes-stat", likesStat);
-    likesStat.render();
+		
+    var oldLikesStat = _(this.subviews()[".likes-stat"]).find(function(subview) {
+      return subview.track == track;
+    });
+		
+		// debugger
+
+    this.removeSubview(".likes-stat", oldLikesStat);
+		
+    this.addSubview(".likes-stat", newLikesStat);
+    newLikesStat.render();
   },
 
   changeReblogsStat: function() {
@@ -101,6 +107,7 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
         track: view.model
       });
       view.addSubview(".modal-content", playlistsAdd);
+			// debugger
       playlistsAdd.render();
     });
   },
@@ -108,14 +115,13 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
   closeModal: function(event) {
     view = this;
     event.preventDefault();
+		
     $("#playlist-modal").removeClass("is-active");
+		
     Soundclown.currentUser.playlists().each(function(playlist) {
-      // debugger
       var playlistsAdd = _(view.subviews()[".modal-content"]).find(function(subview) {
-        // debugger
         return subview.model == playlist;
       });
-
       view.removeSubview(".modal-content", playlistsAdd);
     });
   },

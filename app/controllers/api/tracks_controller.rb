@@ -12,18 +12,36 @@ class Api::TracksController < ApplicationController
 
   def new
     @track = Track.new
-    render partial: "api/users/show.json", locals: { track: @track }
+    render partial: "api/tracks/show.json",
+           locals: { track: @track,
+                     comments: @track.comments,
+                     likes: @track.likes,
+                     reblogs: @track.reblogs }
   end
 
   def create
     @track = Track.new(track_params)
 
     if @track.save
-      render partial: "api/users/show.json", locals: { poster: current_user }
+      render partial: "api/tracks/show.json",
+             locals: { track: @track,
+                       comments: @track.comments,
+                       likes: @track.likes,
+                       reblogs: @track.reblogs }
     else
       flash.now[:errors] = @track.errors.full_messages
       render json: @track.errors, status: :unprocessable_entity
     end
+  end
+  
+  def update
+    @track = Track.find(params[:id])
+    @track.update(track_params)
+    render partial: "api/tracks/show.json",
+           locals: { track: @track,
+                     comments: @track.comments,
+                     likes: @track.likes,
+                     reblogs: @track.reblogs }  
   end
 
   def show
@@ -38,7 +56,11 @@ class Api::TracksController < ApplicationController
   def destroy
     @track = Track.find(params[:id])
     @track.destroy
-    render partial: "api/users/show.json", locals: { user: @track.poster }
+    render partial: "api/tracks/show.json",
+           locals: { track: @track,
+                     comments: @track.comments,
+                     likes: @track.likes,
+                     reblogs: @track.reblogs }
   end
 
   private

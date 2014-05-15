@@ -6,7 +6,7 @@ Soundclown::Application.routes.draw do
 
   namespace :api do
     resources :users, except: [:index] do
-      resources :tracks, only: [:index, :new, :create]
+      resources :tracks, only: [:index, :new, :create, :update]
       resource  :follow, only: [:create, :destroy]
       resources :playlists, only: [:index]
       resources :likes, only: [:index]
