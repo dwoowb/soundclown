@@ -11,6 +11,9 @@ if reblog.rebloggable_type == "Track"
     json.id reblogged_item.id
     json.title reblogged_item.title
     json.artist reblogged_item.artist
+    json.likes_count reblogged_item.likes_count
+    json.reblogs_count reblogged_item.reblogs_count
+    json.comments_count reblogged_item.comments_count
     json.poster do
       json.id reblogged_item.poster.id
       json.username reblogged_item.poster.username
@@ -20,6 +23,8 @@ elsif reblog.rebloggable_type == "Playlist"
   json.reblogged_playlist do
     json.id reblogged_item.id
     json.title reblogged_item.title
+    json.likes_count reblogged_item.likes_count
+    json.reblogs_count reblogged_item.reblogs_count
     json.creator do
       json.id reblogged_item.creator.id
       json.username reblogged_item.creator.username
@@ -29,6 +34,9 @@ elsif reblog.rebloggable_type == "Playlist"
         json.id track.id
         json.title track.title
         json.artist track.artist
+        json.likes_count reblogged_item.likes_count
+        json.reblogs_count reblogged_item.reblogs_count
+        json.comments_count reblogged_item.comments_count
         json.poster do
           json.id track.poster.id
           json.username track.poster.username

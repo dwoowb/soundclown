@@ -6,12 +6,7 @@ section.playlist{
   width: 600px;
   margin: auto;
   margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: solid #EEE 1px;
-}
-
-.playlist-header {
-  padding-bottom: 20px;
+  padding: 20px 0 10px 0;
   border-bottom: solid #EEE 1px;
 }
 
@@ -22,7 +17,7 @@ section.playlist{
   margin-bottom: 3px;
 }
 
-.poster > a {
+.poster > a, .creator > a {
   color: #A1A1A1;
   font-size: 15px;
   margin-bottom: 3px;
@@ -72,12 +67,4 @@ section.playlist{
 	border-bottom: 1px solid #EEE;
 }
 
-.playlist-title {
-	display: block;
-	float: left;
-}
 
-.playlist-action {
-	display: block;
-	float: right;
-}

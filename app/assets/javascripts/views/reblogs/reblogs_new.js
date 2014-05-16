@@ -12,16 +12,6 @@ Soundclown.Views.ReblogsNew = Backbone.View.extend({
     this.rebloggableType = options.rebloggableType
   },
 
-  render: function() {
-    var renderedContent = this.template({
-      user: Soundclown.currentUser,
-      rebloggedItem: this.rebloggedItem,
-      rebloggableType: this.rebloggableType
-    });
-
-    this.$el.html(renderedContent);
-    return this;
-  },
 
   reblog: function(event) {
     event.preventDefault();
@@ -37,21 +27,32 @@ Soundclown.Views.ReblogsNew = Backbone.View.extend({
         $(".reblog-form").addClass("been-reblogged");
       }
     });
+    this.rebloggedItem.reblogs().add(reblog);
   },
 
   unreblog: function(event) {
     event.preventDefault();
 
     var params = $(event.currentTarget).serializeJSON()["reblog"];
-    var unreblog = Soundclown.currentUser
+    var reblog = Soundclown.currentUser
                            .reblogs()
                            .findWhere({ rebloggable_id: parseInt(params["rebloggable_id"]) });
-    unreblog.destroy({
+    this.rebloggedItem.reblogs().remove(reblog);
+    reblog.destroy({
       success: function() {
         $(".reblog-form").removeClass("been-reblogged");
       }
     });
+  },
 
+  render: function() {
+    var renderedContent = this.template({
+      user: Soundclown.currentUser,
+      rebloggedItem: this.rebloggedItem,
+      rebloggableType: this.rebloggableType
+    });
+
+    this.$el.html(renderedContent);
+    return this;
   }
-
 })

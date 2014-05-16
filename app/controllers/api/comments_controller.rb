@@ -7,10 +7,10 @@ class Api::CommentsController < ApplicationController
 
   def create
     @comment = Comment.new(comment_params)
-    @track = @comment.track
-
     if @comment.save
-      render partial: "api/comments/show.json", locals: { comment: @comment }
+      render partial: "api/comments/show.json",
+             locals: { comment: @comment,
+                       track: @comment.track }
     else
       render json: @comment.errors, status: :unprocessable_entity
     end

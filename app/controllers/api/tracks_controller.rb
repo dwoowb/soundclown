@@ -2,11 +2,7 @@ class Api::TracksController < ApplicationController
   before_action :require_signed_in!, except: [:show]
 
   def index
-    @user = User.find(params[:user_id])
-    @tracks = @user.tracks
-    @my_liked_tracks = current_user.liked_tracks
-    @my_reblogged_tracks = current_user.reblogged_tracks
-
+    @tracks = User.find(params[:user_id]).tracks
     render partial: "api/tracks/index.json", locals: { tracks: @tracks }
   end
 
@@ -33,7 +29,7 @@ class Api::TracksController < ApplicationController
       render json: @track.errors, status: :unprocessable_entity
     end
   end
-  
+
   def update
     @track = Track.find(params[:id])
     @track.update(track_params)
@@ -41,7 +37,7 @@ class Api::TracksController < ApplicationController
            locals: { track: @track,
                      comments: @track.comments,
                      likes: @track.likes,
-                     reblogs: @track.reblogs }  
+                     reblogs: @track.reblogs }
   end
 
   def show

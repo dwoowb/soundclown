@@ -9,17 +9,8 @@ Soundclown.Views.CommentsNew = Backbone.View.extend({
 		this.track = options.track
 	},
 
-  render: function() {
-    var renderedContent = this.template({
-    	track: this.track
-    });
-
-    this.$el.html(renderedContent);
-    return this;
-  },
-
   submit: function(event) {
-		var view = this;
+    var view = this;
 		event.preventDefault();
 
 		var params = $(event.currentTarget).serializeJSON()["comment"];
@@ -27,9 +18,19 @@ Soundclown.Views.CommentsNew = Backbone.View.extend({
 
 		comment.save({}, {
 			success: function() {
-				view.track.comments().add(comment);
+        Soundclown.comments.add(comment);
+        view.track.comments().add(comment);
 				view.$("textarea[name=comment\\[body\\]]").val("");
 			}
 		});
+  },
+
+  render: function() {
+    var renderedContent = this.template({
+    	track: this.track
+    });
+
+    this.$el.html(renderedContent);
+    return this;
   }
 })
