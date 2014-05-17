@@ -8,6 +8,7 @@ Soundclown.Models.Track = Backbone.Model.extend({
       this.playlistTracks().each(function(playlistTrack) {
         playlistTrack.set("track", that);
       });
+      delete jsonResp.playlistTracks;
     };
     if (jsonResp.comments) {
       this.comments().set(jsonResp.comments);

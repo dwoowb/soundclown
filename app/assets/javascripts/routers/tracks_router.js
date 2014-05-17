@@ -12,7 +12,6 @@ Soundclown.Routers.Tracks = Backbone.Router.extend({
       var showView = new Soundclown.Views.TrackShow({
         model: track
       });
-
       Soundclown._swapView("rootEl", showView)
     });
   },
@@ -20,7 +19,6 @@ Soundclown.Routers.Tracks = Backbone.Router.extend({
   _getTrack: function(id, callback) {
     var that = this;
     var track = Soundclown.tracks.get(id);
-
     if(!track) {
       track = new Soundclown.Models.Track({
         id: id

@@ -8,9 +8,12 @@ Soundclown.Views.TrackPreview = Backbone.CompositeView.extend({
 
   initialize: function(options) {
     this.listenTo(this.model, "sync", this.render);
+    // debugger
     this.listenTo(this.model.likes(), "add remove", this.changeLikesStat);
     this.listenTo(this.model.reblogs(), "add remove", this.changeReblogsStat);
     this.listenTo(this.model.comments(), "add remove", this.changeCommentsStat);
+    this.listenTo(Soundclown.currentUser.playlists(), "add", this.addPlaylist);
+    this.listenTo(Soundclown.currentUser.playlists(), "remove", this.removePlaylist);
 
     var likesNew = new Soundclown.Views.LikesNew({
       likedItem: this.model,
@@ -24,18 +27,13 @@ Soundclown.Views.TrackPreview = Backbone.CompositeView.extend({
     });
     this.addSubview(".reblog-new", reblogsNew);
 
-    var commentsNew = new Soundclown.Views.CommentsNew({
-      track: this.model
-    });
-    this.addSubview(".comments-new", commentsNew);
-
 		var likesStat = new Soundclown.Views.LikesStat({
-			track: this.model
+			likedItem: this.model
 		});
 		this.addSubview(".likes-stat", likesStat);
 
     var reblogsStat = new Soundclown.Views.ReblogsStat({
-      track: this.model
+      rebloggedItem: this.model
     });
     this.addSubview(".reblogs-stat", reblogsStat);
 
@@ -43,15 +41,17 @@ Soundclown.Views.TrackPreview = Backbone.CompositeView.extend({
       track: this.model
     });
     this.addSubview(".comments-stat", commentsStat);
+
+    Soundclown.currentUser.playlists().each(this.addPlaylist.bind(this));
   },
 
   changeLikesStat: function() {
 		var track = this.model;
     var newLikesStat = new Soundclown.Views.LikesStat({
-      track: track
+      likedItem: track
     });
     var oldLikesStat = _(this.subviews()[".likes-stat"]).find(function(subview) {
-      return subview.track == track;
+      return subview.likedItem == track;
     });
     this.removeSubview(".likes-stat", oldLikesStat);
     this.addSubview(".likes-stat", newLikesStat);
@@ -61,10 +61,10 @@ Soundclown.Views.TrackPreview = Backbone.CompositeView.extend({
   changeReblogsStat: function() {
     var track = this.model;
     var newReblogsStat = new Soundclown.Views.ReblogsStat({
-      track: track
+      rebloggedItem: track
     });
     var oldReblogsStat = _(this.subviews()[".reblogs-stat"]).find(function(subview) {
-      return subview.track == track;
+      return subview.rebloggedItem == track;
     });
     this.removeSubview(".reblogs-stat", oldReblogsStat);
     this.addSubview(".reblogs-stat", newReblogsStat);
@@ -84,32 +84,32 @@ Soundclown.Views.TrackPreview = Backbone.CompositeView.extend({
     newCommentsStat.render();
   },
 
+	addPlaylist: function(playlist) {
+    var playlistsAdd = new Soundclown.Views.PlaylistsAdd({
+      model: playlist,
+      track: this.model
+    });
+
+    this.addSubview(".playlist-add-container", playlistsAdd);
+    playlistsAdd.render();
+	},
+
+	removePlaylist: function(playlist) {
+    var playlistsAdd = _(this.subviews()[".modal-content"]).find(function(subview) {
+      return subview.model == playlist;
+    });
+
+    this.removeSubview(".playlist-add-container", playlistsAdd);
+	},
+
   openModal: function(event) {
-    view = this;
     event.preventDefault();
     $("#playlist-modal").addClass("is-active");
-    Soundclown.currentUser.playlists().each(function(playlist) {
-      var playlistsAdd = new Soundclown.Views.PlaylistsAdd({
-        model: playlist,
-        track: view.model
-      });
-      view.addSubview(".modal-content", playlistsAdd);
-      playlistsAdd.render();
-    });
   },
 
   closeModal: function(event) {
-    view = this;
     event.preventDefault();
-
     $("#playlist-modal").removeClass("is-active");
-
-    Soundclown.currentUser.playlists().each(function(playlist) {
-      var playlistsAdd = _(view.subviews()[".modal-content"]).find(function(subview) {
-        return subview.model == playlist;
-      });
-      view.removeSubview(".modal-content", playlistsAdd);
-    });
   },
 
   render: function() {

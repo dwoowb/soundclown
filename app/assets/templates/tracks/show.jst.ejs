@@ -2,7 +2,7 @@
   <article class="track-info">
     <h2 class="poster">
       <a href="#/api/users/<%= track.get("poster").id %>">
-        <%= track.get("poster").escape("username") %>
+        <%= track.get("poster").username %>
       </a>
     </h2>
     <a href="#/api/tracks/<%= track.id %>">

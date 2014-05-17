@@ -1,10 +1,6 @@
 class Api::PlaylistsController < ApplicationController
   def index
-    @user = User.find(params[:user_id])
-    @playlists = @user.playlists
-    @my_liked_playlists = current_user.liked_playlists
-    @my_reblogged_playlists = current_user.reblogged_playlists
-
+    @playlists = User.find(params[:user_id]).playlists
     render partial: "api/playlists/index.json", locals: { playlists: @playlists }
   end
 
@@ -13,7 +9,8 @@ class Api::PlaylistsController < ApplicationController
     render partial: "api/playlists/show.json",
            locals: { playlist: @playlist,
                      likes: @playlist.likes,
-                     reblogs: @playlist.reblogs
+                     reblogs: @playlist.reblogs,
+                     playlistTracks: @playlist.playlist_tracks,
                    }
   end
 
@@ -24,7 +21,8 @@ class Api::PlaylistsController < ApplicationController
       render partial: "api/playlists/show.json",
              locals: { playlist: @playlist,
                        likes: @playlist.likes,
-                       reblogs: @playlist.reblogs
+                       reblogs: @playlist.reblogs,
+                       playlistTracks: @playlist.playlist_tracks,
                      }
     else
       render json: @playlist.errors, status: :unprocessable_entity
@@ -38,7 +36,8 @@ class Api::PlaylistsController < ApplicationController
       render partial: "api/playlists/show.json",
              locals: { playlist: @playlist,
                        likes: @playlist.likes,
-                       reblogs: @playlist.reblogs
+                       reblogs: @playlist.reblogs,
+                       playlistTracks: @playlist.playlist_tracks,
                      }
     else
       render json: @playlist.errors, status: :unprocessable_entity
@@ -50,14 +49,20 @@ class Api::PlaylistsController < ApplicationController
     render partial: "api/playlists/show.json",
            locals: { playlist: @playlist,
                      likes: @playlist.likes,
-                     reblogs: @playlist.reblogs
+                     reblogs: @playlist.reblogs,
+                     playlistTracks: @playlist.playlist_tracks,
                    }
   end
 
   def destroy
     @playlist = Playlist.find(params[:id])
     @playlist.destroy
-    render partial: "api/playlists/show.json", locals: { playlist: @playlist }
+    render partial: "api/playlists/show.json",
+           locals: { playlist: @playlist,
+                     likes: @playlist.likes,
+                     reblogs: @playlist.reblogs,
+                     playlistTracks: @playlist.playlist_tracks,
+                   }
   end
 
   private

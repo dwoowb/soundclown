@@ -3,24 +3,33 @@ Soundclown.Models.Playlist = Backbone.Model.extend({
 
   parse: function(jsonResp) {
     var that = this;
+    if (jsonResp.playlistTracks) {
+      this.playlistTracks().set(jsonResp.playlistTracks);
+      this.playlistTracks().each(function(playlistTrack) {
+        playlistTrack.set("playlist", that);
+      });
+      delete jsonResp.playlistTracks;
+    };
     if (jsonResp.tracks) {
       this.tracks().set(jsonResp.tracks, { parse: true });
-      this.tracks().each(function(track) {
-        track.set("poster", that);
-      });
+      // this.tracks().each(function(track) {
+//         track.playlistTracks().each(function(playlistTrack) {
+//           playlistTrack.set({ playlist_id, that.id });
+//         });
+//       });
       delete jsonResp.tracks;
     };
     if (jsonResp.likes) {
       this.likes().set(jsonResp.likes);
       this.likes().each(function(like) {
-        like.set("track", that);
+        like.set("playlist", that);
       });
       delete jsonResp.likes;
     };
     if (jsonResp.reblogs) {
       this.reblogs().set(jsonResp.reblogs);
       this.reblogs().each(function(reblog) {
-        reblog.set("track", that);
+        reblog.set("playlist", that);
       });
       delete jsonResp.reblogs;
     };
@@ -28,24 +37,31 @@ Soundclown.Models.Playlist = Backbone.Model.extend({
     return jsonResp;
   },
 
+  playlistTracks: function() {
+    if (!this.get("playlistTracks")) {
+      var playlistTracks = new Soundclown.Collections.PlaylistTracks([], {});
+      this.set({
+        playlistTracks: playlistTracks
+      });
+    };
+    return this.get("playlistTracks");
+  },
+
   tracks: function() {
     if (!this.get("tracks")) {
-      var userTracks = new Soundclown.Collections.Tracks([], {
-        user: this
-      });
+      var tracks = new Soundclown.Collections.Tracks([], {});
       this.set({
-        tracks: userTracks
+        tracks: tracks
       });
-    }
-
+    };
     return this.get("tracks");
   },
 
   likes: function() {
     if(!this.get("likes")) {
-      var trackLikes = new Soundclown.Collections.Likes([], {});
+      var playlistLikes = new Soundclown.Collections.Likes([], {});
       this.set({
-        likes: trackLikes
+        likes: playlistLikes
       });
     };
     return this.get("likes");
@@ -53,9 +69,9 @@ Soundclown.Models.Playlist = Backbone.Model.extend({
 
   reblogs: function() {
     if(!this.get("reblogs")) {
-      var trackReblogs = new Soundclown.Collections.Reblogs([], {});
+      var playlistReblogs = new Soundclown.Collections.Reblogs([], {});
       this.set({
-        reblogs: trackReblogs
+        reblogs: playlistReblogs
       });
     };
     return this.get("reblogs");

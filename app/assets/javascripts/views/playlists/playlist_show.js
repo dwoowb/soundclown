@@ -16,16 +16,17 @@ Soundclown.Views.PlaylistShow = Backbone.CompositeView.extend({
       rebloggableType: "Playlist"
     });
     this.addSubview(".reblog-new", reblogsNew);
+    // debugger
     var tracksIndex = new Soundclown.Views.TracksIndex({
       collection: this.model.tracks()
     })
     this.addSubview(".playlist-tracks", tracksIndex);
 		var likesStat = new Soundclown.Views.LikesStat({
-			track: this.model
+			likedItem: this.model
 		});
 		this.addSubview(".likes-stat", likesStat);
     var reblogsStat = new Soundclown.Views.ReblogsStat({
-      track: this.model
+      rebloggedItem: this.model
     });
     this.addSubview(".reblogs-stat", reblogsStat);
   },
@@ -33,12 +34,11 @@ Soundclown.Views.PlaylistShow = Backbone.CompositeView.extend({
   changeLikesStat: function() {
 		var playlist = this.model;
     var newLikesStat = new Soundclown.Views.LikesStat({
-      track: playlist
+      likedItem: playlist
     });
     var oldLikesStat = _(this.subviews()[".likes-stat"]).find(function(subview) {
-      return subview.track == playlist;
+      return subview.likedItem == playlist;
     });
-    debugger
     this.removeSubview(".likes-stat", oldLikesStat);
     this.addSubview(".likes-stat", newLikesStat);
     newLikesStat.render();
@@ -47,10 +47,10 @@ Soundclown.Views.PlaylistShow = Backbone.CompositeView.extend({
   changeReblogsStat: function() {
     var playlist = this.model;
     var newReblogsStat = new Soundclown.Views.ReblogsStat({
-      track: playlist
+      rebloggedItem: playlist
     });
     var oldReblogsStat = _(this.subviews()[".reblogs-stat"]).find(function(subview) {
-      return subview.track == playlist;
+      return subview.rebloggedItem == playlist;
     });
     this.removeSubview(".reblogs-stat", oldReblogsStat);
     this.addSubview(".reblogs-stat", newReblogsStat);
@@ -65,7 +65,5 @@ Soundclown.Views.PlaylistShow = Backbone.CompositeView.extend({
     this.renderSubviews();
     return this;
   }
-
-
 
 });
