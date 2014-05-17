@@ -1,14 +1,22 @@
-<% if (playlist.tracks().include(track)) { %>
-   <section class="playlist-add group"> 
+<% if (_.include(playlist.tracks().pluck("id"), track.id)) { %>
+   <section class="playlist-add been-added group">
 		<h1 class="playlist-title"><%= playlist.get("title") %></h1>
     <form class="playlist-action remove">
       <input class="submit" type="submit" value="Remove">
     </form>
+
+    <form class="playlist-action add">
+      <input class="submit" type="submit" value="Add">
+    </form>
 	</section>
 <% } else { %>
-   <section class="playlist-add group"> 
+   <section class="playlist-add group">
 		<h1 class="playlist-title"><%= playlist.get("title") %></h1>
     <form class="playlist-action remove">
+      <input class="submit" type="submit" value="Remove">
+    </form>
+
+    <form class="playlist-action add">
       <input class="submit" type="submit" value="Add">
     </form>
 	</section>

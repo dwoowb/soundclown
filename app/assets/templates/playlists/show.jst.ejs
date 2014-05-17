@@ -1,27 +1,27 @@
 <section class="playlist group">
-  <article class="playlist-info">
-    <h2 class="creator">
-      <a href="#/api/users/<%= playlist.get("creator").id %>">
-        <%= playlist.get("creator").escape("username") %>
-      </a>
-    </h2>
+  <article class="playlist-header group">
+    <div class="playlist-info">
+      <h2 class="creator">
+        <a href="#/api/users/<%= playlist.get("creator").id %>">
+          <%= playlist.get("creator").escape("username") %>
+        </a>
+      </h2>
 
-    <a href=#/api/playlists"<%= playlist.id %>">
-      <%= playlist.escape("title") %>
-    </a>
+      <a href=#/api/playlists"<%= playlist.id %>">
+        <%= playlist.escape("title") %>
+      </a>
+    </div>
+
+      <ul class="playlist stat">
+        <li class="likes-stat"></li>
+        <li class="reblogs-stat"></li>
+      </ul>
+
+      <ul class="playlist action">
+        <li class="like-new"></li>
+        <li class="reblog-new"></li>
+      </ul>
   </article>
 
-    <ul class="playlist stat">
-      <li class="likes-stat"></li>
-      <li class="reblogs-stat"></li>
-    </ul>
-
-    <ul class="playlist action">
-      <li class="like-new"></li>
-      <li class="reblog-new"></li>
-    </ul>
-
-
   <div class="playlist-tracks"></div>
-
 </section>

@@ -13,7 +13,8 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.comments(), "add remove", this.changeCommentsStat);
     this.listenTo(this.model.comments(), "add", this.addComment);
     this.listenTo(this.model.comments(), "remove", this.removeComment);
-
+    this.listenTo(Soundclown.currentUser.playlists(), "add", this.addPlaylist);
+    this.listenTo(Soundclown.currentUser.playlists(), "remove", this.removePlaylist);
 
     var likesNew = new Soundclown.Views.LikesNew({
       likedItem: this.model,
@@ -48,6 +49,7 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
     this.addSubview(".comments-stat", commentsStat);
 
     this.model.comments().each(this.addComment.bind(this));
+    Soundclown.currentUser.playlists().each(this.addPlaylist.bind(this));
   },
 
   changeLikesStat: function() {
@@ -106,33 +108,32 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
     this.removeSubview(".comments-index", commentsShow);
 	},
 
+	addPlaylist: function(playlist) {
+    var playlistsAdd = new Soundclown.Views.PlaylistsAdd({
+      model: playlist,
+      track: this.model
+    });
+
+    this.addSubview(".playlist-add-container", playlistsAdd);
+    playlistsAdd.render();
+	},
+
+	removePlaylist: function(playlist) {
+    var playlistsAdd = _(this.subviews()[".modal-content"]).find(function(subview) {
+      return subview.model == playlist;
+    });
+
+    this.removeSubview(".playlist-add-container", playlistsAdd);
+	},
+
   openModal: function(event) {
-    view = this;
     event.preventDefault();
     $("#playlist-modal").addClass("is-active");
-    Soundclown.currentUser.playlists().each(function(playlist) {
-      var playlistsAdd = new Soundclown.Views.PlaylistsAdd({
-        model: playlist,
-        track: view.model
-      });
-      view.addSubview(".modal-content", playlistsAdd);
-			// debugger
-      playlistsAdd.render();
-    });
   },
 
   closeModal: function(event) {
-    view = this;
     event.preventDefault();
-
     $("#playlist-modal").removeClass("is-active");
-
-    Soundclown.currentUser.playlists().each(function(playlist) {
-      var playlistsAdd = _(view.subviews()[".modal-content"]).find(function(subview) {
-        return subview.model == playlist;
-      });
-      view.removeSubview(".modal-content", playlistsAdd);
-    });
   },
 
   render: function() {

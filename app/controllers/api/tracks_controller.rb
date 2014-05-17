@@ -23,7 +23,8 @@ class Api::TracksController < ApplicationController
              locals: { track: @track,
                        comments: @track.comments,
                        likes: @track.likes,
-                       reblogs: @track.reblogs }
+                       reblogs: @track.reblogs,
+                       playlistTracks: @track.playlist_tracks}
     else
       flash.now[:errors] = @track.errors.full_messages
       render json: @track.errors, status: :unprocessable_entity
@@ -37,7 +38,8 @@ class Api::TracksController < ApplicationController
            locals: { track: @track,
                      comments: @track.comments,
                      likes: @track.likes,
-                     reblogs: @track.reblogs }
+                     reblogs: @track.reblogs,
+                     playlistTracks: @track.playlist_tracks}
   end
 
   def show
@@ -46,7 +48,8 @@ class Api::TracksController < ApplicationController
            locals: { track: @track,
                      comments: @track.comments,
                      likes: @track.likes,
-                     reblogs: @track.reblogs }
+                     reblogs: @track.reblogs,
+                     playlistTracks: @track.playlist_tracks}
   end
 
   def destroy
@@ -56,7 +59,8 @@ class Api::TracksController < ApplicationController
            locals: { track: @track,
                      comments: @track.comments,
                      likes: @track.likes,
-                     reblogs: @track.reblogs }
+                     reblogs: @track.reblogs,
+                     playlistTracks: @track.playlist_tracks}
   end
 
   private

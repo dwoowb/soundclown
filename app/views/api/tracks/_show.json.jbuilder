@@ -9,6 +9,13 @@ json.poster do
   json.username track.poster.username
 end
 
+playlistTracks ||= nil
+unless playlistTracks.nil?
+  json.playlistTracks do
+    json.partial! "api/playlist_tracks/index.json", playlistTracks: playlistTracks
+  end
+end
+
 comments ||= nil
 unless comments.nil?
   json.comments do

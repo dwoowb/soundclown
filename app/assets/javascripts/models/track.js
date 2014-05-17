@@ -3,6 +3,12 @@ Soundclown.Models.Track = Backbone.Model.extend({
 
   parse: function(jsonResp) {
     var that = this;
+    if (jsonResp.playlistTracks) {
+      this.playlistTracks().set(jsonResp.playlistTracks);
+      this.playlistTracks().each(function(playlistTrack) {
+        playlistTrack.set("track", that);
+      });
+    };
     if (jsonResp.comments) {
       this.comments().set(jsonResp.comments);
       this.comments().each(function(comment) {
@@ -10,7 +16,6 @@ Soundclown.Models.Track = Backbone.Model.extend({
       });
       delete jsonResp.comments;
     };
-
     if (jsonResp.likes) {
       this.likes().set(jsonResp.likes);
       this.likes().each(function(like) {
@@ -27,6 +32,16 @@ Soundclown.Models.Track = Backbone.Model.extend({
     };
 
     return jsonResp;
+  },
+
+  playlistTracks: function() {
+    if (!this.get("playlistTracks")) {
+      var playlistTracks = new Soundclown.Collections.PlaylistTracks([], {});
+      this.set({
+        playlistTracks: playlistTracks
+      });
+    };
+    return this.get("playlistTracks");
   },
 
   comments: function() {

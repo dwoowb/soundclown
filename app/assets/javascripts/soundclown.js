@@ -11,6 +11,15 @@ window.Soundclown = {
     this.users = new Soundclown.Collections.Users(Soundclown.currentUser);
     this.tracks = Soundclown.currentUser.tracks();
     this.playlists = Soundclown.currentUser.playlists();
+    this.playlistTracks = new Soundclown.Collections.PlaylistTracks();
+    this.tracks.each(function(track) {
+      if (track.playlistTracks().length !== 0) {
+        _.each(track.playlistTracks(), function(playlistTrack) {
+          playlistTrackModel = new Soundclown.Models.PlaylistTrack(playlistTrack);
+          Soundclown.playlistTracks.add(playlistTrackModel);
+        });
+      };
+    });
     this.likes = Soundclown.currentUser.likes();
     this.reblogs = Soundclown.currentUser.reblogs();
     this.comments = Soundclown.currentUser.comments();

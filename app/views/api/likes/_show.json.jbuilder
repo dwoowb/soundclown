@@ -34,9 +34,9 @@ elsif like.likeable_type == "Playlist"
         json.id track.id
         json.title track.title
         json.artist track.artist
-        json.likes_count liked_item.likes_count
-        json.reblogs_count liked_item.reblogs_count
-        json.comments_count liked_item.comments_count
+        json.likes_count track.likes_count
+        json.reblogs_count track.reblogs_count
+        json.comments_count track.comments_count
         json.poster do
           json.id track.poster.id
           json.username track.poster.username

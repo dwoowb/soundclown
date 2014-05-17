@@ -4,7 +4,7 @@ class Api::PlaylistTracksController < ApplicationController
     @playlist_track = PlaylistTrack.new(playlist_track_params)
 
     if @playlist_track.save
-      head :ok
+      render partial: "api/playlist_tracks/show.json", locals: { playlistTrack: @playlist_track }
     else
       render json: @playlist_track.errors, status: :unprocessable_entity
     end
@@ -13,7 +13,7 @@ class Api::PlaylistTracksController < ApplicationController
   def destroy
     @playlist_track = PlaylistTrack.find(params[:id])
     @playlist_track.destroy
-    head :ok
+    render partial: "api/playlist_tracks/show.json", locals: { playlistTrack: @playlist_track }
   end
 
   private

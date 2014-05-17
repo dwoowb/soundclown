@@ -16,7 +16,7 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
     event.preventDefault();
 
     var $submit = $(event.currentTarget)
-    var $scope = $submit.closest("form");
+    var $scope = $submit.closest("div");
     var params = $submit.serializeJSON()["like"];
     var like = new Soundclown.Models.Like(params);
 
@@ -24,7 +24,7 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
       success: function() {
         Soundclown.likes.add(like);
         Soundclown.currentUser.likes().add(like);
-        $(".like-form").addClass("been-liked");
+        $scope.addClass("been-liked");
       }
     });
     this.likedItem.likes().add(like);
@@ -32,15 +32,17 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
 
   unlike: function(event) {
     event.preventDefault();
+    var $submit = $(event.currentTarget)
+    var $scope = $submit.closest("div");
 
-    var params = $(event.currentTarget).serializeJSON()["like"];
+    var params = $submit.serializeJSON()["like"];
     var like = Soundclown.currentUser
                            .likes()
                            .findWhere({ likeable_id: parseInt(params["likeable_id"]) });
     this.likedItem.likes().remove(like);
     like.destroy({
       success: function() {
-        $(".like-form").removeClass("been-liked");
+        $scope.removeClass("been-liked");
       }
     })
 

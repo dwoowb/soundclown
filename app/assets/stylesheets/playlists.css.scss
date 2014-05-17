@@ -27,8 +27,9 @@ section.playlist{
   display: inline;
 }
 
-.playlist-info {
-  margin-bottom: 20px;
+.playlist-header {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #EEE;
 }
 
 .playlist-preview {
@@ -67,4 +68,22 @@ section.playlist{
 	border-bottom: 1px solid #EEE;
 }
 
+/* DEFAULT STATES */
 
+.add {
+  display: block;
+}
+
+.remove {
+  display: none;
+}
+
+/* MODIFIED STATES */
+
+.been-added .add {
+  display: none;
+}
+
+.been-added .remove {
+  display: block;
+}

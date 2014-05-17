@@ -10,20 +10,20 @@ Soundclown.Views.TracksIndex = Backbone.CompositeView.extend({
   },
 
 	addTrack: function(track) {
-		var trackShow = new Soundclown.Views.TrackShow({
+		var trackPreview = new Soundclown.Views.TrackPreview({
 			model: track
 		});
 
-    this.addSubview(".tracks-index", trackShow);
-    trackShow.render();
+    this.addSubview(".tracks-index", trackPreview);
+    trackPreview.render();
 	},
 
 	removeTrack: function(track) {
-    var trackShow = _(this.subviews()[".tracks-index"]).find(function(subview) {
+    var trackPreview = _(this.subviews()[".tracks-index"]).find(function(subview) {
       return subview.model == track;
     });
 
-    this.removeSubview(".tracks-index", trackShow);
+    this.removeSubview(".tracks-index", trackPreview);
 	},
 
   render: function() {
