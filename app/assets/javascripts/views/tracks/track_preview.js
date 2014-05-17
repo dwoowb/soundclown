@@ -14,6 +14,7 @@ Soundclown.Views.TrackPreview = Backbone.CompositeView.extend({
     this.listenTo(this.model.comments(), "add remove", this.changeCommentsStat);
     this.listenTo(Soundclown.currentUser.playlists(), "add", this.addPlaylist);
     this.listenTo(Soundclown.currentUser.playlists(), "remove", this.removePlaylist);
+    //  TODO: playlist-adds do not render in modal
 
     var likesNew = new Soundclown.Views.LikesNew({
       likedItem: this.model,
@@ -105,6 +106,7 @@ Soundclown.Views.TrackPreview = Backbone.CompositeView.extend({
   openModal: function(event) {
     event.preventDefault();
     $("#playlist-modal").addClass("is-active");
+    debugger
   },
 
   closeModal: function(event) {

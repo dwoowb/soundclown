@@ -3,8 +3,15 @@ Soundclown.Views.UserMain = Backbone.View.extend({
   className: "user-main",
 
   initialize: function(options) {
-    this.listenTo(this.model.tracks(), "add remove change", this.render);
-    // should also have listeners for user's reblogged items
+    var that = this;
+    this.listenTo(this.model.tracks(), "add", this.addTrack);
+    this.listenTo(this.model.tracks(), "remove", this.removeTrack);
+    this.listenTo(this.model.rebloggedTracks(), "add", this.addTrack);
+    this.listenTo(this.model.rebloggedTracks(), "remove", this.removeTrack);
+    this.listenTo(this.model.playlists(), "add", this.addPlaylist);
+    this.listenTo(this.model.playlists(), "remove", this.removePlaylist);
+    this.listenTo(this.model.rebloggedPlaylists(), "add", this.addTrack);
+    this.listenTo(this.model.rebloggedPlaylists(), "remove", this.removePlaylist);
   },
 
   events: {
@@ -13,7 +20,10 @@ Soundclown.Views.UserMain = Backbone.View.extend({
 
   render: function() {
     var renderedContent = this.template({
-      user: this.model
+      tracks: this.model.tracks(),
+      rebloggedTracks: this.model.rebloggedTracks(),
+      playlists: this.model.playlists(),
+      rebloggedPlaylists: this.model.rebloggedPlaylists()
     });
 
     this.$el.html(renderedContent);

@@ -14,7 +14,7 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
 
   like: function(event) {
     event.preventDefault();
-
+    var that = this;
     var $submit = $(event.currentTarget)
     var $scope = $submit.closest("div");
     var params = $submit.serializeJSON()["like"];
@@ -24,6 +24,11 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
       success: function() {
         Soundclown.likes.add(like);
         Soundclown.currentUser.likes().add(like);
+        if (that.likeableType === "Track") {
+          Soundclown.currentUser.likedTracks().add(that.likedItem);
+        } else {
+          Soundclown.currentUser.likedPlaylists().add(that.likedItem);
+        };
         $scope.addClass("been-liked");
       }
     });
@@ -40,6 +45,11 @@ Soundclown.Views.LikesNew = Backbone.View.extend({
                            .likes()
                            .findWhere({ likeable_id: parseInt(params["likeable_id"]) });
     this.likedItem.likes().remove(like);
+    if (this.likeableType === "Track") {
+      Soundclown.currentUser.likedTracks().remove(this.likedItem);
+    } else {
+      Soundclown.currentUser.likedPlaylists().remove(this.likedItem);
+    };
     like.destroy({
       success: function() {
         $scope.removeClass("been-liked");

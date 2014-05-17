@@ -15,7 +15,7 @@ Soundclown.Views.PlaylistsAdd = Backbone.View.extend({
     var view = this;
     var playlist = this.model;
     var track = this.track;
-    debugger
+    // debugger
     event.preventDefault();
 
     var $submit = $(event.currentTarget)
@@ -32,6 +32,7 @@ Soundclown.Views.PlaylistsAdd = Backbone.View.extend({
     var view = this;
     var playlist = this.model;
     var track = this.track;
+    // debugger
     event.preventDefault();
 
     var $submit = $(event.currentTarget)

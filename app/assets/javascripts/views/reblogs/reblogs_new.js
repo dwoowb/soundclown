@@ -15,6 +15,7 @@ Soundclown.Views.ReblogsNew = Backbone.View.extend({
 
   reblog: function(event) {
     event.preventDefault();
+    var that = this;
     var $submit = $(event.currentTarget)
     var $scope = $submit.closest("div");
     var params = $submit.serializeJSON()["reblog"];
@@ -23,6 +24,13 @@ Soundclown.Views.ReblogsNew = Backbone.View.extend({
       success: function() {
         Soundclown.reblogs.add(reblog);
         Soundclown.currentUser.reblogs().add(reblog);
+        debugger
+        if (that.rebloggableType === "Track") {
+          Soundclown.currentUser.rebloggedTracks().add(that.rebloggedItem);
+        } else {
+          Soundclown.currentUser.rebloggedPlaylists().add(that.rebloggedItem);
+        };
+        debugger
         $scope.addClass("been-reblogged");
       }
     });
@@ -38,6 +46,11 @@ Soundclown.Views.ReblogsNew = Backbone.View.extend({
                            .reblogs()
                            .findWhere({ rebloggable_id: parseInt(params["rebloggable_id"]) });
     this.rebloggedItem.reblogs().remove(reblog);
+    if (this.rebloggableType === "Track") {
+      Soundclown.currentUser.rebloggedTracks().remove(this.rebloggedItem);
+    } else {
+      Soundclown.currentUser.rebloggedPlaylists().remove(this.rebloggedItem);
+    };
     reblog.destroy({
       success: function() {
         $scope.removeClass("been-reblogged");
