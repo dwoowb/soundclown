@@ -1,12 +1,17 @@
 Soundclown.Views.UserShow = Backbone.CompositeView.extend({
   template: JST["users/show"],
 
-  events: {
-
-  },
-
   initialize: function(options) {
-
-  }
+		this.listen
+  },
+	
+	render: function() {
+		var renderedContent = this.template({
+			user: this.model
+		});
+		this.$el.html(renderedContent);
+		this.renderSubviews();
+		return this;
+	}
 
 })

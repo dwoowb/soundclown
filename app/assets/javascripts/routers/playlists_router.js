@@ -11,7 +11,7 @@ Soundclown.Routers.Playlists = Backbone.Router.extend({
     this._getPlaylist(id, function(playlist) {
       var showView = new Soundclown.Views.PlaylistShow({
         model: playlist
-      })
+      });
       Soundclown._swapView("rootEl", showView)
     });
   },

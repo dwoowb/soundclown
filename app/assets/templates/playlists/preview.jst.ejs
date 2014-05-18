@@ -1,0 +1,46 @@
+<section class="playlist">
+
+  <article class="playlist">
+    <article class="playlist-info">
+      <a class="creator" href="#/api/users/<%= playlist.get("creator").id %>">
+        <%= playlist.get("creator").username %>
+      </a>
+      <a class="playlist-title" href="#/api/playlists/<%= playlist.id %>">
+        <%= playlist.escape("title") %>
+      </a>
+    </article>
+
+    <nav class="playlist-nav group">
+      <ul class="playlist stat">
+        <li class="playlist-likes-stat"></li>
+        <li class="playlist-reblogs-stat"></li>
+      </ul>
+
+      <ul class="playlist action">
+        <li class="like-new"></li>
+        <li class="reblog-new"></li>
+      </ul>
+    </nav>
+  </article>
+
+  <ul class="playlist-preview">
+    <% playlist.tracks().each(function(track) { %>
+      <% if (index < 5) { %>
+        <li>
+          <a href="#/api/tracks/<%= track.id %>">
+             <p class="original poster">
+               <%= track.get("poster").username %>
+             </p>
+             <%= " - " + track.escapte("artist") + " - " + track.escape("title") %>
+          </a>
+        </li>
+      <% }; %>
+    <% }); %>
+    <li>
+      <a href="#/api/playlists<%= playlist.id %>">
+        View All Tracks
+      </a>
+    </li>
+  </ul>
+
+</section>
