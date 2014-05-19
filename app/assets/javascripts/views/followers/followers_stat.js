@@ -2,12 +2,12 @@ Soundclown.Views.FollowersStat = Backbone.View.extend({
   template: JST["followers/stat"],
 
   initialize: function(options) {
-    this.user = options.user
+    this.followee = options.followee
   },
 
   render: function() {
     var renderedContent = this.template({
-      user: this.user
+      followee: this.followee
     });
     this.$el.html(renderedContent);
     return this;

@@ -24,11 +24,20 @@ window.Soundclown = {
     this.reblogs = Soundclown.currentUser.reblogs();
     this.comments = Soundclown.currentUser.comments();
     this.inFollows = new Soundclown.Collections.Follows();
+    this.users.each(function(user) {
+      if (user.inFollows().length !== 0) {
+        _.each(user.inFollows(), function(follow) {
+          followModel = new Soundclown.Models.Follow(follow);
+          Soundclown.inFollows.add(followModel);
+        });
+      };
+    });
+    // this.outFollows = new Soundclown.Collections.Follows();
     // this.users.each(function(user) {
-    //   if (user.inFollows().length !== 0) {
-    //     _.each(user.follows(), function(follow) {
+    //   if (user.outFollows().length !== 0) {
+    //     _.each(user.outFollows(), function(follow) {
     //       followModel = new Soundclown.Models.Follow(follow);
-    //       Soundclown.follows.add(followModel);
+    //       Soundclown.outFollows.add(followModel);
     //     });
     //   };
     // });

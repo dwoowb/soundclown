@@ -1,6 +1,7 @@
-<% if (user === Soundclown.currentUser) {%>
+<% if (user === Soundclown.currentUser) { %>
   <!-- doesn't allow a user to follow themselves -->
-<% } else if (user.followers().findWhere({ id: user.id })) { %>
+
+<% } else if (user.followers().findWhere({ id: Soundclown.currentUser.id })) { %>
   <div class="follow-form been-followed">
     <form class="unfollow">
       <input type="hidden" name="follow[follower_id]" value="<%= Soundclown.currentUser.id %>">

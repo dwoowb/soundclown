@@ -15,12 +15,12 @@ unless inFollows.nil?
   end
 end
 
-outFollows ||= nil
-unless outFollows.nil?
-  json.outFollows do
-    json.partial! "api/follows/index.json", follows: outFollows
-  end
-end
+# outFollows ||= nil
+# unless outFollows.nil?
+#   json.outFollows do
+#     json.partial! "api/follows/index.json", follows: outFollows
+#   end
+# end
 
 json.avatar user.avatar.url(:thumb)
 

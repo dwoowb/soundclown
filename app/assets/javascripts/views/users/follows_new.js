@@ -15,16 +15,15 @@ Soundclown.Views.FollowsNew = Backbone.View.extend({
     var view = this;
     var followee = this.followee;
     var follower = Soundclown.currentUser;
-    // debugger
     event.preventDefault();
 
-    var $submit = $(event.currentTarget)
+    var $submit = $(event.currentTarget);
     var $scope = $submit.closest("form");
-    followee.followers().add(follower);
     var follow = new Soundclown.Models.Follow({ followee_id: followee.id, follower_id: follower.id })
-
     follow.save({}, {});
-    Soundclown.follows.add(follow);
+    Soundclown.inFollows.add(follow);
+    followee.inFollows().add(follow);
+    followee.followers().add(follower);
     this.render();
   },
 
@@ -32,13 +31,12 @@ Soundclown.Views.FollowsNew = Backbone.View.extend({
     var view = this;
     var followee = this.followee;
     var follower = Soundclown.currentUser;
-    debugger
     event.preventDefault();
 
-    var $submit = $(event.currentTarget)
+    var $submit = $(event.currentTarget);
     var $scope = $submit.closest("form");
     followee.followers().remove(follower);
-    var follow = Soundclown.follows.findWhere({ followee_id: followee.id, follower_id: follower.id });
+    var follow = Soundclown.inFollows.findWhere({ followee_id: followee.id, follower_id: follower.id });
     follow.destroy();
     this.render();
   },

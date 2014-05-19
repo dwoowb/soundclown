@@ -8,7 +8,6 @@ class Follow < ActiveRecord::Base
     foreign_key: :follower_id,
     primary_key: :id,
     inverse_of: :in_follows
-    # counter_cache: true
   )
 
   belongs_to(
@@ -17,7 +16,6 @@ class Follow < ActiveRecord::Base
     foreign_key: :followee_id,
     primary_key: :id,
     inverse_of: :out_follows
-    # counter_cache: true
   )
 
   after_create :set_notification

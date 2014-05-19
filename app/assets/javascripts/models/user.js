@@ -61,6 +61,21 @@ Soundclown.Models.User = Backbone.Model.extend({
       });
       delete jsonResp.notifications;
     };
+    if (jsonResp.inFollows) {
+      this.inFollows().set(jsonResp.inFollows);
+      this.inFollows().each(function(inFollow) {
+        inFollow.set("followee", that);
+        inFollow.set("follower", Soundclown.currentUser);
+      });
+      delete jsonResp.inFollows;
+    };
+    // if (jsonResp.outFollows) {
+    //   this.outFollows().set(jsonResp.outFollows);
+    //   this.outFollows().each(function(outFollow) {
+    //     outFollows.set("follower", that);
+    //   })
+    //   delete jsonResp.followees;
+    // };
     if (jsonResp.followers) {
       this.followers().set(jsonResp.followers);
       this.followers().each(function(follower) {
@@ -86,7 +101,7 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.set({
         tracks: userTracks
       });
-    }
+    };
     return this.get("tracks");
   },
 
@@ -96,7 +111,7 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.set({
         playlists: userPlaylists
       });
-    }
+    };
     return this.get("playlists");
   },
 
@@ -106,7 +121,7 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.set({
         likes: userLikes
       });
-    }
+    };
     return this.get("likes");
   },
 
@@ -116,7 +131,7 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.set({
         likedTracks: likedTracks
       });
-    }
+    };
     return this.get("likedTracks");
   },
 
@@ -126,7 +141,7 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.set({
         likedPlaylists: likedPlaylists
       });
-    }
+    };
     return this.get("likedPlaylists");
   },
 
@@ -136,7 +151,7 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.set({
         reblogs: userReblogs
       });
-    }
+    };
     return this.get("reblogs");
   },
 
@@ -146,7 +161,7 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.set({
         rebloggedTracks: rebloggedTracks
       });
-    }
+    };
     return this.get("rebloggedTracks");
   },
 
@@ -156,7 +171,7 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.set({
         rebloggedPlaylists: rebloggedPlaylists
       });
-    }
+    };
     return this.get("rebloggedPlaylists");
   },
 
@@ -166,7 +181,7 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.set({
         comments: userComments
       });
-    }
+    };
     return this.get("comments");
   },
 
@@ -176,20 +191,37 @@ Soundclown.Models.User = Backbone.Model.extend({
       this.set({
         notifications: notifications
       });
-    }
+    };
     return this.get("notifications");
   },
 
+  inFollows: function() {
+    if (!this.get("inFollows")) {
+      var inFollows = new Soundclown.Collections.Follows([], {});
+      this.set({
+        inFollows: inFollows
+      });
+    };
+    return this.get("inFollows");
+  },
+  // outFollows: function() {
+  //   if (!this.get("outFollows")) {
+  //     var outFollows = new Soundclown.Collections.Follows([], {});
+  //     this.set({
+  //       outFollows: outFollows
+  //     });
+  //   };
+  //   return this.get("outFollows");
+  // },
   followers: function() {
     if (!this.get("followers")) {
       var followers = new Soundclown.Collections.Users([], {});
       this.set({
         followers: followers
       });
-    }
+    };
     return this.get("followers");
   },
-
   followees: function() {
     if (!this.get("followees")) {
       var followees = new Soundclown.Collections.Users([], {});

@@ -29,11 +29,6 @@ class Api::UsersController < ApplicationController
                           :reblogged_playlists)
                           .find(params[:id])
 
-    render partial: "api/users/show.json", locals: { user: @user, inFollows: @user.in_follows, outFollows: @user.out_follows }
-  end
-
-  def edit
-    @user = User.find(params[:id])
     render partial: "api/users/show.json", locals: { user: @user }
   end
 

@@ -10,16 +10,26 @@
 
     <div class="user-stats group">
       <h1 class="followers">
-        <a class="followers-stat" href="#"></a>
+        <a class="followers-stat" href="#/api/<%= user.id %>/followers"></a>
       </h1>
       <h1 class="tracks">
-        <a class="tracks-stat" href="#"></a>
+        <a class="tracks-stat" href="#/api/<%= user.id %>/tracks"></a>
       </h1>
     </div>
   </article>
 
   <article class="user-action">
-    <div class="user-edit"></div>
+    <% if (user.id === Soundclown.currentUser.id) { %>
+      <a class="edit-link">Edit</a>
+    <% } %>
     <div class="user-follow"></div>
   </article>
+</section>
+
+<section id="edit-modal" class="modal">
+  <article class="modal-content">
+    <span class="modal-x">&times;</span>
+    <div class="user-edit-container"></div>
+  </article>
+  <div class="modal-screen close-modal"></div>
 </section>

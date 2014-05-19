@@ -49,10 +49,12 @@
 
 .follow {
   display: block;
+  float: right;
 }
 
 .unfollow {
   display: none;
+  float: right;
 }
 
 /* MODIFIED STATES */

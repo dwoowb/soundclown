@@ -2,12 +2,11 @@ Soundclown::Application.routes.draw do
 
   root to: "root#root"
 
-  # Backbone Api
+  # Backbone
 
   namespace :api do
     resources :users, except: [:index] do
-      resources :tracks, only: [:index, :new, :create, :update]
-      resource  :follow, only: [:create, :destroy]
+      resources :tracks, only: [:index, :new, :create]
       resources :playlists, only: [:index]
       resources :likes, only: [:index]
       resources :comments, only: [:index]
@@ -19,9 +18,8 @@ Soundclown::Application.routes.draw do
     end
 
     resources :notifications, only: [:index]
-
     resources :comments, only: [:create, :destroy]
-
+    resources :follows, only: [:create, :destroy]
     resources :playlist_tracks, only: [:create, :destroy]
     resources :playlists, except: [:index]
     resources :tracks, only: [:show, :destroy]
@@ -33,7 +31,7 @@ Soundclown::Application.routes.draw do
 
 
 
-  # Rails
+  # Rails API
 
   resource  :session, only: [:create, :new, :destroy]
 
