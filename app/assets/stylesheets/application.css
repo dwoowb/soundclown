@@ -83,9 +83,9 @@ input[type="submit"] {
 
 .header {
   background: -webkit-linear-gradient(#272727, #393939, #393939, #272727);
-	position: fixed;
-	z-index: 998;
-	width: 100%;
+  position: fixed;
+  z-index: 998;
+  width: 100%;
 }
 
 .header-wrap {
@@ -131,6 +131,8 @@ input[type="submit"] {
 .header-stream > a:active  {
   color: #fff;
 }
+
+/* YOU NEED TO FIX THIS SHIT */
 
 .navbar-dropdown {
   display: none;

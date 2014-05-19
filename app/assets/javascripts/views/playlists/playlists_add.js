@@ -2,8 +2,8 @@ Soundclown.Views.PlaylistsAdd = Backbone.View.extend({
   template: JST["playlists/add"],
 
   events: {
-    "submit form.add": "add",
-    "submit form.remove": "remove"
+    "submit form.add": "addToPlaylist",
+    "submit form.remove": "removeFromPlaylist"
   },
 
   initialize: function(options) {
@@ -11,7 +11,7 @@ Soundclown.Views.PlaylistsAdd = Backbone.View.extend({
     this.track = options.track
   },
 
-  add: function(event) {
+  addToPlaylist: function(event) {
     var view = this;
     var playlist = this.model;
     var track = this.track;
@@ -28,7 +28,7 @@ Soundclown.Views.PlaylistsAdd = Backbone.View.extend({
     this.render();
   },
 
-  remove: function(event) {
+  removeFromPlaylist: function(event) {
     var view = this;
     var playlist = this.model;
     var track = this.track;

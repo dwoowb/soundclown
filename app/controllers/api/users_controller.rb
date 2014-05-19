@@ -28,19 +28,20 @@ class Api::UsersController < ApplicationController
                           :liked_playlists,
                           :reblogged_playlists)
                           .find(params[:id])
-    render partial: "api/users/show.json", locals: { user: @user }
+
+    render partial: "api/users/show.json", locals: { user: @user, inFollows: @user.in_follows, outFollows: @user.out_follows }
   end
 
   def edit
     @user = User.find(params[:id])
-    render json: @user
+    render partial: "api/users/show.json", locals: { user: @user }
   end
 
   def update
     @user = User.find(params[:id])
 
     if @user.update(user_params)
-      render json: @user
+      render partial: "api/users/show.json", locals: { user: @user }
     else
       render json: @user.errors, status: :unprocessable_entity
     end
@@ -49,15 +50,17 @@ class Api::UsersController < ApplicationController
   def destroy
     @user = User.find_by(params[:id])
     @user.destroy if @user
-    redirect_to root_url
+    render partial: "api/users/show.json", locals: { user: @user }
   end
 
   def followers
     @user = User.find(params[:user_id])
+    render partial: "api/users/show.json", locals: { user: @user }
   end
 
   def followees
     @user = User.find(params[:user_id])
+    render partial: "api/users/show.json", locals: { user: @user }
   end
 
   private

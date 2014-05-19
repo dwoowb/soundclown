@@ -4,21 +4,16 @@ class Api::FollowsController < ApplicationController
     @follow = Follow.new(follow_params)
 
     if @follow.save
-      redirect_to :back
+      render partial: "api/follows/show.json", locals: { follow: @follow }
     else
-      flash.now[:errors] = @follow.errors.full_messages
-      redirect_to :back
+      render json: @follow.errors, status: :unprocessable_entity
     end
   end
 
-  def show
-    @user = User.find(params[:user_id])
-  end
-
   def destroy
-    @follow = Follow.find_by(followee_id: follow_params[:followee_id])
+    @follow = Follow.find(params[:id])
     @follow.destroy
-    redirect_to :back
+    render partial: "api/follows/show.json", locals: { follow: @follow }
   end
 
   private

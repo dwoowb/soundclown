@@ -24,13 +24,11 @@ Soundclown.Views.ReblogsNew = Backbone.View.extend({
       success: function() {
         Soundclown.reblogs.add(reblog);
         Soundclown.currentUser.reblogs().add(reblog);
-        debugger
         if (that.rebloggableType === "Track") {
           Soundclown.currentUser.rebloggedTracks().add(that.rebloggedItem);
         } else {
           Soundclown.currentUser.rebloggedPlaylists().add(that.rebloggedItem);
         };
-        debugger
         $scope.addClass("been-reblogged");
       }
     });

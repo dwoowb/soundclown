@@ -75,8 +75,6 @@ Soundclown.Models.User = Backbone.Model.extend({
       })
       delete jsonResp.followees;
     };
-
-
     return jsonResp;
   },
 
@@ -84,161 +82,121 @@ Soundclown.Models.User = Backbone.Model.extend({
 
   tracks: function() {
     if (!this.get("tracks")) {
-      var userTracks = new Soundclown.Collections.Tracks([], {
-        user: this
-      });
+      var userTracks = new Soundclown.Collections.Tracks([], {});
       this.set({
         tracks: userTracks
       });
     }
-
     return this.get("tracks");
   },
 
   playlists: function() {
     if (!this.get("playlists")) {
-      var userPlaylists = new Soundclown.Collections.Playlists([], {
-        user: this
-      });
+      var userPlaylists = new Soundclown.Collections.Playlists([], {});
       this.set({
         playlists: userPlaylists
       });
     }
-
     return this.get("playlists");
   },
 
   likes: function() {
     if (!this.get("likes")) {
-      var userLikes = new Soundclown.Collections.Likes([], {
-        user: this
-      });
+      var userLikes = new Soundclown.Collections.Likes([], {});
       this.set({
         likes: userLikes
       });
     }
-
     return this.get("likes");
   },
 
   likedTracks: function() {
     if (!this.get("likedTracks")) {
-      var likedTracks = new Soundclown.Collections.Tracks([], {
-        user: this
-      });
+      var likedTracks = new Soundclown.Collections.Tracks([], {});
       this.set({
         likedTracks: likedTracks
       });
     }
-
     return this.get("likedTracks");
-
   },
 
   likedPlaylists: function() {
     if (!this.get("likedPlaylists")) {
-      var likedPlaylists = new Soundclown.Collections.Playlists([], {
-        user: this
-      });
+      var likedPlaylists = new Soundclown.Collections.Playlists([], { });
       this.set({
         likedPlaylists: likedPlaylists
       });
     }
-
     return this.get("likedPlaylists");
-
   },
 
   reblogs: function() {
     if (!this.get("reblogs")) {
-      var userReblogs = new Soundclown.Collections.Reblogs([], {
-        user: this
-      });
+      var userReblogs = new Soundclown.Collections.Reblogs([], {});
       this.set({
         reblogs: userReblogs
       });
     }
-
     return this.get("reblogs");
   },
 
   rebloggedTracks: function() {
     if (!this.get("rebloggedTracks")) {
-      var rebloggedTracks = new Soundclown.Collections.Tracks([], {
-        user: this
-      });
+      var rebloggedTracks = new Soundclown.Collections.Tracks([], {});
       this.set({
         rebloggedTracks: rebloggedTracks
       });
     }
-
     return this.get("rebloggedTracks");
-
   },
 
   rebloggedPlaylists: function() {
     if (!this.get("rebloggedPlaylists")) {
-      var rebloggedPlaylists = new Soundclown.Collections.Playlists([], {
-        user: this
-      });
+      var rebloggedPlaylists = new Soundclown.Collections.Playlists([], {});
       this.set({
         rebloggedPlaylists: rebloggedPlaylists
       });
     }
-
     return this.get("rebloggedPlaylists");
-
   },
 
   comments: function() {
     if (!this.get("comments")) {
-      var userComments = new Soundclown.Collections.Comments([], {
-        user: this
-      });
+      var userComments = new Soundclown.Collections.Comments([], {});
       this.set({
         comments: userComments
       });
     }
-
     return this.get("comments");
   },
 
   notifications: function() {
     if (!this.get("notifications")) {
-      var notifications = new Soundclown.Collections.Notifications([], {
-        user: this
-      });
+      var notifications = new Soundclown.Collections.Notifications([], {});
       this.set({
         notifications: notifications
       });
     }
-
     return this.get("notifications");
   },
 
   followers: function() {
     if (!this.get("followers")) {
-      var followers = new Soundclown.Collections.Users([], {
-        user: this
-      });
+      var followers = new Soundclown.Collections.Users([], {});
       this.set({
         followers: followers
       });
     }
-
     return this.get("followers");
   },
 
   followees: function() {
     if (!this.get("followees")) {
-      var followees = new Soundclown.Collections.Users([], {
-        user: this
-      });
+      var followees = new Soundclown.Collections.Users([], {});
       this.set({
         followees: followees
       });
     }
-
     return this.get("followees");
   }
 

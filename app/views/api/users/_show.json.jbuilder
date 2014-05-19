@@ -8,6 +8,22 @@ json.(user,
 json.followers_count user.followers.size
 json.followees_count user.followees.size
 
+inFollows ||= nil
+unless inFollows.nil?
+  json.inFollows do
+    json.partial! "api/follows/index.json", follows: inFollows
+  end
+end
+
+outFollows ||= nil
+unless outFollows.nil?
+  json.outFollows do
+    json.partial! "api/follows/index.json", follows: outFollows
+  end
+end
+
+json.avatar user.avatar.url(:thumb)
+
 json.tracks do
   json.partial! "api/tracks/index.json", tracks: user.tracks
 end

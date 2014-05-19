@@ -1,0 +1,25 @@
+<section class="user">
+
+  <img class= "avatar" src="<%= user.escape("avatar") %>">
+
+  <article class="user-info">
+    <h1 class="username"><strong><%= user.escape("username") %></strong></h1>
+    <h1 class="name"><%= user.escape("fname") %></h1>
+    <h1 class="name"><%= user.escape("lname") %></h1>
+    <h2 class="city"><%= user.escape("city") %></h2>
+
+    <div class="user-stats group">
+      <h1 class="followers">
+        <a class="followers-stat" href="#"></a>
+      </h1>
+      <h1 class="tracks">
+        <a class="tracks-stat" href="#"></a>
+      </h1>
+    </div>
+  </article>
+
+  <article class="user-action">
+    <div class="user-edit"></div>
+    <div class="user-follow"></div>
+  </article>
+</section>

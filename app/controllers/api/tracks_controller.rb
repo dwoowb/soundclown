@@ -29,7 +29,6 @@ class Api::TracksController < ApplicationController
                        playlistTracks: @track.playlist_tracks,
                      }
     else
-      flash.now[:errors] = @track.errors.full_messages
       render json: @track.errors, status: :unprocessable_entity
     end
   end

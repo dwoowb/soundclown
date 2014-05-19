@@ -12,13 +12,13 @@ Soundclown.Views.UserMain = Backbone.CompositeView.extend({
     this.listenTo(this.model.playlists(), "remove", this.removePlaylist);
     this.listenTo(this.model.rebloggedPlaylists(), "add", this.addPlaylist);
     this.listenTo(this.model.rebloggedPlaylists(), "remove", this.removePlaylist);
-		
+
 		this.model.tracks().each(this.addTrack.bind(this));
 		this.model.rebloggedTracks().each(this.addTrack.bind(this));
 		this.model.playlists().each(this.addPlaylist.bind(this));
-		// this.model.rebloggedPlaylists().each(this.addPlaylist.bind(this));
+    this.model.rebloggedPlaylists().each(this.addPlaylist.bind(this));
   },
-	
+
 	addTrack: function(track) {
 		var trackPreview = new Soundclown.Views.TrackPreview({
 			model: track
@@ -35,7 +35,7 @@ Soundclown.Views.UserMain = Backbone.CompositeView.extend({
 
     this.removeSubview(".main-index", trackPreview);
 	},
-	
+
 	addPlaylist: function(playlist) {
 		var playlistPreview = new Soundclown.Views.PlaylistPreview({
 			model: playlist

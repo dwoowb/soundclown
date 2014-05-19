@@ -105,7 +105,6 @@ Soundclown.Views.TrackPreview = Backbone.CompositeView.extend({
   openModal: function(event) {
     event.preventDefault();
     $("#playlist-modal").addClass("is-active");
-    debugger
   },
 
   closeModal: function(event) {

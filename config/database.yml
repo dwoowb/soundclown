@@ -3,7 +3,7 @@ test:
   encoding: unicode
   database: soundclown_test
   pool: 5
-  username: Dwoo
+  username: appacademy
   password:
 
 production:
@@ -11,7 +11,7 @@ production:
   encoding: unicode
   database: soundclown_production
   pool: 5
-  username: Dwoo
+  username: appacademy
   password:
 
 development:
@@ -19,5 +19,5 @@ development:
   encoding: unicode
   database: soundclown_development
   pool: 5
-  username: Dwoo
+  username: appacademy
   password:

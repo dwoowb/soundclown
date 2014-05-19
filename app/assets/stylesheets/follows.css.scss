@@ -45,3 +45,24 @@
   // this opacity is not working :[
 }
 
+/* DEFAULT STATES */
+
+.follow {
+  display: block;
+}
+
+.unfollow {
+  display: none;
+}
+
+/* MODIFIED STATES */
+
+.been-followed .follow {
+  display: none;
+}
+
+.been-followed .unfollow {
+  display: block;
+}
+
+

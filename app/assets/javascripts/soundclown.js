@@ -23,6 +23,15 @@ window.Soundclown = {
     this.likes = Soundclown.currentUser.likes();
     this.reblogs = Soundclown.currentUser.reblogs();
     this.comments = Soundclown.currentUser.comments();
+    this.inFollows = new Soundclown.Collections.Follows();
+    // this.users.each(function(user) {
+    //   if (user.inFollows().length !== 0) {
+    //     _.each(user.follows(), function(follow) {
+    //       followModel = new Soundclown.Models.Follow(follow);
+    //       Soundclown.follows.add(followModel);
+    //     });
+    //   };
+    // });
 
     new Soundclown.Routers.Users({});
     new Soundclown.Routers.Tracks({});
@@ -32,6 +41,7 @@ window.Soundclown = {
 
   },
 
+  // These swap view "subviews" now defer to CompositeView
   _elements: {
     leftbar: "#leftbar",
     rootEl: "#content",

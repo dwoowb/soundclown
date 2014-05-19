@@ -26,21 +26,10 @@ Soundclown.Routers.Users = Backbone.Router.extend({
   usersShow: function(id) {
     var that = this;
     this._getUser(id, function(user) {
-      var mainView = new Soundclown.Views.UserMain({
+      var showView = new Soundclown.Views.UserShow({
         model: user
       });
-      
-      var profileView = new Soundclown.Views.UserProfile({
-        model: user
-      });
-      // 
-      // var statsView = new Soundclown.Views.UserStats({
-      //   model: user
-      // });
-
-      Soundclown._swapView("leftbar", profileView);
-			Soundclown._swapView("rootEl", mainView);
-      // Soundclown._swapView("rightbar", statsView);
+			Soundclown._swapView("rootEl", showView);
     });
   },
 
@@ -51,9 +40,6 @@ Soundclown.Routers.Users = Backbone.Router.extend({
     });
     Soundclown._swapView("rootEl", editView);
   },
-
-  // these are going to require leftbars
-  // they should also all render the mini nav, in the rootEl perhaps?
 
   usersTracks: function(id) {
     var that = this;
