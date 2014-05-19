@@ -25,13 +25,13 @@
 
   <ul class="playlist-preview">
     <% playlist.tracks().each(function(track) { %>
-      <% if (index < 5) { %>
+      <% if (playlist.tracks().indexOf(track) < 5) { %>
         <li>
           <a href="#/api/tracks/<%= track.id %>">
              <p class="original poster">
                <%= track.get("poster").username %>
              </p>
-             <%= " - " + track.escapte("artist") + " - " + track.escape("title") %>
+             <%= " - " + track.escape("artist") + " - " + track.escape("title") %>
           </a>
         </li>
       <% }; %>

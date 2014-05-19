@@ -10,13 +10,13 @@ Soundclown.Views.UserMain = Backbone.CompositeView.extend({
     this.listenTo(this.model.rebloggedTracks(), "remove", this.removeTrack);
     this.listenTo(this.model.playlists(), "add", this.addPlaylist);
     this.listenTo(this.model.playlists(), "remove", this.removePlaylist);
-    this.listenTo(this.model.rebloggedPlaylists(), "add", this.addTrack);
+    this.listenTo(this.model.rebloggedPlaylists(), "add", this.addPlaylist);
     this.listenTo(this.model.rebloggedPlaylists(), "remove", this.removePlaylist);
 		
 		this.model.tracks().each(this.addTrack.bind(this));
 		this.model.rebloggedTracks().each(this.addTrack.bind(this));
 		this.model.playlists().each(this.addPlaylist.bind(this));
-		this.model.rebloggedPlaylists().each(this.addPlaylist.bind(this));
+		// this.model.rebloggedPlaylists().each(this.addPlaylist.bind(this));
   },
 	
 	addTrack: function(track) {
@@ -62,6 +62,7 @@ Soundclown.Views.UserMain = Backbone.CompositeView.extend({
     });
 
     this.$el.html(renderedContent);
+		// TODO: ORDER SUBVIEWS BY TIME OF CREATION
 		this.renderSubviews();
     return this;
   }

@@ -25,11 +25,11 @@ Soundclown.Models.User = Backbone.Model.extend({
       delete jsonResp.likes;
     };
     if (jsonResp.likedTracks) {
-      this.likedTracks().set(jsonResp.likedTracks);
+      this.likedTracks().set(jsonResp.likedTracks, { parse: true });
       delete jsonResp.likedTracks;
     };
     if (jsonResp.likedPlaylists) {
-      this.likedPlaylists().set(jsonResp.likedPlaylists);
+      this.likedPlaylists().set(jsonResp.likedPlaylists, { parse: true });
       delete jsonResp.likedPlaylists;
     };
     if (jsonResp.reblogs) {
@@ -40,11 +40,11 @@ Soundclown.Models.User = Backbone.Model.extend({
       delete jsonResp.reblogs;
     };
     if (jsonResp.rebloggedTracks) {
-      this.rebloggedTracks().set(jsonResp.rebloggedTracks);
+      this.rebloggedTracks().set(jsonResp.rebloggedTracks, { parse: true });
       delete jsonResp.rebloggedTracks;
     };
     if (jsonResp.rebloggedPlaylists) {
-      this.rebloggedPlaylists().set(jsonResp.rebloggedPlaylists);
+      this.rebloggedPlaylists().set(jsonResp.rebloggedPlaylists, { parse: true });
       delete jsonResp.rebloggedPlaylists;
     };
     if (jsonResp.comments) {

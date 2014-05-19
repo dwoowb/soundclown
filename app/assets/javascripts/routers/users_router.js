@@ -29,19 +29,19 @@ Soundclown.Routers.Users = Backbone.Router.extend({
       var mainView = new Soundclown.Views.UserMain({
         model: user
       });
-
+      
       var profileView = new Soundclown.Views.UserProfile({
         model: user
       });
-
-      var statsView = new Soundclown.Views.UserStats({
-        model: user
-      });
+      // 
+      // var statsView = new Soundclown.Views.UserStats({
+      //   model: user
+      // });
 
       Soundclown._swapView("leftbar", profileView);
-      Soundclown._swapView("rootEl", mainView);
-      Soundclown._swapView("rightbar", statsView);
-    })
+			Soundclown._swapView("rootEl", mainView);
+      // Soundclown._swapView("rightbar", statsView);
+    });
   },
 
   usersEdit: function(id) {
@@ -62,7 +62,7 @@ Soundclown.Routers.Users = Backbone.Router.extend({
         model: user
       });
       Soundclown._swapView("rootEl", tracksView);
-    })
+    });
   },
 
   usersPlaylists: function(id) {

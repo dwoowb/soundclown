@@ -3,7 +3,7 @@ Soundclown.Views.UserProfile = Backbone.View.extend({
   className: "user-profile",
 
   initialize: function(options) {
-    this.listenTo(this.model, "add remove change", this.render);
+    this.listenTo(this.model, "change", this.render);
   },
 
   events: {

@@ -8,7 +8,6 @@ Soundclown.Views.TrackPreview = Backbone.CompositeView.extend({
 
   initialize: function(options) {
     this.listenTo(this.model, "sync", this.render);
-    // debugger
     this.listenTo(this.model.likes(), "add remove", this.changeLikesStat);
     this.listenTo(this.model.reblogs(), "add remove", this.changeReblogsStat);
     this.listenTo(this.model.comments(), "add remove", this.changeCommentsStat);
