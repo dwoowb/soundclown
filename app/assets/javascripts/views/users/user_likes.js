@@ -26,7 +26,7 @@ Soundclown.Views.UserLikes = Backbone.CompositeView.extend({
 	},
 
 	removeTrack: function(track) {
-    var trackPreview = _(this.subviews()[".tracks-index"]).find(function(subview) {
+    var trackPreview = _(this.subviews()[".liked-index"]).find(function(subview) {
       return subview.model == track;
     });
 
@@ -42,7 +42,7 @@ Soundclown.Views.UserLikes = Backbone.CompositeView.extend({
 	},
 
 	removePlaylist: function(playlist) {
-    var playlistPreview = _(this.subviews()[".main-index"]).find(function(subview) {
+    var playlistPreview = _(this.subviews()[".liked-index"]).find(function(subview) {
       return subview.model == playlist;
     });
     this.removeSubview(".liked-index", playlistPreview);

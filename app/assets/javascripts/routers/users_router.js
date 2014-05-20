@@ -17,9 +17,7 @@ Soundclown.Routers.Users = Backbone.Router.extend({
 
   userStream: function() {
     var that = this;
-    var streamView = new Soundclown.Views.UserStream({
-      model: Soundclown.currentUser
-    });
+    var streamView = new Soundclown.Views.UserStream({});
 
     Soundclown._swapView("rootEl", streamView);
   },

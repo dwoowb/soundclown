@@ -3,19 +3,8 @@ class Api::UsersController < ApplicationController
   before_action :require_signed_out!, only: [:new, :create]
 
   def stream
-    followees = current_user.followees
-    # stream_items are followee's uploaded/reblogged tracks/playlists
-    @stream_items = []
-    followees.each do |followee|
-      reblogs = followee.reblogs
-      created_items = followee.tracks + followee.playlists
-      @stream_items.concat(reblogs).concat(created_items)
-    end
-    unless @stream_items.empty?
-      @stream_items = @stream_items.sort_by(&:created_at).reverse!
-    end
-
-    render partial: "api/users/stream.json", locals: { user: @user }
+    @user = current_user
+    render partial: "api/users/show.json", locals: { user: @user }
   end
 
   def show
