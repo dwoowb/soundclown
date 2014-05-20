@@ -8,12 +8,12 @@
     <h1 class="name"><%= user.escape("lname") %></h1>
     <h2 class="city"><%= user.escape("city") %></h2>
 
-    <div class="user-stats group">
+    <div class="profile-stats group">
       <h1 class="followers">
-        <a class="followers-stat" href="#/api/<%= user.id %>/followers"></a>
+        <a class="followers-stat" href="#/api/users/<%= user.id %>/followers"></a>
       </h1>
       <h1 class="tracks">
-        <a class="tracks-stat" href="#/api/<%= user.id %>/tracks"></a>
+        <a class="tracks-stat" href="#/api/users/<%= user.id %>/tracks"></a>
       </h1>
     </div>
   </article>

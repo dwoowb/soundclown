@@ -1,0 +1,45 @@
+<section class="mini-nav-header group">
+
+  <img class= "mini-avatar" src="<%= user.escape("avatar") %>">
+
+  <article class="mini-nav-wrapper group">
+
+    <h1 class="username"><%= user.escape("username") %></h1>
+
+    <nav class="mini-nav group">
+      <ul>
+        <li>
+          <a href="#/api/users/<%= user.id %>/followees">
+            <i class="fa fa-users"> <%= user.followees().size() %> Following</i>
+          </a>
+        </li>
+        <li>
+          <a href="#/api/users/<%= user.id %>/followers">
+            <i class="fa fa-users"> <%= user.followers().size() %> Followers</i>
+          </a>
+        </li>
+        <li>
+          <a href="#/api/users/<%= user.id %>/playlists">
+            <i class="fa fa-headphones"> <%= user.playlists().size() %> Playlists</i>
+          </a>
+        </li>
+        <li>
+          <a href="#/api/users/<%= user.id %>/likes">
+            <i class="fa fa-heart"> <%= user.likes().size() %> Likes</i>
+          </a>
+        </li>
+        <li>
+          <a href="#/api/users/<%= user.id %>/comments">
+            <i class="fa fa-comments"> <%= user.comments().size() %> Comments</i>
+          </a>
+        </li>
+        <li>
+          <a href="#/api/users/<%= user.id %>/tracks">
+            <i class="fa fa-music"> <%= user.tracks().size() %> Tracks</i>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </article>
+</section>

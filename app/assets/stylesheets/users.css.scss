@@ -39,7 +39,7 @@ section.user {
   margin-bottom: 10px;
 }
 
-.user-stats {
+.profile-stats {
   display: block;
 }
 
@@ -70,23 +70,32 @@ section.user {
   border-right: solid #EEE 1px;
 }
 
-section.stats {
-  width: 300px;
+.user-main {
+  width: 600px;
+  min-height: 850px;
   display: block;
   float: left;
-  margin-left: 20px;
+  padding: 0 20px;
+  border-right: solid #EEE 1px;
+}
+
+section.stats {
+  width: 290px;
+  display: block;
+  float: right;
+  margin: 0 20px;
 }
 
 .user-stats-wrapper {
-  width: 300px;
+  width: 295px;
   display: block;
   float: right;
-  margin-left: 20px;
+  margin: 10px 20px;
 }
 
 .stat-line {
   width: 100%;
-  padding: 10px 0;
+  padding: 30px 0;
   border-bottom: solid #EEE 1px;
 }
 

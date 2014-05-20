@@ -1,0 +1,15 @@
+<article class="follow-profile">
+  <ul>
+    <li class="name">
+      <a href="#/api/users/<%= user.id %>">
+        <%= followee.username %>
+      </a>
+    </li>
+    <li class="follows">
+      <a href="#/api/users/<%= followee.id %>">
+       <i class="fa fa-users"></i> <%= followee.followers().size() %>
+      </a>
+    </li>
+  </ul>
+  <img class= "avatar" src="<%= followee.escape("avatar") %>">
+</article>

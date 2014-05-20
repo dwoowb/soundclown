@@ -41,6 +41,27 @@ Soundclown.Routers.Users = Backbone.Router.extend({
     Soundclown._swapView("rootEl", editView);
   },
 
+  usersFollowers: function(id) {
+    var that = this;
+    this._getUser(id, function(user) {
+      debugger
+      var followersView = new Soundclown.Views.UserFollowers({
+        model: user
+      });
+      Soundclown._swapView("rootEl", followersView);
+    });
+  },
+
+  usersFollowees: function(id) {
+    var that = this;
+    this._getUser(id, function(user) {
+      var followeesView = new Soundclown.Views.UserFollowees({
+        model: user
+      });
+      Soundclown._swapView("rootEl", followeesView);
+    });
+  },
+
   usersTracks: function(id) {
     var that = this;
     this._getUser(id, function(user) {
@@ -80,6 +101,7 @@ Soundclown.Routers.Users = Backbone.Router.extend({
       Soundclown._swapView("rootEl", commentsView);
     })
   },
+
 
   _getUser: function(id, callback) {
     var that = this;

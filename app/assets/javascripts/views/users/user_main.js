@@ -1,6 +1,5 @@
 Soundclown.Views.UserMain = Backbone.CompositeView.extend({
   template: JST["users/main"],
-  className: "user-main",
 
   initialize: function(options) {
     var that = this;

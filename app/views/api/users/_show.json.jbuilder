@@ -65,7 +65,7 @@ json.followers do
     json.(follower,
     :id, :username
     )
-
+    json.avatar follower.avatar.url(:thumb)
     json.followers_count follower.followers.size
   end
 end
@@ -75,6 +75,7 @@ json.followees do
     json.(followee,
     :id, :username
     )
+    json.avatar followee.avatar.url(:thumb)
     json.followers_count followee.followers.size
   end
 end

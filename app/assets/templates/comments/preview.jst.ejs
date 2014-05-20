@@ -1,0 +1,18 @@
+<li class="comment group">
+	<section class="comment-info">
+	  <a class="name" href="#/api/users/<%= comment.get("commenter").id %>">
+		  <%= comment.get("commenter").escape("username") %>
+	  </a>
+    on
+    <a href="#/api/tracks/<%= comment.get("track").id %>">
+      <%= comment.get("track").artist %> - <%= comment.get("track").title %>
+    </a>
+	  <p><%= comment.escape("body")%></p>
+	</section>
+
+	<% if (comment.get("commenter").id === Soundclown.currentUser.id) { %>
+		<form class="destroy">
+      <input class="submit" type="submit" value="&#xf014;">
+    </form>
+	<% }; %>
+</li>

@@ -1,8 +1,5 @@
 <section class="follow">
   <% follows.each do |follow| %>
-
-
-
       <article class="follow-profile">
           <ul>
             <li class="name">
@@ -18,6 +15,5 @@
           </ul>
           <img class= "avatar" src="<%= follow.avatar.url(:thumb) %>">
       </article>
-
   <% end %>
 </section>
