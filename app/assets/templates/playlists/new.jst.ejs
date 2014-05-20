@@ -1,0 +1,11 @@
+<form class="new-playlist">
+	<input type="hidden" name="playlist[track_ids][]" value="<%= track.id %>">
+  <input type="hidden" name="playlist[creator_id]" value="<%= user.id %>">
+
+  <label>
+    Title
+    <input class="input" type="text" name="playlist[title]">
+  </label>
+
+	<input class="submit" type="submit" value="New Playlist">
+</form>

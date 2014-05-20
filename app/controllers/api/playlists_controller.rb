@@ -4,16 +4,6 @@ class Api::PlaylistsController < ApplicationController
     render partial: "api/playlists/index.json", locals: { playlists: @playlists }
   end
 
-  def new
-    @playlist = Playlist.new
-    render partial: "api/playlists/show.json",
-           locals: { playlist: @playlist,
-                     likes: @playlist.likes,
-                     reblogs: @playlist.reblogs,
-                     playlistTracks: @playlist.playlist_tracks,
-                   }
-  end
-
   def create
     @playlist = Playlist.new(playlist_params)
 

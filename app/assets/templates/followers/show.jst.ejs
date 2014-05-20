@@ -2,7 +2,7 @@
   <ul>
     <li class="name">
       <a href="#/api/users/<%= user.id %>">
-        <%= follower.username %>
+        <%= follower.escape("username") %>
       </a>
     </li>
     <li class="follows">

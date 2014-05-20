@@ -1,0 +1,24 @@
+<form class="new-track" enctype="multipart/form-data">
+
+  <h1 class="form-title">Upload Your Sounds</h1>
+  <p id="construction-message">(this is currently under construction :x)</p>
+
+  <label>
+    Title
+    <input class="input" type="text" name="track[title]">
+  </label>
+
+  <label>
+    Artist
+    <input class="input" type="text" name="track[artist]">
+  </label>
+
+  <label>
+    Sound
+    <input type="file" name="track[music_file]">
+  </label>
+
+  <input type="hidden" name="track[poster_id]" value="<%= user.id %>">
+
+  <input class="submit" type="submit" value="Upload">
+</form>

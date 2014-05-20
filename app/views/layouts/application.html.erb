@@ -27,11 +27,11 @@
 
         <nav class="header-nav group">
           <ul>
-            <li>
+            <!-- <li>
               <a href="#">
                   <i class="fa fa-flag"></i>
               </a>
-            </li>
+            </li> -->
 
             <li>
               <a href="#/api/users/<%= current_user.id %>">
@@ -40,25 +40,25 @@
 
               <ul class="navbar-dropdown">
                 <li>
-                  <a href="#">
+                  <a href="#/api/users/<%= current_user.id %>/likes">
                        <i class="fa fa-heart"></i> Likes
                   </a>
                 </li>
 
                 <li>
-                  <a href="#">
+                  <a href="#/api/users/<%= current_user.id %>/followees">
                        <i class="fa fa-users"></i> Following
                   </a>
                 </li>
 
                 <li>
-                  <a href="#">
+                  <a href="#/api/users/<%= current_user.id %>/tracks">
                      <i class="fa fa-music"></i> Tracks
                   </a>
                 </li>
 
                 <li>
-                  <a href="#">
+                  <a href="#/api/users/<%= current_user.id %>/playlists">
                       <i class="fa fa-headphones"></i> Playlists
                   </a>
                 </li>
@@ -70,7 +70,7 @@
 
 
             <li>
-              <a href="#">
+              <a href="#/api/users/<%= current_user.id %>/tracks/new">
                    Upload
               </a>
             </li>

@@ -12,6 +12,7 @@ Soundclown.Routers.Users = Backbone.Router.extend({
     "api/users/:id/likes": "usersLikes",
     "api/users/:id/comments": "usersComments",
     "api/users/:id/tracks": "usersTracks",
+    "api/users/:id/tracks/new": "tracksNew"
   },
 
   userStream: function() {
@@ -44,7 +45,6 @@ Soundclown.Routers.Users = Backbone.Router.extend({
   usersFollowers: function(id) {
     var that = this;
     this._getUser(id, function(user) {
-      debugger
       var followersView = new Soundclown.Views.UserFollowers({
         model: user
       });
@@ -59,16 +59,6 @@ Soundclown.Routers.Users = Backbone.Router.extend({
         model: user
       });
       Soundclown._swapView("rootEl", followeesView);
-    });
-  },
-
-  usersTracks: function(id) {
-    var that = this;
-    this._getUser(id, function(user) {
-      var tracksView = new Soundclown.Views.UserTracks({
-        model: user
-      });
-      Soundclown._swapView("rootEl", tracksView);
     });
   },
 
@@ -102,6 +92,25 @@ Soundclown.Routers.Users = Backbone.Router.extend({
     })
   },
 
+  usersTracks: function(id) {
+    var that = this;
+    this._getUser(id, function(user) {
+      var tracksView = new Soundclown.Views.UserTracks({
+        model: user
+      });
+      Soundclown._swapView("rootEl", tracksView);
+    });
+  },
+
+  tracksNew: function(id) {
+    var that = this;
+    this._getUser(id, function(user) {
+      var newTracksView = new Soundclown.Views.TracksNew({
+        model: user
+      });
+      Soundclown._swapView("rootEl", newTracksView);
+    });
+  },
 
   _getUser: function(id, callback) {
     var that = this;

@@ -50,6 +50,11 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
 
     this.model.comments().each(this.addComment.bind(this));
     Soundclown.currentUser.playlists().each(this.addPlaylist.bind(this));
+
+    var playlistsNew = new Soundclown.Views.PlaylistsNew({
+      track: this.model
+    });
+    this.addSubview(".playlist-new-container", playlistsNew);
   },
 
   changeLikesStat: function() {

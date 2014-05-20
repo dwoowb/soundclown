@@ -132,8 +132,6 @@ input[type="submit"] {
   color: #fff;
 }
 
-/* YOU NEED TO FIX THIS SHIT */
-
 .navbar-dropdown {
   display: none;
   position: absolute;
@@ -147,11 +145,13 @@ li:hover > .navbar-dropdown {
 
 .navbar-dropdown > li {
   border-top: 1px solid #000;
+  background: #272727;
+  height: 40px;
 }
 
 .navbar-dropdown > li > a {
   display: block;
-  padding: 5px 10px;
+  padding: 12px 10px;
   color: #999;
 }
 
@@ -171,7 +171,7 @@ form.sign-up, form.sign-in, form.new-track {
   padding: 50px;
   width: 300px;
   margin: 100px auto;
-  border: solid #272727 2px;
+  border: solid #ddd 2px;
   border-radius: 7px;
 }
 
@@ -200,14 +200,14 @@ input.input > label {
 }
 
 input.input {
-  border: 2px solid black;
+  border: 1px solid #ddd;
   padding: 5px;
   width: 300px;
-  border-radius: 5px;
+  border-radius: 3px;
 }
 
 input.input:focus {
-  border-color: #FB4F19;
+  border-color: #ccc;
 }
 
 input.submit, .open-modal > i {

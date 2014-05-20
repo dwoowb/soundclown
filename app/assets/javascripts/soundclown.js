@@ -4,7 +4,7 @@ window.Soundclown = {
   Views: {},
   Routers: {},
   initialize: function() {
-
+    // TODO: fix playlist add bug, add destroy playlist and track buttons
     var data = JSON.parse($("#bootstrapped-json").html());
 
     this.currentUser = new Soundclown.Models.User(data["currentUser"], { parse: true });

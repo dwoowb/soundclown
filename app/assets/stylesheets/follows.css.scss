@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.follow {
+.follows-index {
   margin-left: 160px;
 }
 
@@ -32,17 +32,16 @@
   font-size: 14px;
 }
 
-.follow-profile > ul > li {
+.follow-profile > ul > li > a {
   display: block;
   background: #000;
-  opacity: .7;
+  opacity: .6;
+  padding: 2px 5px;
 }
 
-.follow-profile > ul > li > a {
+.follows p, .name p {
   color: #fff;
   opacity: 1;
-  padding: 2px 5px;
-  // this opacity is not working :[
 }
 
 /* DEFAULT STATES */

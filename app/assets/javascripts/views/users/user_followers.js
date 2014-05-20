@@ -15,11 +15,11 @@ Soundclown.Views.UserFollowers = Backbone.CompositeView.extend({
 
 	addFollower: function(follower) {
 		var followers = new Soundclown.Views.Followers({
-      user: this.user
+      user: this.user,
 			model: follower
 		});
 
-    this.addSubview(".followers-index", followers);
+    this.addSubview(".follows-index", followers);
     followers.render();
 	},
 
@@ -28,7 +28,7 @@ Soundclown.Views.UserFollowers = Backbone.CompositeView.extend({
       return subview.model == follower;
     });
 
-    this.removeSubview(".followers-index", followers);
+    this.removeSubview(".follows-index", followers);
 	},
 
   render: function() {

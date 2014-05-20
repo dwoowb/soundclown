@@ -61,6 +61,11 @@ section.playlist{
   width: 100%;
 }
 
+.playlist-title {
+  display: block;
+  float: left;
+}
+
 .playlist-add {
 	display: block;
 	padding: 10px 0 10px 0;
@@ -72,6 +77,7 @@ section.playlist{
 
 .add {
   display: block;
+  float: right;
 }
 
 .remove {
@@ -86,4 +92,5 @@ section.playlist{
 
 .been-added .remove {
   display: block;
+  float: right;
 }
