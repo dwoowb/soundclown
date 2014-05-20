@@ -3,7 +3,7 @@ Soundclown.Views.UserStream = Backbone.CompositeView.extend({
 
   initialize: function(options) {
     Soundclown.currentUser.followees().each(function(followee) {
-
+      // rebloggedTracks/Playlists are not Backbone Collections, just arrays D:
       this.listenTo(this.followee.rebloggedTracks(), "add", this.addTrack);
       this.listenTo(this.followee.rebloggedTracks(), "remove", this.removeTrack);
       this.listenTo(this.followee.rebloggedPlaylists(), "add", this.addPlaylist);

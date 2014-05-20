@@ -38,12 +38,12 @@ class Api::UsersController < ApplicationController
   end
 
   def followers
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     render partial: "api/users/show.json", locals: { user: @user }
   end
 
   def followees
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     render partial: "api/users/show.json", locals: { user: @user }
   end
 

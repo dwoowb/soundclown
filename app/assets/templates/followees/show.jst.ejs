@@ -1,12 +1,12 @@
 <article class="follow-profile">
   <ul>
     <li class="name">
-      <a href="#/api/users/<%= user.id %>">
+      <a href="#/api/users/<%= followee.id %>">
         <p><%= followee.escape("username") %></p>
       </a>
     </li>
     <li class="follows">
-      <a href="#/api/users/<%= followee.id %>">
+      <a href="#/api/users/<%= followee.id %>/followers">
        <p><i class="fa fa-users"></i> <%= followee.followers().size() %></p>
       </a>
     </li>

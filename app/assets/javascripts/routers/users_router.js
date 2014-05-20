@@ -3,7 +3,7 @@ Soundclown.Routers.Users = Backbone.Router.extend({
   },
 
   routes: {
-    "": "userStream",
+    "api/users/stream": "userStream",
     "api/users/:id": "usersShow",
     "api/users/:id/edit": "usersEdit",
     "api/users/:id/followers": "usersFollowers",

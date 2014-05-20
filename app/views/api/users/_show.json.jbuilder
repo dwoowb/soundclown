@@ -77,6 +77,12 @@ json.followees do
     )
     json.avatar followee.avatar.url(:thumb)
     json.followers_count followee.followers.size
+    json.rebloggedTracks do
+      json.partial! "api/tracks/index.json", tracks: followee.reblogged_tracks
+    end
+    json.rebloggedPlaylists do
+      json.partial! "api/playlists/index.json", playlists: followee.reblogged_playlists
+    end
   end
 end
 
