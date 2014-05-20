@@ -23,8 +23,7 @@ Soundclown.Views.UserEdit = Backbone.View.extend({
     event.preventDefault();
 
     var params = $(event.currentTarget).serializeJSON()["user"];
-    var editedUser = new Soundclown.Models.User(params);
-    debugger
-    editedUser.save({}, {});
+    var editedUser = Soundclown.users.findWhere({ id: parseInt(params["id"]) });
+    editedUser.save(params, { patch: true });
 }
 });

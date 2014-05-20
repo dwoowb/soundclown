@@ -1,13 +1,8 @@
-Soundclown.Views.UserReblogs = Backbone.View.extend({
-  template: JST["reblogs/index"],
-  className: "user-reblogs",
+Soundclown.Views.UserPlaylistsStat = Backbone.View.extend({
+  template: JST["users/playlistsStat"],
 
   initialize: function(options) {
-    this.user = options.model
-  },
-
-  events: {
-
+    this.user = options.user
   },
 
   render: function() {
@@ -17,4 +12,5 @@ Soundclown.Views.UserReblogs = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   }
+
 })

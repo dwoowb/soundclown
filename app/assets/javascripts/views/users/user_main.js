@@ -23,7 +23,6 @@ Soundclown.Views.UserMain = Backbone.CompositeView.extend({
 		var trackPreview = new Soundclown.Views.TrackPreview({
 			model: track
 		});
-
     this.addSubview(".main-index", trackPreview);
     trackPreview.render();
 	},
@@ -32,7 +31,6 @@ Soundclown.Views.UserMain = Backbone.CompositeView.extend({
     var trackPreview = _(this.subviews()[".main-index"]).find(function(subview) {
       return subview.model == track;
     });
-
     this.removeSubview(".main-index", trackPreview);
 	},
 
@@ -40,7 +38,6 @@ Soundclown.Views.UserMain = Backbone.CompositeView.extend({
 		var playlistPreview = new Soundclown.Views.PlaylistPreview({
 			model: playlist
 		});
-
     this.addSubview(".main-index", playlistPreview);
     playlistPreview.render();
 	},
@@ -49,7 +46,6 @@ Soundclown.Views.UserMain = Backbone.CompositeView.extend({
     var playlistPreview = _(this.subviews()[".main-index"]).find(function(subview) {
       return subview.model == playlist;
     });
-
     this.removeSubview(".main-index", playlistPreview);
 	},
 

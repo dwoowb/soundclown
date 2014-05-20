@@ -10,6 +10,10 @@ Soundclown.Views.UserShow = Backbone.CompositeView.extend({
       model: this.model
     });
     this.addSubview(".user-profile", profileView);
+    var statsView = new Soundclown.Views.UserStats({
+      model: this.model
+    });
+    this.addSubview(".user-stats", statsView);
   },
 
 	render: function() {

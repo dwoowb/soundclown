@@ -1,0 +1,18 @@
+<% var followees_count = user.followees().size() %>
+
+<% if (followees_count > 0) { %>
+  <section class="stat-line group">
+    <article class="stat-info">
+      <i class="fa fa-group"></i> <%= followees_count %>
+      <% if (followees_count > 1) { %>
+        followings
+      <% } else { %>
+        following
+      <% }; %>
+    </article>
+
+    <article class="stat-action">
+      <a href="#/api/users/<%= user.id %>/followees">View all</a>
+    </article>
+  </section>
+<% }; %>

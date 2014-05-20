@@ -1,0 +1,19 @@
+<% var likes_count = user.likes().size() %>
+
+<% if (likes_count > 0) { %>
+  <section class="stat-line group">
+    <article class="stat-info">
+      <i class="fa fa-heart"></i> <%= likes_count %>
+
+      <% if (likes_count > 1) { %>
+        likes
+      <% } else { %>
+        like
+      <% }; %>
+    </article>
+
+    <article class="stat-action">
+      <a href="#/api/users/<%= user.id %>/likes">View all</a>
+    </article>
+  </section>
+<% }; %>

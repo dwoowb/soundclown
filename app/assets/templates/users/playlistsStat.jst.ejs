@@ -1,0 +1,19 @@
+<% var playlists_count = user.playlists().size() %>
+
+<% if (playlists_count > 0) { %>
+  <section class="stat-line group">
+    <article class="stat-info">
+      <i class="fa fa-headphones"></i> <%= playlists_count %>
+
+      <% if (playlists_count > 1) { %>
+        playlists
+      <% } else { %>
+        playlist
+      <% }; %>
+    </article>
+
+    <article class="stat-action">
+      <a href="#/api/users/<%= user.id %>/playlists">View all</a>
+    </article>
+  </section>
+<% }; %>

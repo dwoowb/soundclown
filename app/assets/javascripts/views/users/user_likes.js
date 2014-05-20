@@ -1,6 +1,5 @@
-Soundclown.Views.UserLikes = Backbone.View.extend({
-  template: JST["likes/index"],
-  className: "user-likes",
+Soundclown.Views.UserLikes = Backbone.CompositeView.extend({
+  template: JST["users/likes"],
 
   initialize: function(options) {
     this.user = options.model
@@ -12,7 +11,7 @@ Soundclown.Views.UserLikes = Backbone.View.extend({
 
   render: function() {
     var renderedContent = this.template({
-      user: this.user
+      user: this.model
     });
     this.$el.html(renderedContent);
     return this;

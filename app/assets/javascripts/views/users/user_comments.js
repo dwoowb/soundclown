@@ -1,6 +1,5 @@
 Soundclown.Views.UserComments = Backbone.View.extend({
-  template: JST["comments/index"],
-  className: "user-comments",
+  template: JST["users/comments"],
 
   initialize: function(options) {
     this.user = options.model

@@ -1,5 +1,5 @@
-Soundclown.Views.TracksStat = Backbone.View.extend({
-  template: JST["tracks/stat"],
+Soundclown.Views.UserLikesStat = Backbone.View.extend({
+  template: JST["users/likesStat"],
 
   initialize: function(options) {
     this.user = options.user

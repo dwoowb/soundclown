@@ -12,14 +12,14 @@ Soundclown.Views.UserProfile = Backbone.CompositeView.extend({
     this.listenTo(this.model, "change", this.render);
     this.listenTo(this.model.followers(), "add change remove", this.changeFollowersStat);
     this.listenTo(this.model.tracks(), "add change remove", this.changeTracksStat);
-    var followersStat = new Soundclown.Views.FollowersStat({
+    var userFollowersStat = new Soundclown.Views.UserFollowersStat({
       followee: this.model
     });
-    this.addSubview(".followers-stat", followersStat);
-    var tracksStat = new Soundclown.Views.TracksStat({
+    this.addSubview(".followers-stat", userFollowersStat);
+    var userTracksStat = new Soundclown.Views.UserTracksStat({
       user: this.model
     });
-    this.addSubview(".tracks-stat", tracksStat);
+    this.addSubview(".tracks-stat", userTracksStat);
     var newFollow = new Soundclown.Views.FollowsNew({
       user: this.model
     });
@@ -32,7 +32,7 @@ Soundclown.Views.UserProfile = Backbone.CompositeView.extend({
 
   changeFollowersStat: function() {
 		var followee = this.model;
-    var newFollowersStat = new Soundclown.Views.FollowersStat({
+    var newFollowersStat = new Soundclown.Views.UserFollowersStat({
       followee: followee
     });
     var oldFollowersStat = _(this.subviews()[".followers-stat"]).find(function(subview) {
@@ -45,7 +45,7 @@ Soundclown.Views.UserProfile = Backbone.CompositeView.extend({
 
   changeTracksStat: function() {
 		var user = this.model;
-    var newTracksStat = new Soundclown.Views.TracksStat({
+    var newTracksStat = new Soundclown.Views.UserTracksStat({
       user: user
     });
     var oldTracksStat = _(this.subviews()[".tracks-stat"]).find(function(subview) {

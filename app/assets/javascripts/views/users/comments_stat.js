@@ -1,12 +1,8 @@
-Soundclown.Views.UserPlaylists = Backbone.CompositeView.extend({
-  template: JST["users/playlists"],
+Soundclown.Views.UserCommentsStat = Backbone.View.extend({
+  template: JST["users/commentsStat"],
 
   initialize: function(options) {
-    this.user = options.model
-  },
-
-  events: {
-
+    this.user = options.user
   },
 
   render: function() {

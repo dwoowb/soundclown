@@ -1,0 +1,18 @@
+<% var comments_count = user.comments().size() %>
+
+<% if (comments_count > 0) { %>
+  <section class="stat-line group">
+    <article class="stat-info">
+      <i class="fa fa-comments"></i> <%= comments_count %>
+      <% if (comments_count > 1) { %>
+        comments
+      <% } else { %>
+        comment
+      <% }; %>
+    </article>
+
+    <article class="stat-action">
+      <a href="#/api/users/<%= user.id %>/comments">View all</a>
+    </article>
+  </section>
+<% }; %>
