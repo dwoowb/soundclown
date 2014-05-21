@@ -147,7 +147,6 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
     });
     this.$el.html(renderedContent);
     this.renderSubviews();
-
     return this;
   }
 

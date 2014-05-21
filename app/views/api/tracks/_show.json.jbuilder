@@ -9,6 +9,8 @@ json.poster do
   json.username track.poster.username
 end
 
+json.musicFile track.music_file.url
+
 playlistTracks ||= nil
 unless playlistTracks.nil?
   json.playlistTracks do

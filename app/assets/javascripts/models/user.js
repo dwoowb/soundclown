@@ -77,14 +77,14 @@ Soundclown.Models.User = Backbone.Model.extend({
     //   delete jsonResp.followees;
     // };
     if (jsonResp.followers) {
-      this.followers().set(jsonResp.followers);
+      this.followers().set(jsonResp.followers, { parse: true });
       this.followers().each(function(follower) {
         follower.followees().add(that);
       })
       delete jsonResp.followers;
     };
     if (jsonResp.followees) {
-      this.followees().set(jsonResp.followees);
+      this.followees().set(jsonResp.followees, { parse: true });
       this.followees().each(function(followee) {
         followee.followers().add(that);
       })

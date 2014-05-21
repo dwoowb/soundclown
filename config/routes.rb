@@ -34,7 +34,7 @@ Soundclown::Application.routes.draw do
   # Rails API
 
   resource  :session, only: [:create, :new, :destroy]
-
+  # only the current_user should be able to edit their own profile
   resources :users, except: [:index] do
     resources :tracks, only: [:index, :new, :create]
     resource  :follow, only: [:create, :destroy]
@@ -62,7 +62,4 @@ Soundclown::Application.routes.draw do
 
   resource :reblog, only: [:create, :destroy]
   resource :like, only: [:create, :destroy]
-
-  # patch "/playlists/:id/add", action: "add_track", controller: "playlists", as: "add_to_playlist"
-#     patch "/playlists/:id/remove", action: "remove_track", controller: "playlists", as: "remove_from_playlist"
 end

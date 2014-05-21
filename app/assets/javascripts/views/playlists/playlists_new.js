@@ -12,6 +12,7 @@ Soundclown.Views.PlaylistsNew = Backbone.View.extend({
 
   newPlaylist: function(event) {
     event.preventDefault();
+    var view = this;
     var $submit = $(event.currentTarget);
     var $scope = $submit.closest("form");
     var params = $submit.serializeJSON()["playlist"];
@@ -20,6 +21,8 @@ Soundclown.Views.PlaylistsNew = Backbone.View.extend({
     playlist.save({}, {
       success: function() {
         Soundclown.playlists.add(playlist);
+        // this doesn't work. FUCK
+				view.$("input[name=playlist\\[title\\]]").val("");
       }
     });
     Soundclown.currentUser.playlists().add(playlist);

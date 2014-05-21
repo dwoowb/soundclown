@@ -2,15 +2,15 @@ Soundclown.Views.UserStream = Backbone.CompositeView.extend({
   template: JST["users/stream"],
 
   initialize: function(options) {
+    var view = this;
     Soundclown.currentUser.followees().each(function(followee) {
-      // rebloggedTracks/Playlists are not Backbone Collections, just arrays D:
-      this.listenTo(this.followee.rebloggedTracks(), "add", this.addTrack);
-      this.listenTo(this.followee.rebloggedTracks(), "remove", this.removeTrack);
-      this.listenTo(this.followee.rebloggedPlaylists(), "add", this.addPlaylist);
-      this.listenTo(this.followee.rebloggedPlaylists(), "remove", this.removePlaylist);
+      view.listenTo(followee.rebloggedTracks(), "add", this.addTrack);
+      view.listenTo(followee.rebloggedTracks(), "remove", this.removeTrack);
+      view.listenTo(followee.rebloggedPlaylists(), "add", this.addPlaylist);
+      view.listenTo(followee.rebloggedPlaylists(), "remove", this.removePlaylist);
 
-      this.user.rebloggedTracks().each(this.addTrack.bind(this));
-      this.user.rebloggedPlaylists().each(this.addPlaylist.bind(this));
+      followee.rebloggedTracks().each(view.addTrack.bind(view));
+      followee.rebloggedPlaylists().each(view.addPlaylist.bind(view));
     });
   },
 
@@ -18,7 +18,6 @@ Soundclown.Views.UserStream = Backbone.CompositeView.extend({
 		var trackPreview = new Soundclown.Views.TrackPreview({
 			model: track
 		});
-
     this.addSubview(".stream-index", trackPreview);
     trackPreview.render();
 	},

@@ -1,9 +1,14 @@
 json.array!(notifications) do |notification|
   json.(notification,
-  :id, :user, :event_id,
+  :id, :event_id,
   :notifiable_id, :notifiable_type,
   :is_read
   )
+
+  json.user do
+    json.id notification.user.id
+    json.username notification.user.username
+  end
 
   notified_item = notification.notifiable
 

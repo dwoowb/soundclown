@@ -15,14 +15,7 @@ unless inFollows.nil?
   end
 end
 
-# outFollows ||= nil
-# unless outFollows.nil?
-#   json.outFollows do
-#     json.partial! "api/follows/index.json", follows: outFollows
-#   end
-# end
-
-json.avatar user.avatar.url(:thumb)
+json.avatar user.avatar.url(:full)
 
 json.tracks do
   json.partial! "api/tracks/index.json", tracks: user.tracks
@@ -65,7 +58,7 @@ json.followers do
     json.(follower,
     :id, :username
     )
-    json.avatar follower.avatar.url(:thumb)
+    json.avatar follower.avatar.url(:full)
     json.followers_count follower.followers.size
   end
 end
@@ -75,7 +68,7 @@ json.followees do
     json.(followee,
     :id, :username
     )
-    json.avatar followee.avatar.url(:thumb)
+    json.avatar followee.avatar.url(:full)
     json.followers_count followee.followers.size
     json.rebloggedTracks do
       json.partial! "api/tracks/index.json", tracks: followee.reblogged_tracks
@@ -86,9 +79,9 @@ json.followees do
   end
 end
 
-json.notifications do
-  json.partial! "api/notifications/index.json", notifications: user.notifications
-end
+# json.notifications do
+#   json.partial! "api/notifications/index.json", notifications: user.notifications
+# end
 
 
 
