@@ -1,7 +1,7 @@
 class Track < ActiveRecord::Base
 
   has_attached_file :music_file
-  validates_attachment_content_type :music_file, :content_type => [ 'application/mp3','application/x-mp3', 'audio/mpeg', 'audio/mp3' ]
+  validates_attachment_content_type :music_file, :content_type => [ 'audio/mpeg', 'audio/mp3' ]
 
   has_many :comments
 

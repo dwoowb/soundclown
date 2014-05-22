@@ -10,20 +10,5 @@
   { "currentUser": <%= render(partial: "api/users/show.json", locals: { user: current_user }).html_safe %> }
 </script>
 
-<script>
-soundManager.setup({
-  url: '/path/to/swf-files/',
-  onready: function() {
-    var mySound = soundManager.createSound({
-      id: 'aSound',
-      url: '/path/to/an.mp3'
-    });
-    mySound.play();
-  },
-  ontimeout: function() {
-    // Hrmm, SM2 could not start. Missing SWF? Flash blocked? Show an error, etc.?
-  }
-});
-</script>
 
 

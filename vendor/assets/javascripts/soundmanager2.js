@@ -2576,7 +2576,7 @@ function SoundManager(smURL, smID) {
     this._processOnPosition = function() {
 
       var i, item, j = onPositionItems.length;
-
+		
       if (!j || !s.playState || onPositionFired >= j) {
         return false;
       }
@@ -2590,7 +2590,7 @@ function SoundManager(smURL, smID) {
 		  j = onPositionItems.length; //  reset j -- onPositionItems.length can be changed in the item callback above... occasionally breaking the loop.
         }
       }
-
+	
       return true;
 
     };

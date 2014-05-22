@@ -1,4 +1,9 @@
 <section class="track">
+  <article class="play-button">
+    <a href="<%= track.escape("musicFile") %>" class="sm2_button play button">
+    </a>
+  </article>
+
   <article class="track-info">
     <h2 class="poster">
       <a href="#/api/users/<%= track.get("poster").id %>">

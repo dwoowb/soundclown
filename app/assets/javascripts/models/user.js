@@ -69,13 +69,6 @@ Soundclown.Models.User = Backbone.Model.extend({
       });
       delete jsonResp.inFollows;
     };
-    // if (jsonResp.outFollows) {
-    //   this.outFollows().set(jsonResp.outFollows);
-    //   this.outFollows().each(function(outFollow) {
-    //     outFollows.set("follower", that);
-    //   })
-    //   delete jsonResp.followees;
-    // };
     if (jsonResp.followers) {
       this.followers().set(jsonResp.followers, { parse: true });
       this.followers().each(function(follower) {
@@ -92,8 +85,6 @@ Soundclown.Models.User = Backbone.Model.extend({
     };
     return jsonResp;
   },
-
-  // I don't think any of these collections need to be passed the user
 
   tracks: function() {
     if (!this.get("tracks")) {
