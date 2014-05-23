@@ -15,7 +15,7 @@ dwoowb.tracks.create!({title: 'Miami 82 (Kygo Remix)', artist: 'Syn Cole', music
 dwoowb.tracks.create!({title: 'Trying to be Cool (Breakbot Remix)', artist: 'Phoenix', music_file: File.open(Rails.root.join("seed_data", "sounds", "Trying To Be Cool (Breakbot Remix) (1).mp3"))})
 
 
-french.tracks.create!({title: 'Night Call', artist: 'Kavinsky', music_file: File.open(Rails.root.join("seed_data", "sounds", "01 Nightcall (Featuring Lovefoxxx).mp3"))})
+# french.tracks.create!({title: 'Night Call', artist: 'Kavinsky', music_file: File.open(Rails.root.join("seed_data", "sounds", "01 Nightcall (Featuring Lovefoxxx).mp3"))})
 french.tracks.create!({title: 'Soon It Will Be Cold Enough to Build Fires', artist: 'Emancipator', music_file: File.open(Rails.root.join("seed_data", "sounds", "Soon it Will be Cold Enough to Build Fires.mp3"))})
 
 disclosure.tracks.create!({title: 'When A Fire Starts To Burn', artist: 'Disclosure', music_file: File.open(Rails.root.join("seed_data", "sounds", "02 When A Fire Starts To Burn.mp3"))})
