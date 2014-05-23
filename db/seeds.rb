@@ -9,15 +9,12 @@
 dwoowb = User.create!({username: 'dwoowb', email: 'dwoowb@gmail.com', password: 'foobar', fname: "Daniel", lname: "Woo", city: "Los Angeles", avatar: File.open(Rails.root.join("seed_data", "images", "dwoowb.png"))})
 french = User.create!({username: 'FRENCH EXPRESS', email: 'frenchexpress@gmail.com', password: 'foobar', city: "Champagne", avatar: File.open(Rails.root.join("seed_data", "images", "french_express.jpg"))})
 daft = User.create!({username: 'Daft Punk', email: 'daftpunk@gmail.com', password: 'foobar', fname: "Manuel", lname: "Bangalter", city: "Paris", avatar: File.open(Rails.root.join("seed_data", "images", "daftpunk.jpg"))})
-disclosure = User.create!({username: 'Disclosure', email: 'disclosure@gmail.com', password: 'foobar' city: "London", avatar: File.open(Rails.root.join("seed_data", "images", "disclosure.jpg"))})
+disclosure = User.create!({username: 'Disclosure', email: 'disclosure@gmail.com', password: 'foobar', city: "London", avatar: File.open(Rails.root.join("seed_data", "images", "disclosure.jpg"))})
 
-
-dwoowb.tracks.create!({title: 'Flowers', artist: 'Nujabes', music_file: File.open(Rails.root.join("seed_data", "sounds", "11 flowers.mp3"))})
-dwoowb.tracks.create!({title: 'Cocoa Butter Kisses', artist: 'Chance The Rapper', music_file: File.open(Rails.root.join("seed_data", "sounds", "03 - Cocoa Butter Kisses (ft Vic Mensa & Twista) (Prod by Cam for JUSTICE League & Peter Cottont.mp3"))})
-dwoowb.tracks.create!({title: 'Trying to be Cool (Breakbot Remix)', artist: 'Phoenix', music_file: File.open(Rails.root.join("seed_data", "sounds", "Trying To Be Cool (Breakbot Remix) (1).mp3"))})
 dwoowb.tracks.create!({title: 'Miami 82 (Kygo Remix)', artist: 'Syn Cole', music_file: File.open(Rails.root.join("seed_data", "sounds", "Syn Cole - Miami 82 (Kygo Remix).mp3"))})
+dwoowb.tracks.create!({title: 'Trying to be Cool (Breakbot Remix)', artist: 'Phoenix', music_file: File.open(Rails.root.join("seed_data", "sounds", "Trying To Be Cool (Breakbot Remix) (1).mp3"))})
 
-french.tracks.create!({title: 'Love Strong', artist: 'Moon Boots', music_file: File.open(Rails.root.join("seed_data", "sounds", "Moon Boots - Love Strong.mp3"))})
+
 french.tracks.create!({title: 'Night Call', artist: 'Kavinsky', music_file: File.open(Rails.root.join("seed_data", "sounds", "01 Nightcall (Featuring Lovefoxxx).mp3"))})
 french.tracks.create!({title: 'Soon It Will Be Cold Enough to Build Fires', artist: 'Emancipator', music_file: File.open(Rails.root.join("seed_data", "sounds", "Soon it Will be Cold Enough to Build Fires.mp3"))})
 
