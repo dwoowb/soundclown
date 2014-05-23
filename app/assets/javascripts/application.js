@@ -17,9 +17,6 @@
 //= require backbone
 //= require soundmanager2
 //= require mp3-player-button
-//= require 360player
-//= require berniecode-animator
-//= require excanvas
 //= require backbone.soundmanager2
 //= require soundclown
 //= require_tree ../templates

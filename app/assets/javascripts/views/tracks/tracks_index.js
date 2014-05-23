@@ -2,6 +2,7 @@ Soundclown.Views.TracksIndex = Backbone.CompositeView.extend({
   template: JST["tracks/index"],
 
   initialize: function(options) {
+    this.user = options.user
     this.listenTo(this.collection, "sync", this.render);
     this.listenTo(this.collection, "add", this.addTrack);
     this.listenTo(this.collection, "remove", this.removeTrack)
@@ -11,7 +12,8 @@ Soundclown.Views.TracksIndex = Backbone.CompositeView.extend({
 
 	addTrack: function(track) {
 		var trackPreview = new Soundclown.Views.TrackPreview({
-			model: track
+			model: track,
+      user: this.user
 		});
 
     this.addSubview(".tracks-index", trackPreview);

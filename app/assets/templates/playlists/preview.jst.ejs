@@ -1,9 +1,12 @@
 <section class="playlist">
-
   <article class="playlist">
     <article class="playlist-info">
       <a class="creator" href="#/api/users/<%= playlist.get("creator").id %>">
-        <%= playlist.get("creator").username %>
+        <% if (playlist.get("creator") === Soundclown.currentUser ) { %>
+          <%= playlist.get("creator").escape("username") %>
+        <% } else { %>
+          <%= playlist.get("creator").username %>
+        <% }; %>
       </a>
       <a class="playlist-title" href="#/api/playlists/<%= playlist.id %>">
         <%= playlist.escape("title") %>

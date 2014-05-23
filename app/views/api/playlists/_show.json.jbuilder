@@ -1,7 +1,12 @@
 json.(playlist,
-:id, :title, :creator,
+:id, :title,
 :reblogs_count, :likes_count
 )
+
+json.creator do
+  json.id playlist.creator.id
+  json.username playlist.creator.username
+end
 
 playlistTracks ||= nil
 unless playlistTracks.nil?

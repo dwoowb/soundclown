@@ -6,14 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-dwoowb = User.create!({username: 'dwoowb', email: 'dwoowb@gmail.com', password: 'foobar', fname: "Daniel", lname: "Woo", city: "Los Angeles"})
-gavin = User.create!({username: 'gavin', email: 'gavin@gmail.com', password: 'foobar', fname: "Gavin", lname: "Uathuvikul", city: "Hong Kong"})
-dillon = User.create!({username: 'DILLONFRANCIS', email: 'dillon@gmail.com', password: 'foobar', fname: "Dillon", lname: "Francis", city: "Los Angeles"})
-
-andrew = User.create!({username: 'andrew', email: 'andrew@gmail.com', password: 'foobar', fname: "Andrew", lname: "Kayvanfar", city: "Los Angeles"})
-jorge = User.create!({username: 'jorge', email: 'jorge@gmail.com', password: 'foobar', fname: "Jorge", lname: "Rodriguez", city: "Itaewon"})
-sam = User.create!({username: 'sam', email: 'sam@gmail.com', password: 'foobar', fname: "Sam", lname: "Sweeney", city: "Las Vegas"})
-daniel = User.create!({username: 'lacosse', email: 'lacosse@gmail.com', password: 'foobar', fname: "Daniel", lname: "Lacosse", city: "Durham"})
+dwoowb = User.create!({username: 'dwoowb', email: 'dwoowb@gmail.com', password: 'foobar', fname: "Daniel", lname: "Woo", city: "Los Angeles", avatar: File.open(Rails.root.join("seed_data", "images", "dwoowb.png"))})
+gavin = User.create!({username: 'FRENCH EXPRESS', email: 'frenchexpress@gmail.com', password: 'foobar', city: "Champagne", avatar: File.open(Rails.root.join("seed_data", "images", "french_express.jpg"))})
+dillon = User.create!({username: 'DILLONFRANCIS', email: 'dillonfrancis@gmail.com', password: 'foobar', fname: "Dillon", lname: "Francis", city: "Los Angeles", avatar: File.open(Rails.root.join("seed_data", "images", "dillon.jpg"))})
+andrew = User.create!({username: 'Majestic Casual', email: 'majesticcasual@gmail.com', password: 'foobar', city: "Berlin", avatar: File.open(Rails.root.join("seed_data", "images", "majestic_casual.jpg"))})
+jorge = User.create!({username: 'jorgerro', email: 'jorgerro@gmail.com', password: 'foobar', fname: "Jorge", lname: "Rodriguez", city: "Itaewon", avatar: File.open(Rails.root.join("seed_data", "images", "jorgerro.jpg"))})
+sam = User.create!({username: 'Televisor', email: 'televisor@gmail.com', password: 'foobar', city: "Las Vegas", avatar: File.open(Rails.root.join("seed_data", "images", "televisor.jpg"))})
+daniel = User.create!({username: 'd.aniellacos.se', email: 'daniellacosse@gmail.com', password: 'foobar', fname: "Daniel", lname: "Lacosse", city: "Durham", avatar: File.open(Rails.root.join("seed_data", "images", "lacosse.jpg"))})
 
 
 
@@ -22,7 +21,7 @@ dwoowb.tracks.create!({title: 'Paradise Awaits', artist: 'ZHU'})
 dwoowb.tracks.create!({title: 'Love Strong', artist: 'Moon Boots'})
 dwoowb.tracks.create!({title: 'Feel it in my Bones', artist: 'Tiesto'})
 dwoowb.tracks.create!({title: 'Promise Me', artist: 'Motez'})
-
+dwoowb.tracks.create!({title: 'Miami 82 (Kygo Remix)', artist: 'Syn Cole', music_file: File.open(Rails.root.join("seed_data", "sounds", "Syn Cole - Miami 82 (Kygo Remix).mp3"))})
 
 gavin.tracks.create!({title: 'Your Heart will Lead You Home', artist: 'Kenny Loggins'})
 gavin.tracks.create!({title: 'La Gasolina', artist: 'Pitbull'})

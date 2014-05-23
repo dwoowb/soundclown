@@ -11,8 +11,6 @@
  *= require_self
  *= require font-awesome
  *= require mp3-player-button
- *= require 360player-visualization
- *= require 360player
  *= require_tree .
  */
 
