@@ -18,7 +18,7 @@ class TracksController < ApplicationController
     if @track.save
       redirect_to user_playlists_url(current_user.id)
     else
-      flash.now[:errors] = @playlist.errors.full_messages
+      flash.now[:errors] = @track.errors.full_messages
       redirect_to :back
     end
   end

@@ -172,7 +172,7 @@ form.sign-up, form.sign-in, form.new-track {
   padding: 50px;
   width: 300px;
   margin: 100px auto;
-  border: solid #ddd 2px;
+  border: solid #ccc 2px;
   border-radius: 7px;
 }
 
