@@ -17,7 +17,7 @@ Soundclown.Views.CommentsPreview = Backbone.View.extend({
 	destroy: function() {
     var comment = this.model;
     var track = Soundclown.tracks.findWhere({ id: comment.get("track").id })
-    track.comments().remove(this.model);
+    track.comments().remove(comment);
 	  comment.destroy();
 	}
 })

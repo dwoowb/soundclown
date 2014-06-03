@@ -1,10 +1,6 @@
 Soundclown.Models.Track = Backbone.Model.extend({
   urlRoot: "/api/tracks",
 
-  getAudioURL: function() {
-    return this.escape("musicFile");
-  },
-
   parse: function(jsonResp) {
     var that = this;
     if (jsonResp.playlistTracks) {

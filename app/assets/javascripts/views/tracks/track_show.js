@@ -16,14 +16,6 @@ Soundclown.Views.TrackShow = Backbone.CompositeView.extend({
     this.listenTo(this.model.comments(), "remove", this.removeComment);
     this.listenTo(Soundclown.currentUser.playlists(), "add", this.addPlaylist);
     this.listenTo(Soundclown.currentUser.playlists(), "remove", this.removePlaylist);
-    // soundManager.setup({
-    //   onready: function() {
-    //     var mySound = soundManager.createSound({
-    //       id: view.model.escape("title"),
-    //       url: view.model.escape("musicFile")
-    //     });
-    //   }
-    // });
 
     var likesNew = new Soundclown.Views.LikesNew({
       likedItem: this.model,

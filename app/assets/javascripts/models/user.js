@@ -195,15 +195,7 @@ Soundclown.Models.User = Backbone.Model.extend({
     };
     return this.get("inFollows");
   },
-  // outFollows: function() {
-  //   if (!this.get("outFollows")) {
-  //     var outFollows = new Soundclown.Collections.Follows([], {});
-  //     this.set({
-  //       outFollows: outFollows
-  //     });
-  //   };
-  //   return this.get("outFollows");
-  // },
+
   followers: function() {
     if (!this.get("followers")) {
       var followers = new Soundclown.Collections.Users([], {});

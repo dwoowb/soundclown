@@ -7,12 +7,10 @@ window.Soundclown = {
     // TODO: fix playlist add bug, add destroy playlist and track buttons, user followers view doesn't correctly display follower's follower count
     var data = JSON.parse($("#bootstrapped-json").html());
 
-    this.player = new Backbone.SoundManager2
-
     this.currentUser = new Soundclown.Models.User(data["currentUser"], { parse: true });
     this.users = new Soundclown.Collections.Users(Soundclown.currentUser);
-    this.tracks = Soundclown.currentUser.tracks();
-    this.playlists = Soundclown.currentUser.playlists();
+    this.tracks = new Soundclown.Collections.Tracks();
+    this.playlists = new Soundclown.Collections.Playlists();
     this.playlistTracks = new Soundclown.Collections.PlaylistTracks();
     this.tracks.each(function(track) {
       if (track.playlistTracks().length !== 0) {
@@ -22,9 +20,9 @@ window.Soundclown = {
         });
       };
     });
-    this.likes = Soundclown.currentUser.likes();
-    this.reblogs = Soundclown.currentUser.reblogs();
-    this.comments = Soundclown.currentUser.comments();
+    this.likes = new Soundclown.Collections.Likes();
+    this.reblogs = new Soundclown.Collections.Reblogs();
+    // this.comments = new Soundclown.Collections.Comments();
     this.inFollows = new Soundclown.Collections.Follows();
     this.users.each(function(user) {
       if (user.inFollows().length !== 0) {
@@ -34,6 +32,7 @@ window.Soundclown = {
         });
       };
     });
+		
     new Soundclown.Routers.Users({});
     new Soundclown.Routers.Tracks({});
     new Soundclown.Routers.Playlists({});
