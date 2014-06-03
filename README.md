@@ -1,11 +1,11 @@
 # SoundClone is a SoundCloud clone #
-- - - 
+
 
 That phrase was a mouthful.  
 [SoundClone](http://dwoowb.com/soundclone) is a clone of a personal favorite web application of [mine](http://dwoowb.com), [SoundCloud](http://soundcloud.com).
 
 # Features #
-- - -
+
 
 * Plays music while navigating the site
 * Like and reblog tracks and playlists
@@ -16,14 +16,14 @@ That phrase was a mouthful.
 * Have a stream of followees' reblogged items
 
 # Technologies Used #
-- - -
+
 
 * RESTful Rails 4 API for the backend
 * Backbone.js frontend for a snappier, more native app experience
 * Custom styled CSS, in conjunction with [Font Awesome's](http://fortawesome.github.io/Font-Awesome/) icons, and [SoundManager 2's](http://www.schillmania.com/projects/soundmanager2/) player.
 
 # Todo's #
-- - -
+
 
 Additional features that would be cool:
 
