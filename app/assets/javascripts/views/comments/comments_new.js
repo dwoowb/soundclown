@@ -18,9 +18,7 @@ Soundclown.Views.CommentsNew = Backbone.View.extend({
 		
 		comment.save({}, {
 			success: function() {
-				debugger
         Soundclown.currentUser.comments().add(comment);
-				debugger
         view.track.comments().add(comment);
 				view.$("textarea[name=comment\\[body\\]]").val("");
 			}
