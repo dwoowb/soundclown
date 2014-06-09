@@ -1,7 +1,10 @@
+<h1 class="sign-in-heading">SoundClone, <br> a SoundCloud Clone</h1>
+
+
 <form class="sign-in" action="<%= session_url %>" method="post">
 
   <%= auth_token %>
-
+		
   <label>
     Email
     <input class="input" type="email" name="user[email]">
@@ -10,11 +13,21 @@
 
   <label>
     Password
-
     <input class="input" type="password" name="user[password]">
   </label>
 
 
   <input class="submit" type="submit" value="Sign In">
+	<input class="submit demo" type="submit" value="Demo">
 </form>
 
+<script>
+	$(document).ready(function() {
+		$(".demo").click(function(event) {
+			event.preventDefault();
+			
+			$(".input[name='user[email]']").val("dwoowb@gmail.com");
+			$(".input[name='user[password]']").val("foobar");
+		})
+	});
+</script>
