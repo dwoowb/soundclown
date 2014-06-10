@@ -2,7 +2,7 @@ Soundclown.Views.MiniNav = Backbone.View.extend({
   template: JST["users/miniNav"],
 
   initialize: function(options) {
-    this.user = options.user
+    this.user = options.user;
   },
 
   render: function() {

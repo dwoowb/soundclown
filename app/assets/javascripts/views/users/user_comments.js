@@ -16,6 +16,10 @@ Soundclown.Views.UserComments = Backbone.CompositeView.extend({
 		var commentsPreview = new Soundclown.Views.CommentsPreview({
 			model: comment
 		});
+		var trackToAdd = new Soundclown.Models.Track(comment.get("track"));
+		Soundclown.tracks.add(trackToAdd);
+		// adds commented tracks to global tracks collection
+		
     this.addSubview(".comments-index", commentsPreview);
     commentsPreview.render();
 	},

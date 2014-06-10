@@ -17,12 +17,13 @@ Soundclown.Views.PlaylistsNew = Backbone.View.extend({
     var $scope = $submit.closest("form");
     var params = $submit.serializeJSON()["playlist"];
     var playlist = new Soundclown.Models.Playlist(params);
-
+		debugger
     playlist.save({}, {
       success: function() {
         Soundclown.playlists.add(playlist);
       }
     });
+		debugger
     view.$("input[name=playlist\\[title\\]]").val("");
     Soundclown.currentUser.playlists().add(playlist);
   },

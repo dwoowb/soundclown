@@ -22,7 +22,7 @@ window.Soundclown = {
     });
     this.likes = new Soundclown.Collections.Likes();
     this.reblogs = new Soundclown.Collections.Reblogs();
-    // this.comments = new Soundclown.Collections.Comments();
+    this.comments = new Soundclown.Collections.Comments();
     this.inFollows = new Soundclown.Collections.Follows();
     this.users.each(function(user) {
       if (user.inFollows().length !== 0) {

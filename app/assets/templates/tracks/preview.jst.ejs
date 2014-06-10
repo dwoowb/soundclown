@@ -7,11 +7,7 @@
   <article class="track-info">
     <h2 class="poster">
       <a href="#/api/users/<%= track.get("poster").id %>">
-        <% if (track.get("poster") === Soundclown.currentUser ) { %>
-          <%= track.get("poster").escape("username") %>
-        <% } else { %>
-          <%= track.get("poster").username %>
-        <% }; %>
+				<%= track.get("poster").username || track.get("poster").escape("username") %>
       </a>
     </h2>
     <a href="#/api/tracks/<%= track.id %>">

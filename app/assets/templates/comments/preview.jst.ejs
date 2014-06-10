@@ -1,10 +1,10 @@
 <li class="comment group">
 	<section class="comment-info">
 	  <a class="name" href="#/api/users/<%= comment.get("commenter").id %>">
-		  <%= comment.get("commenter").escape("username") %>
+		  <%= comment.get("commenter").username || comment.get("commenter").escape("username") %>
 	  </a>
     on
-    <a href="#/api/tracks/<%= comment.get("track").id %>">
+    <a href="#/api/tracks/<%= comment.get("track").poster_id %>">
       <%= comment.get("track").artist %> - <%= comment.get("track").title %>
     </a>
 	  <p><%= comment.escape("body")%></p>
