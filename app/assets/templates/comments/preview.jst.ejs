@@ -4,7 +4,7 @@
 		  <%= comment.get("commenter").username || comment.get("commenter").escape("username") %>
 	  </a>
     on
-    <a href="#/api/tracks/<%= comment.get("track").poster_id %>">
+    <a href="#/api/tracks/<%= comment.get("track").id %>">
       <%= comment.get("track").artist %> - <%= comment.get("track").title %>
     </a>
 	  <p><%= comment.escape("body")%></p>

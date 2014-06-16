@@ -16,7 +16,7 @@ Soundclown.Views.PlaylistsAdd = Backbone.View.extend({
     var playlist = this.model;
     var track = this.track;
     event.preventDefault();
-
+		debugger
     var $submit = $(event.currentTarget)
     var $scope = $submit.closest("form");
     var playlistTrack = new Soundclown.Models.PlaylistTrack({ track_id: track.id, playlist_id: playlist.id})
