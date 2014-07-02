@@ -3,7 +3,7 @@
 
 That phrase was a mouthful.
  
-[SoundClone](http://dwoowb.com/soundclone) is a clone of a personal favorite web application of [mine](http://dwoowb.com), [SoundCloud](http://soundcloud.com).
+[SoundClone](http://www.soundclone.us) is a clone of a personal favorite web application of [mine](http://dwoowb.com), [SoundCloud](http://soundcloud.com).
 
 This project was initially going to be a SoundCloud clone, featuring only clown sounds, hence the repository name. Intended as a two-fold endeavor, to recreate basic functionality of the site while overcoming my fear of clowns. The latter proved to be too difficult to accomplish this time around, but is an ongoing commitment. 
 
