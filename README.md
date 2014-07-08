@@ -27,7 +27,7 @@ This project was initially going to be a SoundCloud clone, featuring only clown 
 # Todo's #
 
 
-Bugs to work out:
+Bugs to fix:
 
 * Adding and removing tracks to playlists
 * Track show when navigating from comments
